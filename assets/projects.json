@@ -1,0 +1,39 @@
+{
+	"projects": [
+		{
+			"name": "Form Stash",
+			"identifier": "FormStash",
+			"short_description": "Quickly stash the contents of HTML forms and reload them later. It's a great productivity tool and even autosaves your forms and syncs across all chrome browsers!",
+			"image": "formstash.png",
+			"description": "Quickly stash the contents of HTML forms and reload them later. \n This chrome extension allows you to quickly stash away the contents of forms you're working on and fill them back later. If you're filling out a long application with no way to save for later, this is for you. You can create multiple stashes for each page, and you can even have the extension automatically update the form data as you type it. All data is seamlessly synced between chrome on all of your devices! \n The extension is written with vinalla HTML, CSS, and JS. It's currently available only for Chrome, but will be comming to FireFox and Edge soon along with synced data support.",
+			"download": "https://chrome.google.com/webstore/detail/form-stash/ammkklhpnfcoapcogmlhkbbbcnkngnpm",
+			"source": "https://github.com/TheFoxarmy/formstash"
+		},
+		{
+			"name": "Quizlet Query",
+			"identifier": "QuizletQuery",
+			"short_description": "An API that relies on google custom search engine to search and deliver relevant answers from quizlet! Perfect for any type of school work, and a primitive form of instant answers!",
+			"description": ""
+		},
+		{
+			"name": "Sub Scrubber",
+			"identifier": "SubScrubber",
+			"short_description": "Finally clean out your YouTube sub-box, once and for all! A collaborative project done with my friend, <a href=\"aidanlovelace.com\">Aidan Lovelace</a>.",
+			"image": "subscrubber.png",
+			"description": ""
+		},
+		{
+			"name": "Collide2Nav",
+			"identifier": "Collide2Nav",
+			"short_description": "A Godot game engine addon to simplify building levels with complex collision geometry. Auto generate navigation meshes based on your scene's collision bodies",
+			"image": "collide2nav.png",
+			"description": ""
+		}
+	],
+	"featured": [
+		"FormStash",
+		"QuizletQuery",
+		"SubScrubber",
+		"Collide2Nav"
+	]
+}

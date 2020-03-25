@@ -1,55 +1,72 @@
 <template>
-  <div>
-    <nuxt />
-  </div>
+	<div id="app">
+		<div id="main">
+			<Header />
+			<nuxt />
+		</div>
+		<Footer />
+	</div>
 </template>
 
+<script>
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+export default {
+	components: {
+		Header,
+		Footer
+	}
+};
+</script>
+
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+:root {
+	--accent-color: green;
+	--main-bkg: white;
+	--white-txt: #eee;
+	--body-bkg: #ddd;
+	--dark-bkg: #444;
+	--responsive-switch: 767px;
 }
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* border:1px solid black; */
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+html,
+body,
+#app {
+	height: 100vh;
+	background: var(--body-bkg);
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+#app {
+	display: flex;
+	flex-direction: column;
+	font-family: arial;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+#main {
+	flex: 1 0 auto;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.container {
+	margin: auto;
+	overflow: hidden;
+	width: 80%;
+}
+.seperator {
+	margin: auto;
+	width: 90%;
+	text-align: center;
+}
+.seperator .heading {
+	padding-bottom: 0.75em;
+}
+footer {
+	margin-top: auto;
+}
+@media (max-width: 767px) {
+	div.container {
+		width: 100%;
+	}
 }
 </style>
