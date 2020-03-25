@@ -1,32 +1,42 @@
 <template>
 	<div class="container">
-		<div id="project">
-			<main>
-				<h1 class="title">{{project.name}}</h1>
-				<p class="short-desc" v-html="project.short_description"></p>
-				<hr>
-				<article class="description" v-html="project.description"></article>
-			</main>
-			<aside>
-				<img :v-if="image" :src="image">
-				<a class="link" id="download-link" :href="project.download">Download</a>
-				<a :href="project.source" class="link" id="source-link">
-					<font-awesome-icon :icon="['fab', 'github']" /> Source Code
-				</a>
-			</aside>
+		<div id="project" class="panel">
+			<NavBack />
+			<div id="content" v-if="project">
+				<main>
+					<h1 class="title">{{project.name}}</h1>
+					<p class="short-desc" v-html="project.short_description"></p>
+					<hr>
+					<article class="description" v-html="project.description"></article>
+				</main>
+				<aside>
+					<img :v-if="image" :src="image">
+					<a class="link" id="download-link" :href="project.download">Download</a>
+					<a :href="project.source" class="link" id="source-link">
+						<font-awesome-icon :icon="['fab', 'github']" /> Source Code
+					</a>
+				</aside>
+			</div>
+			<div id="conent" v-else>
+				<h1 class="error-missing">This project was not found. Perhaps it was moved or deleted.</h1>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import projectData from "../../assets/projects.json"
+import NavBack from '../../components/NavBack'
+import projectData from '../../assets/projects.json'
 let project, image;
 export default {
+	components: {
+		NavBack
+	},
 	data() {
 		const identifier = this.$route.params.identifier;
 
-		project = projectData.projects.filter(project => project.identifier == identifier)[0]
-		if (project.image)
+		project = projectData.projects.filter(project => project.identifier == identifier)[0];
+		if (project != null)
 			try {
 				image = require("../../assets/images/projects/" + project.image)
 			} catch (error) {
@@ -45,14 +55,23 @@ export default {
 
 <style scoped>
 #project {
-	background: var(--main-bkg);
 	width: 70%;
-	margin: var(--margin-buffer-desktop) auto;
+}
+#project:first-child {
+	border-bottom: 2px solid black;
+}
+#project #content {
 	display: flex;
-	padding: 1em;
+	padding: 2em;
 	align-content: space-around;
 }
+.error-missing {
+	color: darkred;
+	text-align: center;
+	margin: auto;
+}
 article >>> p {
+	/* This changes raw html from the json */
 	margin: 0.5em 0;
 }
 aside {
@@ -100,9 +119,6 @@ aside img {
 @media (max-width: 767px) {
 	#project {
 		flex-direction: column;
-		width: 90%;
-		margin: var(--margin-buffer-mobile) auto;
-		text-align: center;
 	}
 }
 </style>

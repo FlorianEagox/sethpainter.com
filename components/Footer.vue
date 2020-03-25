@@ -61,18 +61,19 @@ footer {
 }
 footer .container {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 footer .content {
 	text-align: center;
 	align-self: center;
-	flex-basis: 60%;
+	flex-basis: 55%;
 }
 #external {
 	font-size: 1.25em;
 	border-left: solid 1px white;
 	padding-left: 2.5em;
 	margin: auto;
+	/* flex-basis: 40%; */
 }
 #external ul {
 	list-style-type: none;
@@ -96,7 +97,7 @@ footer .content {
 #external a:hover {
 	color: #aaa;
 }
-@media (max-width: 768px) {
+@media (max-width: 770px) {
 	.container {
 		text-align: center;
 		flex-direction: column;

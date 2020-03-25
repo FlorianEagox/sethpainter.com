@@ -25,14 +25,24 @@
 		{
 			"name": "Collide2Nav",
 			"identifier": "Collide2Nav",
-			"short_description": "A Godot game engine addon to simplify building levels with complex collision geometry. Auto generate navigation meshes based on your scene's collision bodies",
+			"short_description": "A Godot game engine addon to simplify building navigable levels with complex collision geometry.",
 			"image": "collide2nav.png",
-			"description": ""
+			"description": "<p>A tool to automatically generate navigation polygons based on collision objects.</p><p>The purpose of this plugin is to speed up level building especially when working with complex collisoin shapes and navigation paths. You only have to place collision polygons and it will generate the nav polygons for you. It attempts to find the exterior bounds of the scene's tilemaps and then generates navigation polygons that are inverse to the collission polygones so that characters can navigate everywhere they can't collide with.</p>",
+			"source": "https://github.com/thefoxarmy/collide2nav"
+		},
+		{
+			"name": "Close Quarters",
+			"identifier": "closequarters",
+			"image": "closequarters.png",
+			"short_description": "A pirate game created for LudumDare42",
+			"description": "<p>This was a game created in a single weekend, 48 hours, with my friends <a href=\"aidanlovelace.com\">Aidan Lovelace,</a> and Kenny Pratt.</p><p><strong>Plot: </strong> Oh No! Your pirate ship is sinking!!! Get what you can and get out, NOW!</p><p>In this game, you play as a pirate traversing the dark decks of his sinking ship, trying to collect as many trinkets as possible. Once collected, trinkets must be taken to the upper deck and stowed away. But watch out! Water is creeping in and slowly destroying your ship. Get what you can, while you can. Your score is determined by how much you managed to save.</p><p>The project was built with the Processing Java library and the art was done in Krita</p>",
+			"download": "https://ldjam.com/events/ludum-dare/42/close-quarters",
+			"source": "https://github.com/AidanLovelace/ludumdare42"
 		}
 	],
 	"featured": [
 		"FormStash",
-		"QuizletQuery",
+		"closequarters",
 		"SubScrubber",
 		"Collide2Nav"
 	]

@@ -57,6 +57,13 @@ body,
 	overflow: hidden;
 	width: 80%;
 }
+.panel {
+	background: var(--main-bkg);
+	margin: var(--margin-buffer-desktop) auto;
+	padding: 1em;
+	min-width: inherit;
+	background: var(--main-bkg);
+}
 .seperator {
 	margin: auto;
 	width: 90%;
@@ -71,6 +78,12 @@ footer {
 @media (max-width: 767px) {
 	div.container {
 		width: 100%;
+	}
+	.panel {
+		width: 90% !important;
+		margin: var(--margin-buffer-mobile) auto;
+		min-width: inherit;
+		text-align: center;
 	}
 }
 </style>
