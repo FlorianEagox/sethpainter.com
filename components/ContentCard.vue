@@ -1,18 +1,12 @@
 <template>
 	<div class="card">
 		<h3>
-			<a
-				class="card-title"
-				href="#"
-			>{{title}}</a>
+			<nuxt-link class="card-title" :to="location">{{title}}</nuxt-link>
 		</h3>
-		<img
-			:v-if="image"
-			:src="image"
-		>
+		<img :v-if="image" :src="image">
 		<hr>
 		<p v-html="description"></p>
-		<a href="https://google.com">Read More</a>
+		<nuxt-link v-if="location" class="card-title" :to="location">{{title}}</nuxt-link>
 	</div>
 </template>
 
@@ -27,7 +21,7 @@ export default {
 				console.log(error)
 			}
 	},
-	props: ['title', 'link', 'description', 'image']
+	props: ['title', 'link', 'description', 'image', "location"]
 }
 </script>
 

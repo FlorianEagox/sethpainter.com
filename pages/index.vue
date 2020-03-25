@@ -18,10 +18,9 @@
 				:title="project.name"
 				:description="project.short_description"
 				:image="project.image"
+				:location="'/project/' + project.identifier"
 			/>
 		</div>
-
-		<font-awesome-icon :icon="['fas', 'hand-sparkles']" />
 	</div>
 </template>
 

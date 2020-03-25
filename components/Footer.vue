@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="content">
 				<p id="copy">
-					<strong>&copy; Seth Painter - 2019</strong>
+					<strong>&copy; Seth Painter - 2020</strong>
 				</p>
 			</div>
 			<div id="external">

@@ -27,12 +27,15 @@ export default {
 	--body-bkg: #ddd;
 	--dark-bkg: #444;
 	--responsive-switch: 767px;
+
+	--margin-buffer-desktop: 4em;
+	--margin-buffer-mobile: 2em;
 }
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* border:1px solid black; */
+	/* border: 1px solid black; */
 }
 html,
 body,
@@ -44,6 +47,7 @@ body,
 	display: flex;
 	flex-direction: column;
 	font-family: arial;
+	line-height: 1.6;
 }
 #main {
 	flex: 1 0 auto;
