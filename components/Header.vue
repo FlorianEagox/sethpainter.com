@@ -1,9 +1,13 @@
 <template>
 	<header>
 		<div class="container">
+			
 			<div id="title">
-				<h1>Sethington's Site</h1>
+				<nuxt-link to="/">
+					<h1 v-html="currentTitle"></h1>
+				</nuxt-link>
 			</div>
+			
 			<nav>
 				<ul>
 					<li>
@@ -22,9 +26,30 @@
 </template>
 
 <script>
+const initTitle = "Sethington's Site";
+let currentTitle = initTitle;
+
 export default {
 	name: 'Header',
-	components: {}
+	data() {
+		return { currentTitle }
+	},
+	created() {
+		let index = 0;
+		let dir = 1;
+		setInterval(() => {
+			if (dir == 1)
+				if (index == initTitle.length - 1)
+					dir = -1;
+			if (dir == -1)
+				if (index <= 0)
+					dir = 1;
+			index += dir;
+			console.log(index)
+			this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');
+			console.log(currentTitle);
+		}, 350)
+	}
 };
 </script>
 
@@ -43,6 +68,13 @@ header .container {
 }
 #title {
 	padding: 0.25em;
+}
+#title a {
+	text-decoration: none;
+	color: var(--white-txt);
+}
+#title >>> .accent {
+	color: green;
 }
 ul {
 	list-style-type: none;

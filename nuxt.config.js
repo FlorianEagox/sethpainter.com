@@ -16,22 +16,25 @@ export default {
 	loading: { color: '#fff' },
 
 	buildModules: [
-		'@nuxtjs/eslint-module'
+		// '@nuxtjs/eslint-module'
 	],
 
 	modules: [
-		['nuxt-fontawesome', {
-			imports: [
-				{
-					set: '@fortawesome/free-solid-svg-icons',
-					icons: ['fas']
-				},
-				{
-					set: '@fortawesome/free-brands-svg-icons',
-					icons: ['fab']
-				}
-			]
-		}]
+		[
+			'nuxt-fontawesome', {
+				imports: [
+					{
+						set: '@fortawesome/free-solid-svg-icons',
+						icons: ['fas']
+					},
+					{
+						set: '@fortawesome/free-brands-svg-icons',
+						icons: ['fab']
+					}
+				]
+			},
+			'vue-scrollto/nuxt'
+		]
 	],
 
 	build: {
