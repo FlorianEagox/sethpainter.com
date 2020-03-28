@@ -1,11 +1,11 @@
 <template>
 	<div class="container">
 		<Greeter />
-		<div class="seperator">
+		<div class="seperator" id="projects-seperator">
 			<h2 class="heading">Featured Projects</h2>
 			<hr>
 		</div>
-		<div id="projects">
+		<div id="featured-projects">
 			<ContentCard
 				v-for="project in featuredProjects"
 				:key="project.identifier"
@@ -13,6 +13,7 @@
 				:description="project.short_description"
 				:image="project.image"
 				:location="'/project/' + project.identifier"
+				read-more="true"
 			/>
 		</div>
 	</div>
@@ -31,9 +32,9 @@ export default {
 
 	data() {
 		const featuredProjects = [];
-		projectData.featured.forEach(identifier => {
-			featuredProjects.push(projectData.projects.filter(project => project.identifier == identifier)[0]);
-		});
+		projectData.featured.forEach(identifier =>
+			featuredProjects.push(projectData.projects.filter(project => project.identifier == identifier)[0])
+		);
 		return {
 			featuredProjects
 		};
@@ -42,14 +43,14 @@ export default {
 </script>
 
 <style>
-#projects {
+#featured-projects {
 	margin: 2em auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	/* gap: 3em; */ /* because chrome is a poopy head :,-[ */
 }
-#projects .card {
+#featured-projects > .card {
 	--gap-space: 4em;
 	flex: 0 1 calc((100% - var(--gap-space)) / 2);
 	margin: calc(var(--gap-space) / 2) 0;

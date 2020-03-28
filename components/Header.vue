@@ -10,13 +10,13 @@
 			
 			<nav>
 				<ul>
-					<li>
+					<li :class="{onPage: $route.path == '/'}">
 						<nuxt-link to="/">Home</nuxt-link>
 					</li>
-					<li>
+					<li :class="{onPage: $route.path.toUpperCase() == '/ABOUT'}">
 						<nuxt-link to="/About">About</nuxt-link>
 					</li>
-					<li>
+					<li :class="{onPage: $route.path.toUpperCase() == '/PROJECTS'}">
 						<nuxt-link to="/projects">Projects</nuxt-link>
 					</li>
 				</ul>
@@ -45,9 +45,7 @@ export default {
 				if (index <= 0)
 					dir = 1;
 			index += dir;
-			console.log(index)
 			this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');
-			console.log(currentTitle);
 		}, 350)
 	}
 };
@@ -80,16 +78,16 @@ ul {
 	list-style-type: none;
 }
 li {
-	height: 100%;
+	display: inline-block;
+}
+li a {
+	color: white;
+	text-decoration: none;
 	display: inline-block;
 	padding: 1.25em;
 }
-li * {
-	color: white;
-	text-decoration: none;
-	padding: 1.25em 0;
-}
 
+.onPage,
 li:hover {
 	background: #222;
 	font-weight: bold;

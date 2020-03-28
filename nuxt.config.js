@@ -12,7 +12,7 @@ export default {
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 		]
 	},
-
+	plugins: ['~plugins/vue-scrollto.js'],
 	loading: { color: '#fff' },
 
 	buildModules: [
@@ -33,7 +33,7 @@ export default {
 					}
 				]
 			},
-			'vue-scrollto/nuxt'
+			['vue-scrollto/nuxt', { duration: 300 }]
 		]
 	],
 

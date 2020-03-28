@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 footer {
 	background: var(--dark-bkg);
 	color: var(--white-txt);

@@ -10,10 +10,12 @@
 					<article class="description" v-html="project.description"></article>
 				</main>
 				<aside>
-					<img :v-if="image" :src="image">
-					<a class="link" id="download-link" :href="project.download">Download</a>
-					<a :href="project.source" class="link" id="source-link">
-						<font-awesome-icon :icon="['fab', 'github']" /> Source Code
+					<img v-if="image" :src="image">
+					<a v-if="project.access" class="link" id="access-link" :href="project.access">
+						{{ project.access_label ? project.access_label : "Download" }}
+					</a>
+					<a v-if="project.source" :href="project.source" class="link" id="source-link">
+						<font-awesome-icon :icon="['fab', 'github']" />Source Code
 					</a>
 				</aside>
 			</div>
@@ -27,7 +29,7 @@
 <script>
 import NavBack from '../../components/NavBack'
 import projectData from '../../assets/projects.json'
-let project, image;
+let project = null, image = null;
 export default {
 	components: {
 		NavBack
@@ -46,9 +48,6 @@ export default {
 			project,
 			image
 		}
-	},
-	created() {
-
 	}
 }
 </script>
@@ -98,13 +97,13 @@ aside img {
 	margin: auto;
 	font-size: 1.2em;
 }
-#download-link {
+#access-link {
 	border: 3px solid var(--accent-color);
 	background: var(--main-bkg);
 	color: var(--accent-color);
 	margin: 0.6em auto;
 }
-#download-link:hover {
+#access-link:hover {
 	color: white;
 	background: green;
 }

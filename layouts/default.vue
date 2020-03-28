@@ -40,6 +40,7 @@ export default {
 html,
 body,
 #app {
+	overflow: auto;
 	height: 100vh;
 	background: var(--body-bkg);
 }
@@ -72,6 +73,9 @@ body,
 .seperator .heading {
 	padding-bottom: 0.75em;
 }
+.base-border {
+	border-bottom: 0.5em solid var(--accent-color);
+}
 footer {
 	margin-top: auto;
 }
@@ -84,6 +88,9 @@ footer {
 		margin: var(--margin-buffer-mobile) auto;
 		min-width: inherit;
 		text-align: center;
+	}
+	.rgb_border {
+		box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;
 	}
 }
 </style>
