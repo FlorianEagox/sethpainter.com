@@ -40,6 +40,8 @@ export default {
 <style scoped>
 #projects {
 	background: var(--body-bkg);
+	display: flex;
+	flex-direction: column;
 }
 .page-tag {
 	display: inline-block;
