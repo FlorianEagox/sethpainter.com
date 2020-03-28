@@ -40,7 +40,6 @@ export default {
 html,
 body,
 #app {
-	overflow: auto;
 	height: 100vh;
 	background: var(--body-bkg);
 }
