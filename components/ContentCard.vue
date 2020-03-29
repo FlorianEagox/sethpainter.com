@@ -4,7 +4,7 @@
 		<img v-if="loadedImage != null" :src="loadedImage">
 		<hr>
 		<p v-html="description"></p>
-		<nuxt-link v-if="readMore" class="card-title" :to="location">Read More</nuxt-link>
+		<nuxt-link v-if="readMore" class="card-title" :to="location"><strong>Read More</strong></nuxt-link>
 	</div>
 </template>
 

@@ -29,7 +29,7 @@
 							<a href="https://www.upwork.com/o/profiles/users/_~01a3effb5d2b8cbd3a/">
 								<span>
 									<img
-										src="https://cdn2.iconfinder.com/data/icons/picons-social/57/79-upwork-2-512.png"
+										src="~/assets/images/upwork.webp"
 										alt="Upwork"
 									>
 								</span>

@@ -22,10 +22,15 @@ const projects = []
 const allProjects = projectData.projects;
 
 export default {
+	head() {
+		return {
+			titleTemplate: "Projects | %s"
+		}
+	},
 	components: {
 		CardHolder
 	},
-	data() {
+	asyncData() {
 		projectData.catagories.forEach(catagory =>
 			projects.push({
 				name: catagory.name,

@@ -24,6 +24,16 @@
 	</div>
 </template>
 
+<script>
+export default {
+	head() {
+		return {
+			titleTemplate: "About | %s"
+		}
+	}
+}
+</script>
+
 <style scoped>
 #about {
 	padding: 2em;

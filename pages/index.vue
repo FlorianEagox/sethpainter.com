@@ -25,12 +25,17 @@ import Greeter from '../components/Greeter'
 import projectData from "../assets/projects.json"
 
 export default {
+	head() {
+		return {
+			titleTemplate: "Home | %s"
+		}
+	},
 	components: {
 		ContentCard,
 		Greeter
 	},
 
-	data() {
+	asyncData() {
 		const featuredProjects = [];
 		projectData.featured.forEach(identifier =>
 			featuredProjects.push(projectData.projects.filter(project => project.identifier == identifier)[0])
@@ -56,11 +61,11 @@ export default {
 	margin: calc(var(--gap-space) / 2) 0;
 }
 @media (max-width: 767px) {
-	#projects {
+	#featured-projects {
 		flex-direction: column;
 		width: 85%;
 	}
-	#projects .card {
+	#featured-projects .card {
 		--gap-space: 1em;
 	}
 }

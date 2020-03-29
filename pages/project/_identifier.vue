@@ -15,11 +15,11 @@
 						{{ project.access_label ? project.access_label : "Download" }}
 					</a>
 					<a v-if="project.source" :href="project.source" class="link" id="source-link">
-						<font-awesome-icon :icon="['fab', 'github']" />Source Code
+						<font-awesome-icon :icon="['fab', 'github']" /> <span class="source-text">Source Code</span>
 					</a>
 				</aside>
 			</div>
-			<div id="conent" v-else>
+			<div id="content" v-else>
 				<h1 class="error-missing">This project was not found. Perhaps it was moved or deleted.</h1>
 			</div>
 		</div>
@@ -31,6 +31,15 @@ import NavBack from '../../components/NavBack'
 import projectData from '../../assets/projects.json'
 let project = null, image = null;
 export default {
+	head() {
+		return {
+			titleTemplate: (project ? project.name : "Project Not Found") + " | %s",
+			meta: [
+				{ hid: 'description', name: 'description', content: project ? project.short_description : "Project Not Found"},
+				{ hid: 'og:image', name: "og:image", content: image || ''}
+			]
+		}
+	},
 	components: {
 		NavBack
 	},
@@ -116,8 +125,9 @@ aside img {
 	background: black;
 }
 @media (max-width: 767px) {
-	#project {
+	#project, #content {
 		flex-direction: column;
+		text-align: center;
 	}
 }
 </style>

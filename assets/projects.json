@@ -31,7 +31,7 @@
 			"identifier": "SubScrubber",
 			"short_description": "Finally clean out your YouTube sub-box, once and for all! A collaborative project done with my friend, <a href=\"aidanlovelace.com\">Aidan Lovelace</a>.",
 			"image": "subscrubber.png",
-			"source_link": "https://github.com/AidanLovelace/SubScrubber",
+			"source": "https://github.com/AidanLovelace/SubScrubber",
 			"catagories": ["web"]
 		},
 		{

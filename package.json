@@ -14,7 +14,9 @@
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^5.13.0",
 		"@fortawesome/free-solid-svg-icons": "^5.13.0",
+		"@nuxtjs/sitemap": "^2.1.0",
 		"nuxt": "^2.0.0",
+		"nuxt-compress": "^1.1.0",
 		"nuxt-fontawesome": "^0.4.0",
 		"vue-scrollto": "^2.17.1"
 	},

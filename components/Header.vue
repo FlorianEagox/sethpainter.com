@@ -1,13 +1,13 @@
 <template>
 	<header>
 		<div class="container">
-			
+
 			<div id="title">
 				<nuxt-link to="/">
 					<h1 v-html="currentTitle"></h1>
 				</nuxt-link>
 			</div>
-			
+
 			<nav>
 				<ul>
 					<li :class="{onPage: $route.path == '/'}">
@@ -37,14 +37,16 @@ export default {
 	created() {
 		let index = 0;
 		let dir = 1;
+		let skip;
 		setInterval(() => {
-			if (dir == 1)
-				if (index == initTitle.length - 1)
-					dir = -1;
-			if (dir == -1)
-				if (index <= 0)
-					dir = 1;
-			index += dir;
+			skip = 1;
+			if (dir == 1 && index == initTitle.length - 1)
+				dir = -1;
+			if (dir == -1 && index <= 0)
+				dir = 1;
+			if(['\'', " "].includes(initTitle[index+dir]))
+				skip = 2;
+			index += dir * skip;
 			this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');
 		}, 350)
 	}
