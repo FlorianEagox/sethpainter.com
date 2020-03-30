@@ -38,6 +38,11 @@ export default {
 		},
 			// ['vue-scrollto/nuxt', { duration: 300 }]
 		],
+		['@nuxtjs/robots', {
+			UserAgent: '*',
+			Allow: '/'
+		}
+		],
 		['nuxt-compress', {
 			gzip: {
 				cache: true

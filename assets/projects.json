@@ -24,6 +24,7 @@
 			"identifier": "QuizletQuery",
 			"short_description": "An API that relies on google custom search engine to search and deliver relevant answers from quizlet!",
 			"description": "<p>This project is effectively an API for quizlet. You can search a question, often a very specific one, and it will return a readable result from quizlet. You could use it for any kind of school work, or to extend an instant answers platform to deliver more specific information.</p><p>It's written with Python and makes use of Google Custom Search to find relevant flashcard sets and Requests and BeautifulSoup to scrape the answers from Quizlet pages. The results are delivered with a Flask server.</p><p>More info, including usage and examples of projects that use it comming soon</p>",
+			"source": "https://github.com/TheFoxarmy/QuizletQuery",
 			"catagories": ["tools"]
 		},
 		{
@@ -47,9 +48,10 @@
 			"name": "PHP Forum Tutorial",
 			"identifier": "forumtutorial",
 			"short_description": "A YouTube tutorial series that teaches you how to build a forum with PHP!",
-			"description": "<p>In 2014, I created a series of tutorials that would take a total programming beginner through the knowledge and tools required to build the MVP of a forum with PHP, MySQL, and HTML. I created about 30 episodes that taught the fudementals of HTML, PHP, and relational databases with MySQL.</p>",
+			"description": "<p>In 2016, I created a series of tutorials that would take a total programming beginner through the knowledge and tools required to build the MVP of a forum with PHP, MySQL, and HTML. I created about 30 episodes that taught the fudementals of HTML, PHP, and relational databases with MySQL.</p>",
 			"access": "https://www.youtube.com/playlist?list=PLDRb1GlTnhn369_F0DHBeb0jzntO3laW7",
 			"access_label": "Watch the Series!",
+			"source": "https://github.com/TheFoxarmy/PHP-Forum-Tutorial",
 			"catagories": ["web", "tutorials"]
 		},
 		{
@@ -61,6 +63,15 @@
 			"access": "https://ldjam.com/events/ludum-dare/42/close-quarters",
 			"source": "https://github.com/AidanLovelace/ludumdare42",
 			"catagories": ["games"]
+		},
+		{
+			"name": "Tree Hook",
+			"identifier": "treehook",
+			"short_description": "An API and webhook for Mr. Beast's #TeamTrees charity project",
+			"access": "https://sethpainter.com/treehook",
+			"source": "https://github.com/TheFoxarmy/TreeHook",
+			"catagories": ["web"],
+			"description": "<p> An app for creating webhooks with the #TeamTrees Charity</p><p>Automate your applications when someone donates.</p><p>Built with Python & Flask</p>"
 		}
 	],
 	"catagories": [

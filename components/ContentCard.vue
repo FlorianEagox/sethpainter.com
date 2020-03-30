@@ -1,7 +1,7 @@
 <template>
 	<div class="card base-border">
 		<h3><nuxt-link class="card-title" :to="location">{{title}}</nuxt-link></h3>
-		<img v-if="loadedImage != null" :src="loadedImage">
+		<img v-if="loadedImage != null" :src="loadedImage" :alt="title + ' image missing'">
 		<hr>
 		<p v-html="description"></p>
 		<nuxt-link v-if="readMore" class="card-title" :to="location"><strong>Read More</strong></nuxt-link>

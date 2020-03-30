@@ -1,7 +1,7 @@
 <template>
 	<article id="greeter">
 		<h1>Ahoy There!</h1>
-		<p>I'm Seth. I'm a college freshman and an aspiring software developer and freelancer located in Memphis Tennessee. This website will be the home of my projects and ideas. I like to make games, WebApps, desktop software and more. I also plan to create some more programming tutorials and maybe even CTF walktroughs in the future. Below you can find links to my various social platforms so feel free to drop me a line!</p>
+		<p>I'm Seth Painter. I'm a software developer and freelancer located in Memphis Tennessee. This website will be the home of my projects and ideas. I like to make games, WebApps, desktop software and more. I also plan to create some more programming tutorials and maybe even CTF walkthroughs. Below you can find my featured projects and links to my various social platforms so feel free to drop me a line!</p>
 		<button href="#" v-scroll-to="'#projects-seperator'" class="btn-black">
 			Featured Projects
 		</button>
