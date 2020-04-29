@@ -65,7 +65,7 @@ body,
 	background: var(--main-bkg);
 }
 .seperator {
-	margin: auto;
+	margin: 1em auto;
 	width: 90%;
 	text-align: center;
 }

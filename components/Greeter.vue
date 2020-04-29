@@ -1,7 +1,10 @@
 <template>
 	<article id="greeter">
-		<h1>Ahoy There!</h1>
-		<p>I'm Seth Painter. I'm a software developer and freelancer located in Memphis Tennessee. This website will be the home of my projects and ideas. I like to make games, WebApps, desktop software and more. I also plan to create some more programming tutorials and maybe even CTF walkthroughs. Below you can find my featured projects and links to my various social platforms so feel free to drop me a line!</p>
+		<h2>Ahoy There!</h2>
+		<Logo class="strokeless" />
+		<p>
+			I'm Seth Painter, a software developer and freelancer located in Memphis Tennessee. This website will be the home of my projects and ideas. I like to make games, WebApps, desktop software, and more. I also plan to create some more programming tutorials and maybe even CTF walkthroughs. Below you can find my featured projects and links to my various social platforms, so feel free to drop me a line if you're interested in professional opportunities or just want to chat! I do plenty of work on commission, so don't hesitate to contact me if you're interested in my services.
+		</p>
 		<button href="#" v-scroll-to="'#projects-seperator'" class="btn-black">
 			Featured Projects
 		</button>
@@ -9,8 +12,12 @@
 </template>
 
 <script>
+import Logo from "../components/Logo"
 export default {
-	name: "Greeter"
+	name: "Greeter",
+	components: {
+		Logo
+	}
 }
 </script>
 
@@ -27,6 +34,9 @@ export default {
 }
 #greeter h1 {
 	margin: 0.5em 0;
+}
+#greeter Logo {
+	padding: 0.1em;
 }
 .btn-black {
 	margin-top: 2em;

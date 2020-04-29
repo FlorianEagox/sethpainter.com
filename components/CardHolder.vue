@@ -53,7 +53,7 @@ export default {
 	margin: 1em;
 	text-align: center;
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
 	.cards .card {
 		flex-basis: 80%;
 	}

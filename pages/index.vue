@@ -16,6 +16,10 @@
 				read-more="true"
 			/>
 		</div>
+		<div class="seperator" id="projects-seperator">
+			<h2 class="heading">View all my projects <nuxt-link to="/projects">Here</nuxt-link></h2>
+			<hr>
+		</div>
 	</div>
 </template>
 
@@ -25,11 +29,6 @@ import Greeter from '../components/Greeter'
 import projectData from "../assets/projects.json"
 
 export default {
-	head() {
-		return {
-			titleTemplate: "Home | %s"
-		}
-	},
 	components: {
 		ContentCard,
 		Greeter
@@ -49,7 +48,7 @@ export default {
 
 <style>
 #featured-projects {
-	margin: 2em auto;
+	margin: 1em auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;

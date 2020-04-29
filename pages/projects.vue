@@ -6,8 +6,8 @@
 			</div>
 			<CardHolder :cards="allProjects" label="All Projects" />
 			<CardHolder
-				v-for="(catagory, index) in projects"
-				:key="index"
+				v-for="catagory in projects"
+				:key="catagory"
 				:cards="catagory.projects"
 				:label="catagory.name"
 			/>
@@ -24,13 +24,14 @@ const allProjects = projectData.projects;
 export default {
 	head() {
 		return {
-			titleTemplate: "Projects | %s"
+			titleTemplate: "%s | Projects"
 		}
 	},
 	components: {
 		CardHolder
 	},
-	asyncData() {
+	data() {
+		projects.length = 0;
 		projectData.catagories.forEach(catagory =>
 			projects.push({
 				name: catagory.name,

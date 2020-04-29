@@ -4,7 +4,7 @@
 
 			<div id="title">
 				<nuxt-link to="/">
-					<h1 v-html="currentTitle"></h1>
+					<h1>Seth Painter <span id="title-fun" v-html="currentTitle"></span></h1>
 				</nuxt-link>
 			</div>
 
@@ -14,7 +14,7 @@
 						<nuxt-link to="/">Home</nuxt-link>
 					</li>
 					<li :class="{onPage: $route.path.toUpperCase() == '/ABOUT'}">
-						<nuxt-link to="/About">About</nuxt-link>
+						<nuxt-link to="/about">About</nuxt-link>
 					</li>
 					<li :class="{onPage: $route.path.toUpperCase() == '/PROJECTS'}">
 						<nuxt-link to="/projects">Projects</nuxt-link>
@@ -29,8 +29,13 @@
 const initTitle = "Sethington's Site";
 let currentTitle = initTitle;
 
+// import Logo from '../components/Logo';
+
 export default {
 	name: 'Header',
+	components: {
+		// Logo
+	},
 	data() {
 		return { currentTitle }
 	},
@@ -38,17 +43,18 @@ export default {
 		let index = 0;
 		let dir = 1;
 		let skip;
-		setInterval(() => {
-			skip = 1;
-			if (dir == 1 && index == initTitle.length - 1)
-				dir = -1;
-			if (dir == -1 && index <= 0)
-				dir = 1;
-			if(['\'', " "].includes(initTitle[index+dir]))
-				skip = 2;
-			index += dir * skip;
-			this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');
-		}, 350)
+		if (process.client) // This code only meant to be run on the client, not the server!!!
+			setInterval(() => {
+				skip = 1;
+				if (dir == 1 && index == initTitle.length - 1)
+					dir = -1;
+				if (dir == -1 && index <= 0)
+					dir = 1;
+				if (['\'', " "].includes(initTitle[index + dir]))
+					skip = 2;
+				index += dir * skip;
+				this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');
+			}, 350);
 	}
 };
 </script>
@@ -95,6 +101,12 @@ li:hover {
 	font-weight: bold;
 }
 @media (max-width: 767px) {
+	#title {
+		text-align: center;
+	}
+	#title-fun {
+		display: block;
+	}
 	header .container {
 		flex-direction: column;
 	}

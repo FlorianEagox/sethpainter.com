@@ -10,11 +10,11 @@
 					<article class="description" v-html="project.description"></article>
 				</main>
 				<aside>
-					<img v-if="image" :src="image">
-					<a v-if="project.access" class="link" id="access-link" :href="project.access">
+					<img v-if="project.image" :src="image">
+					<a target="blank" v-if="project.access" class="link" id="access-link" :href="project.access">
 						{{ project.access_label ? project.access_label : "Download" }}
 					</a>
-					<a v-if="project.source" :href="project.source" class="link" id="source-link">
+					<a target="blank" v-if="project.source" :href="project.source" class="link" id="source-link">
 						<font-awesome-icon :icon="['fab', 'github']" /> <span class="source-text">Source Code</span>
 					</a>
 				</aside>
@@ -33,10 +33,12 @@ let project = null, image = null;
 export default {
 	head() {
 		return {
-			titleTemplate: (project ? project.name : "Project Not Found") + " | %s",
+			titleTemplate: '%s | ' + (project ? project.name : "Project Not Found"),
 			meta: [
-				{ hid: 'description', name: 'description', content: project ? project.short_description : "Project Not Found"},
-				{ hid: 'og:image', name: "og:image", content: image || ''}
+				{ hid: 'description', name: 'description', content: project ? project.short_description : 'Project Not Found' },
+				{ hid: 'og:description', name: 'og:description', content: project ? project.short_description : 'Project Not Found' },
+				{ hid: 'og:title', name: 'og:title', content: (project ? project.name : 'Project Not Found') + ' | Seth Painter' },
+				{ hid: 'og:image', name: "og:image", content: image || '' },
 			]
 		}
 	},
@@ -47,7 +49,7 @@ export default {
 		const identifier = this.$route.params.identifier;
 
 		project = projectData.projects.filter(project => project.identifier == identifier)[0];
-		if (project != null)
+		if (project != null && project.image != null)
 			try {
 				image = require("../../assets/images/projects/" + project.image)
 			} catch (error) {
@@ -125,7 +127,8 @@ aside img {
 	background: black;
 }
 @media (max-width: 767px) {
-	#project, #content {
+	#project,
+	#content {
 		flex-direction: column;
 		text-align: center;
 	}

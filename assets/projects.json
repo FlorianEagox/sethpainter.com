@@ -8,7 +8,10 @@
 			"description": "<p>Quickly stash the contents of HTML forms and reload them later.</p> <p>This chrome extension allows you to quickly stash away the contents of forms you're working on and fill them back later. If you're filling out a long application with no way to save for later, this is for you. You can create multiple stashes for each page, and you can even have the extension automatically update the form data as you type it. All data is seamlessly synced between chrome on all of your devices!</p> <p> The extension is open-source, written with vinalla HTML, CSS, and javascript. It's currently available only for Chrome, but will be comming to FireFox and Edge soon along with synced data support.</p>",
 			"access": "https://chrome.google.com/webstore/detail/form-stash/ammkklhpnfcoapcogmlhkbbbcnkngnpm",
 			"source": "https://github.com/TheFoxarmy/formstash",
-			"catagories": ["web", "tools"]
+			"catagories": [
+				"web",
+				"tools"
+			]
 		},
 		{
 			"name": "JellyBean Suits",
@@ -17,23 +20,31 @@
 			"image": "jelly.png",
 			"access": "https://shazustudios.com/jellybeansuits/",
 			"access_label": "Check it out!",
-			"catagories": ["web"]
+			"catagories": [
+				"web"
+			]
 		},
 		{
 			"name": "Quizlet Query",
 			"identifier": "QuizletQuery",
 			"short_description": "An API that relies on google custom search engine to search and deliver relevant answers from quizlet!",
-			"description": "<p>This project is effectively an API for quizlet. You can search a question, often a very specific one, and it will return a readable result from quizlet. You could use it for any kind of school work, or to extend an instant answers platform to deliver more specific information.</p><p>It's written with Python and makes use of Google Custom Search to find relevant flashcard sets and Requests and BeautifulSoup to scrape the answers from Quizlet pages. The results are delivered with a Flask server.</p><p>More info, including usage and examples of projects that use it comming soon</p>",
+			"description": "<p>This project is effectively an API for quizlet. You can search a question, often a very specific one, and it will return a readable result from quizlet. You could use it for any kind of school work, or to extend an instant answers platform to deliver more specific information.</p><p>It's written with Python and makes use of Google Custom Search to find relevant flashcard sets and Requests and BeautifulSoup to scrape the answers from Quizlet pages. The results are delivered with a Flask server.</p><p>More info, including usage and examples of projects that use it can be found on GitHub</p>",
+			"access": "https://sethpainter.com/quizletquery",
+			"access_label": "Try the demo!",
 			"source": "https://github.com/TheFoxarmy/QuizletQuery",
-			"catagories": ["tools"]
+			"catagories": [
+				"tools"
+			]
 		},
 		{
 			"name": "Sub Scrubber",
 			"identifier": "SubScrubber",
-			"short_description": "Finally clean out your YouTube sub-box, once and for all! A collaborative project done with my friend, <a href=\"aidanlovelace.com\">Aidan Lovelace</a>.",
+			"short_description": "Finally clean out your YouTube sub-box, once and for all! A collaborative project done with my friend, <a href=\"https://aidanlovelace.com\">Aidan Lovelace</a>.",
 			"image": "subscrubber.png",
 			"source": "https://github.com/AidanLovelace/SubScrubber",
-			"catagories": ["web"]
+			"catagories": [
+				"web"
+			]
 		},
 		{
 			"name": "Collide2Nav",
@@ -42,27 +53,34 @@
 			"image": "collide2nav.png",
 			"description": "<p>A tool to automatically generate navigation polygons based on collision objects.</p><p>The purpose of this plugin is to speed up level building especially when working with complex collisoin shapes and navigation paths. You only have to place collision polygons and it will generate the nav polygons for you. It attempts to find the exterior bounds of the scene's tilemaps and then generates navigation polygons that are inverse to the collission polygones so that characters can navigate everywhere they can't collide with.</p>",
 			"source": "https://github.com/thefoxarmy/collide2nav",
-			"catagories": ["games"]
+			"catagories": [
+				"games"
+			]
 		},
 		{
 			"name": "PHP Forum Tutorial",
 			"identifier": "forumtutorial",
 			"short_description": "A YouTube tutorial series that teaches you how to build a forum with PHP!",
-			"description": "<p>In 2016, I created a series of tutorials that would take a total programming beginner through the knowledge and tools required to build the MVP of a forum with PHP, MySQL, and HTML. I created about 30 episodes that taught the fudementals of HTML, PHP, and relational databases with MySQL.</p>",
+			"description": "<p>In 2016, I created a series of tutorials that would take a total programming beginner through the knowledge and tools required to build the MVP of a forum with PHP, MySQL, and HTML. I created about 30 episodes that taught the fudementals of HTML, PHP, and relational databases with MySQL.</p> <p style=\"position: relative; padding-bottom: 56.25%; height: 0;\"><iframe width=\"560\" height=\"349\" style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"src=\"https://www.youtube-nocookie.com/embed/videoseries?list=PLDRb1GlTnhn369_F0DHBeb0jzntO3laW7\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></p>",
 			"access": "https://www.youtube.com/playlist?list=PLDRb1GlTnhn369_F0DHBeb0jzntO3laW7",
 			"access_label": "Watch the Series!",
 			"source": "https://github.com/TheFoxarmy/PHP-Forum-Tutorial",
-			"catagories": ["web", "tutorials"]
+			"catagories": [
+				"web",
+				"tutorials"
+			]
 		},
 		{
 			"name": "Close Quarters",
 			"identifier": "closequarters",
 			"image": "closequarters.png",
 			"short_description": "A pirate game created for LudumDare42",
-			"description": "<p>This was a game created in a single weekend, 48 hours, with my friends <a href=\"aidanlovelace.com\">Aidan Lovelace,</a> and Kenny Pratt.</p><p><strong>Plot: </strong> Oh No! Your pirate ship is sinking!!! Get what you can and get out, NOW!</p><p>In this game, you play as a pirate traversing the dark decks of his sinking ship, trying to collect as many trinkets as possible. Once collected, trinkets must be taken to the upper deck and stowed away. But watch out! Water is creeping in and slowly destroying your ship. Get what you can, while you can. Your score is determined by how much you managed to save.</p><p>The project was built with the Processing Java library and the art was done in Krita</p>",
+			"description": "<p>This was a game created in a single weekend, 48 hours, with my friends <a href=\"https://aidanlovelace.com\">Aidan Lovelace,</a> and Kenny Pratt.</p><p><strong>Plot: </strong> Oh No! Your pirate ship is sinking!!! Get what you can and get out, NOW!</p><p>In this game, you play as a pirate traversing the dark decks of his sinking ship, trying to collect as many trinkets as possible. Once collected, trinkets must be taken to the upper deck and stowed away. But watch out! Water is creeping in and slowly destroying your ship. Get what you can, while you can. Your score is determined by how much you managed to save.</p><p>The project was built with the Processing Java library and the art was done in Krita</p>",
 			"access": "https://ldjam.com/events/ludum-dare/42/close-quarters",
 			"source": "https://github.com/AidanLovelace/ludumdare42",
-			"catagories": ["games"]
+			"catagories": [
+				"games"
+			]
 		},
 		{
 			"name": "Tree Hook",
@@ -70,7 +88,9 @@
 			"short_description": "An API and webhook for Mr. Beast's #TeamTrees charity project",
 			"access": "https://sethpainter.com/treehook",
 			"source": "https://github.com/TheFoxarmy/TreeHook",
-			"catagories": ["web"],
+			"catagories": [
+				"web"
+			],
 			"description": "<p> An app for creating webhooks with the #TeamTrees Charity</p><p>Automate your applications when someone donates.</p><p>Built with Python & Flask</p>"
 		}
 	],

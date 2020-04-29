@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div id="about" class="panel">
-			<h1>About Me</h1>
+			<h1>About Seth Painter</h1>
 			<hr>
 			<article>
 				<p>
@@ -28,7 +28,7 @@
 export default {
 	head() {
 		return {
-			titleTemplate: "About | %s"
+			titleTemplate: "%s | About"
 		}
 	}
 }
