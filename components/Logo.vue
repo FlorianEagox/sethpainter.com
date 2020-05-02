@@ -1,18 +1,16 @@
 <template>
 	<svg
-	style="fill-opacity:1;
-	color-rendering:auto;
-	color-interpolation:auto;
-	stroke-opacity:1;
-	stroke:black; stroke-linecap:square; stroke-miterlimit:10; shape-rendering:auto; fill:black; stroke-dasharray:none; font-weight:normal; stroke-width:1; stroke-dashoffset:0; image-rendering:auto;"
+	style="stroke-opacity:0;
+	stroke:black; stroke-miterlimit:10;
+	stroke-width:1.5;"
 	width="103"
 	height="89">
 		<defs id="genericDefs" />
 		<g>
-			<g style="fill:red; stroke-width:1.5; stroke-linecap:round; stroke:red;">
+			<g style="fill:red; stroke-linecap:round; stroke:red;">
 				<path style="stroke:none;" d="M1 1 L51 87 L101 1 Z" />
 			</g>
-			<g style="stroke-linecap:round; stroke-width:1.5;">
+			<g style="stroke-linecap:round;">
 				<path style="fill:none;" d="M1 1 L51 87 L101 1 Z" />
 				<circle r="25.9808" style="fill:lime; stroke:none;" cx="51" cy="29" />
 				<circle r="25.9808" style="fill:none;" cx="51" cy="29" />
@@ -24,21 +22,24 @@
 </template>
 <style scoped>
 svg.strokeless {
-	stroke-opacity: 0 !important;
+	/* stroke-opacity: 0 !important; */
 }
 svg {
-	transform-origin: center center;
+	transform-origin: center 33%;
+}
+svg {
+	pointer-events: none;
+}
+circle {
+	pointer-events: auto;
 }
 svg:hover {
-	animation: 0.75s rotate;
+	animation: 1s rotate infinite linear;
 }
-
 @keyframes rotate {
-	0% {
-		transform: rotate(90deg);
-	}
-	100% {
+	to {
 		transform: rotate(360deg);
+		stroke-width: 5 !important;
 	}
 }
 </style>

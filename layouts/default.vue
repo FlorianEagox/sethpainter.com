@@ -62,8 +62,8 @@ body,
 	margin: var(--margin-buffer-desktop) auto;
 	padding: 1em;
 	min-width: inherit;
-	background: var(--main-bkg);
 }
+
 .seperator {
 	margin: 1em auto;
 	width: 90%;

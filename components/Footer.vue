@@ -5,6 +5,11 @@
 				<p id="copy">
 					<strong>&copy; Seth Painter - 2020</strong>
 				</p>
+				<ul id="other">
+					<li>
+						<nuxt-link id="resume" to="/resume">My Resume</nuxt-link>
+					</li>
+				</ul>
 			</div>
 			<div id="external">
 				<p>Find me elsewhere</p>
@@ -59,14 +64,23 @@ footer {
 	color: var(--white-txt);
 	padding: 2.5em;
 }
-footer .container {
+.container {
 	display: flex;
 	justify-content: space-between;
 }
-footer .content {
-	text-align: center;
+.content {
 	align-self: center;
+	justify-content: space-around;
 	flex-basis: 55%;
+	display: flex;
+}
+.content a {
+	padding: 0.1em;
+	margin: 0.1em;
+}
+#resume {
+	color: var(--accent-color);
+	font-weight: bold;
 }
 #external {
 	font-size: 1.25em;
@@ -75,15 +89,17 @@ footer .content {
 	margin: auto;
 	/* flex-basis: 40%; */
 }
-#external ul {
+ul {
 	list-style-type: none;
 }
-#external li {
+li {
 	display: inline;
+}
+#external li {
 	font-size: 1.5em;
 	margin: auto 0.1em;
 }
-#external a {
+a {
 	color: var(--white-txt);
 }
 #external a img {
@@ -103,7 +119,7 @@ footer .content {
 		flex-direction: column;
 		width: 100%;
 	}
-	footer .content {
+	.content {
 		border-bottom: 1px solid white;
 		padding-bottom: 1em;
 		margin-bottom: 1em;

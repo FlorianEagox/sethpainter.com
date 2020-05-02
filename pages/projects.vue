@@ -1,9 +1,7 @@
 <template>
 	<div class="container">
 		<div id="projects" class="panel">
-			<div class="page-tag base-border">
-				<h1>Projects</h1>
-			</div>
+			<PageHeader text="Projects" />
 			<CardHolder :cards="allProjects" label="All Projects" />
 			<CardHolder
 				v-for="catagory in projects"
@@ -18,6 +16,7 @@
 <script>
 import CardHolder from '../components/CardHolder';
 import projectData from '../assets/projects.json';
+import PageHeader from '../components/PageHeader';
 const projects = []
 const allProjects = projectData.projects;
 
@@ -28,7 +27,8 @@ export default {
 		}
 	},
 	components: {
-		CardHolder
+		CardHolder,
+		PageHeader
 	},
 	data() {
 		projects.length = 0;
@@ -48,13 +48,5 @@ export default {
 	background: var(--body-bkg);
 	display: flex;
 	flex-direction: column;
-}
-.page-tag {
-	display: inline-block;
-	margin: 0 auto;
-	background: var(--main-bkg);
-	padding: 0.5em 3em;
-	border-bottom-width: 0.3em;
-	margin-bottom: var(--margin-buffer-desktop);
 }
 </style>
