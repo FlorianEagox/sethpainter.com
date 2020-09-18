@@ -4,8 +4,8 @@
 			<PageHeader text="Projects" />
 			<CardHolder :cards="allProjects" label="All Projects" />
 			<CardHolder
-				v-for="catagory in projects"
-				:key="catagory"
+				v-for="(catagory, index) in projects"
+				:key="index"
 				:cards="catagory.projects"
 				:label="catagory.name"
 			/>

@@ -1,8 +1,6 @@
 <template>
 	<svg
-	style="stroke-opacity:0;
-	stroke:black; stroke-miterlimit:10;
-	stroke-width:1.5;"
+	ref="svg"
 	width="103"
 	height="89">
 		<defs id="genericDefs" />
@@ -20,14 +18,23 @@
 		</g>
 	</svg>
 </template>
+<script>
+export default {
+	mounted() {
+		console.log(this.$refs.svg)
+	}
+}
+</script>
 <style scoped>
 svg.strokeless {
 	/* stroke-opacity: 0 !important; */
 }
 svg {
+	stroke-opacity: 0;
+	stroke: black;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5;
 	transform-origin: center 33%;
-}
-svg {
 	pointer-events: none;
 }
 circle {
@@ -39,6 +46,7 @@ svg:hover {
 @keyframes rotate {
 	to {
 		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
 		stroke-width: 5 !important;
 	}
 }

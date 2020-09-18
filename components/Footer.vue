@@ -41,6 +41,11 @@
 							</a>
 						</li>
 						<li>
+							<a href="https://www.deviantart.com/florianeagox">
+								<font-awesome-icon :icon="['fab', 'deviantart']" />
+							</a>
+						</li>
+						<li>
 							<a href="https://twitter.com/FlorianEagox">
 								<font-awesome-icon :icon="['fab', 'twitter']" />
 							</a>

@@ -2,6 +2,7 @@ import projectData from './assets/projects.json';
 
 export default {
 	mode: 'universal',
+	target: 'static',
 	head: {
 		title: 'Seth Painter | Software Development projects, tutorials, and more!',
 		meta: [
@@ -63,14 +64,8 @@ export default {
 				}
 			]
 		}
-		],
-		// ['vue-scrollto/nuxt', { duration: 300 }],
+		]
 	],
-
-	build: {
-		extend(config, ctx) {
-		}
-	},
 	sitemap: {
 		hostname: 'https://sethpainter.com',
 		gzip: true,
