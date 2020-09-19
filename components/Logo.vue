@@ -2,7 +2,9 @@
 	<svg
 	ref="svg"
 	width="103"
-	height="89">
+	height="89"
+	@click="triggerSecret"
+	>
 		<defs id="genericDefs" />
 		<g>
 			<g style="fill:red; stroke-linecap:round; stroke:red;">
@@ -20,8 +22,12 @@
 </template>
 <script>
 export default {
-	mounted() {
-		console.log(this.$refs.svg)
+	name: 'Logo',
+	methods: {
+		triggerSecret() {
+			console.log('emitting');
+			this.$emit('logoSecret');
+		}
 	}
 }
 </script>
@@ -41,7 +47,7 @@ circle {
 	pointer-events: auto;
 }
 svg:hover {
-	animation: 1s rotate infinite linear;
+	/* animation: 1s rotate infinite linear; */
 }
 @keyframes rotate {
 	to {

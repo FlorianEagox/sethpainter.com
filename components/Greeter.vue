@@ -1,7 +1,7 @@
 <template>
 	<article id="greeter">
 		<h2>Ahoy There!</h2>
-		<Logo class="strokeless" />
+		<Logo @logoSecret="passEvent" class="strokeless" />
 		<p>
 			I'm Seth Painter, a software developer and freelancer located in Memphis Tennessee. This website will be the home of my projects and ideas. I like to make games, WebApps, desktop software, and more. I also plan to create some more programming tutorials and maybe even CTF walkthroughs. Below you can find my featured projects and links to my various social platforms, so feel free to drop me a line if you're interested in professional opportunities or just want to chat! I do plenty of work on commission, so don't hesitate to contact me if you're interested in my services.
 		</p>
@@ -13,10 +13,16 @@
 
 <script>
 import Logo from "../components/Logo"
+
 export default {
 	name: "Greeter",
 	components: {
 		Logo
+	},
+	methods: {
+		passEvent() {
+			this.$emit('logoSecret');
+		}
 	}
 }
 </script>

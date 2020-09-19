@@ -2,18 +2,20 @@
 	<div class="container">
 		<div id="wrapper" class="panel">
 			<PageHeader text="Florian" />
-			<model-collada ref="model"
-        		src="../static/ship.dae">
-			</model-collada>
+			<client-only>
+				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
+				<model-fbx ref="model" src="../ship.fbx" width="100" />
+				<model-fbx ref="model" src="../ship.fbx" width="100" />
+			</client-only>
 		</div>
 	</div>
 </template>
 
 <script>
 import PageHeader from '../components/PageHeader';
-import { ModelCollada } from 'vue-3d-model';
+import { ModelFbx } from 'vue-3d-model';
 export default {
-	components: { PageHeader, ModelCollada }
+	components: { PageHeader, ModelFbx }
 }
 
 </script>
