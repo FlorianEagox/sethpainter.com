@@ -32,7 +32,7 @@ export default {
 
 	buildModules: [
 		// '@nuxtjs/eslint-module'
-		// '@aceforth/nuxt-optimized-images'
+		'@aceforth/nuxt-optimized-images',
 		['@nuxtjs/robots', {
 			UserAgent: '*',
 			Allow: '/',
@@ -50,7 +50,9 @@ export default {
 		],
 		'@nuxtjs/sitemap'
 	],
-
+	optimizedImages: {
+		optimizeImages: true
+	},
 	modules: [
 		['nuxt-fontawesome', {
 			imports: [

@@ -78,6 +78,14 @@ body,
 footer {
 	margin-top: auto;
 }
+
+#secret-canvas {
+	position: fixed;
+	pointer-events: none;
+	width: 100%;
+	height: 100%;
+}
+
 @media (max-width: 767px) {
 	div.container {
 		width: 100%;
