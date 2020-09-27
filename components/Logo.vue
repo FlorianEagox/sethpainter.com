@@ -54,9 +54,9 @@ export default {
 						transitionedPage = true
 					}
 					ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-					ctx.fillRect(pageRoot.width / 2 - displacement - dropShadow, 0, dropShadow, canvas.height)
+					ctx.fillRect(pageRoot.clientWidth / 2 - displacement - dropShadow, 0, dropShadow, canvas.height)
 					ctx.putImageData(leftHalf, -displacement, 0);
-					ctx.fillRect(pageRoot.width / 2 + displacement, 0, dropShadow, canvas.height)
+					ctx.fillRect(pageRoot.clientWidth / 2 + displacement, 0, dropShadow, canvas.height)
 					ctx.putImageData(rightHalf, canvas.width / 2 + displacement, 0);
 
 					delta = (time - prevTime) / 1000;

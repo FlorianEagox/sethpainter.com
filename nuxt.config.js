@@ -1,7 +1,6 @@
 import projectData from './assets/projects.json';
 
 export default {
-	mode: 'universal',
 	target: 'static',
 	head: {
 		title: 'Seth Painter | Software Development projects, tutorials, and more!',
