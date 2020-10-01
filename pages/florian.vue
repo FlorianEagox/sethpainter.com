@@ -1,17 +1,28 @@
 <template>
 	<div class="container">
 		<div id="wrapper" class="panel">
-			<!-- <PageHeader text="Florian" /> -->
-				<article id="intro">
-					<img src="../assets/images/florian/badge transparent.png" alt="">
-					<h2>Welcome to Florian's Secret Page!</h2>
-					<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
-					<p>Unfortunately for you, none of that is ready at the moment, so have this "lovely" pirate ship to tide you over. (Get it, tide? like the ocean!!! Hahaha I'm so funny)</p>
-				</article>
-			<client-only>
-				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
+			<article id="intro">
+				<img src="../assets/images/florian/badge transparent.png" alt="">
+				<h2>Welcome to Florian's Secret Page!</h2>
+				<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
+				<p>Unfortunately for you, none of that is ready at the moment, so have this "lovely" pirate ship to tide you over. (Get it, tide? like the ocean!!! Hahaha I'm so funny)</p>
+			</article>
+			<div id="gallery" @click="nextImage" @dblclick="enlarge">
+				<div id="current">
+					<img :src="currentImage.image">
+					<p>Piece done by <a :key="test" :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
+				</div>
+				<div id="carousel">
+					<div v-for="(image, index) in images" :key="index" class="image">
+						<img :src="image.image">
+					</div>
+				</div>
+			</div>
+			<!-- <client-only>
+				<model-fbx ref="model" src="../florian.fbx" :width="100" />
 				<model-fbx ref="model" src="../ship.fbx" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
 			</client-only>
+			-->
 		</div>
 	</div>
 </template>
@@ -19,11 +30,44 @@
 <script>
 import PageHeader from '../components/PageHeader';
 import { ModelFbx } from 'vue-3d-model';
+import { images } from '../assets/images/florian/images.json'
+
+let imageIndex = 0;
 export default {
-	components: { PageHeader, ModelFbx }
+	components: { PageHeader, ModelFbx },
+	asyncData() {
+		images.forEach(image => image.image = require(`../assets/images/florian//${image.path}`)); //image.path));
+		return {
+			images,
+			currentImage: images[imageIndex]
+		}
+	},
+	methods: {
+		nextImage() {
+			imageIndex++;
+			this.currentImage = images[imageIndex % images.length];
+		},
+		enlarge() {
+			const image = document.createElement('img');
+			image.src = this.currentImage.image;
+			image.className = 'image-modal';
+			document.querySelector('#app').appendChild(image);
+		}
+	}
 }
 
 </script>
+
+<style>
+.image-modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 90%;
+	height: 90%;
+	margin: auto auto;
+}
+</style>
 
 <style scoped>
 #intro {
@@ -39,12 +83,33 @@ export default {
 #intro img {
 	width: 50%;
 	margin-top: -32%;
+	filter: drop-shadow(5px 5px 10px #000000);
 }
 #wrapper {
 	background: var(--body-bkg);
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+}
+
+#current {
+	width: 100%;
+}
+#current img {
+	display: block;
+	margin: 0 auto;
+	/* height: 100%; */
+	max-height: 70vh;
+	max-width: 900px;
+}
+
+#carousel {
+	display: flex;
+	overflow: scroll;
+}
+#carousel img {
+	height: 200px;
+	margin: 0 0.2em;
 }
 
 @media (max-width: 767px) {

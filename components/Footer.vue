@@ -54,12 +54,22 @@
 				</nav>
 			</div>
 		</div>
+		<div id="last-update"><strong>Site last updated:</strong> <span id="updated-date">{{this.date}}</span></div>
 	</footer>
 </template>
 
 <script>
+let date;
 export default {
-	name: 'Footer'
+	name: 'Footer',
+	data() {
+		return {
+			date: ''
+		}
+	},
+	fetch() {
+		this.date = new Date().toUTCString();
+	}
 };
 </script>
 
