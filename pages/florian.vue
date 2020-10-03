@@ -21,7 +21,7 @@
 			<ModalImage ref="modal" />
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
-				<model-fbx ref="model" src="../ship.fbx" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
+				<model-fbx ref="model" src="../ship.fbx" backgroundAlpha="0.5" backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
 			</client-only>
 
 		</div>
