@@ -54,7 +54,9 @@
 				</nav>
 			</div>
 		</div>
-		<div id="last-update"><strong>Site last updated:</strong> <span id="updated-date">{{this.date}}</span></div>
+		<div id="last-update">
+			<strong>Site last updated</strong> <span id="updated-date">{{this.date}}</span>
+		</div>
 	</footer>
 </template>
 
@@ -74,10 +76,21 @@ export default {
 </script>
 
 <style scoped>
+#last-update {
+	position: absolute;
+	bottom: 0;
+	white-space: nowrap;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(0, 0, 0, 0.2);
+	font-size: 0.8em;
+	display: inline-block;
+}
 footer {
 	background: var(--dark-bkg);
 	color: var(--white-txt);
 	padding: 2.5em;
+	position: relative;
 }
 .container {
 	display: flex;
