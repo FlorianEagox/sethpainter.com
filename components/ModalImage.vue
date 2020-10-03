@@ -1,6 +1,7 @@
 <template>
 	<div v-if="visible" class="modal">
 		<img @click="visible = false" :src="image.image">
+
 	</div>
 </template>
 
@@ -31,8 +32,8 @@ export default {
 		left: 50%;
 		transform: translate3d(0, 0, 0);
 		animation: zoomin 1s ease;
-		max-width: 100%;
-		max-height: 100%;
+		max-width: 90%;
+		max-height: 90%;
 		margin: auto;
 	}
 </style>
