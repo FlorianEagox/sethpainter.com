@@ -7,23 +7,22 @@
 				<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
 				<p>Unfortunately for you, none of that is ready at the moment, so have this "lovely" pirate ship to tide you over. (Get it, tide? like the ocean!!! Hahaha I'm so funny)</p>
 			</article>
-			<div id="gallery" @click="nextImage" @contextmenu="enlarge">
+			<div id="gallery" @contextmenu="enlarge">
 				<div id="current">
-					<img :src="currentImage.image">
+					<img @click="nextImage" :src="currentImage.image">
 					<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
 				</div>
 				<div id="carousel">
 					<div v-for="(image, index) in images" :key="index" class="image">
-						<img :src="image.image">
+						<img :key="index" :src="image.image" @click="selectImage(index)">
 					</div>
 				</div>
 			</div>
 			<ModalImage ref="modal" />
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
-				<model-fbx ref="model" src="../ship.fbx" backgroundAlpha="0.5" backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
+				<model-fbx ref="model" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
 			</client-only>
-
 		</div>
 	</div>
 </template>
@@ -54,6 +53,10 @@ export default {
 			const modal = this.$refs.modal;
 			modal.image = this.currentImage;
 			modal.visible = true;
+		},
+		selectImage(index) {
+			imageIndex = index;
+			this.currentImage = images[imageIndex % images.length];
 		}
 	}
 }
