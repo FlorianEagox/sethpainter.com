@@ -12,16 +12,16 @@
 					<img @click="nextImage" :src="currentImage.image">
 					<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
 				</div>
-				<div id="carousel">
-					<div v-for="(image, index) in images" :key="index" class="image">
-						<img :key="index" :src="image.image" @click="selectImage(index)">
-					</div>
+				<div id="carousel" ref="carousel"
+				@mousedown="clickCarousel" @mouseleave="mouseleaveCarousel" @mouseup="mouseupCarousel" @mousemove="mousemoveCarousel" @scroll="scrollCarousel">
+					<img v-for="(image, index) in images" :key="index"
+						:src="image.image" @click="selectImage(index)">
 				</div>
 			</div>
 			<ModalImage ref="modal" />
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
-				<model-fbx ref="model" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
+				<!-- <model-fbx ref="model" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" /> -->
 			</client-only>
 		</div>
 	</div>
@@ -35,6 +35,13 @@ import { images } from '../assets/images/florian/images.json';
 
 let imageIndex = 0;
 let currentImage = images[imageIndex];
+let slider = null;
+let prevCarouselMouseX = 1;
+let isDown = false;
+let startX;
+let scrollLeft;
+let currentWidth = 0;
+let remainder = -1;
 export default {
 	components: { PageHeader, ModalImage, ModelFbx },
 	data() {
@@ -43,6 +50,22 @@ export default {
 			images,
 			currentImage
 		}
+	},
+	mounted() {
+		slider = this.$refs.carousel;
+		let marginOffset = 2 * (0.2 * parseFloat(getComputedStyle(slider).fontSize));
+		let imagesCounted = 0;
+		slider.children.forEach((img, index) => {
+			console.log(currentWidth)
+			if(currentWidth < slider.clientWidth) {
+				if(currentWidth + img.clientWidth + marginOffset > slider.clientWidth) {
+					remainder = img.clientWidth - (slider.clientWidth - currentWidth)
+					currentWidth += remainder;
+				} else
+					currentWidth += img.clientWidth + marginOffset;
+				images.push(images[index]);
+			}
+		})
 	},
 	methods: {
 		nextImage() {
@@ -57,6 +80,35 @@ export default {
 		selectImage(index) {
 			imageIndex = index;
 			this.currentImage = images[imageIndex % images.length];
+		},
+		scrollCarousel(e) {
+			console.log(currentWidth)
+			if (e.target.offsetWidth + e.target.scrollLeft >= e.target.scrollWidth - remainder) {
+				e.target.scrollLeft = 1;
+			}
+			if (e.target.scrollLeft == 0)
+				e.target.scrollLeft = e.target.scrollWidth - e.target.offsetWidth - remainder - 1
+		},
+		clickCarousel(e) {
+			isDown = true;
+			startX = e.pageX -slider.offsetLeft;
+			scrollLeft = slider.scrollLeft;
+		},
+		mouseleaveCarousel() {
+			isDown = false;
+			slider.classList.remove('active');
+		},
+		mouseupCarousel() {
+			isDown = false;
+			slider.classList.remove('active');
+		},
+		mousemoveCarousel(e) {
+			if(isDown) {
+				e.preventDefault();
+				const x = e.pageX - slider.offsetLeft;
+				const walk = (x - startX) * 3; //scroll-fast
+				slider.scrollLeft = scrollLeft - walk;
+			}
 		}
 	}
 }
@@ -101,19 +153,22 @@ export default {
 }
 #current img {
 	display: block;
+
 	margin: 0 auto;
 	/* height: 100%; */
-	max-height: 70vh;
-	max-width: 900px;
+	max-width: 90%;
+	max-height: 90%;
 }
 
 #carousel {
 	display: flex;
-	overflow: scroll;
+	overflow-x: scroll;
 }
 #carousel img {
 	height: 200px;
 	margin: 0 0.2em;
+	user-drag: none; -moz-user-select: none; -webkit-user-drag: none;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 767px) {
