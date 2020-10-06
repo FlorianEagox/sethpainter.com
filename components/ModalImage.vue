@@ -1,6 +1,6 @@
 <template>
 	<div v-if="visible" class="modal">
-		<img @click="visible = false" :src="image.image">
+		<img @click="visible = false" :src="image">
 
 	</div>
 </template>

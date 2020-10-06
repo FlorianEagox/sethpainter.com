@@ -15,7 +15,7 @@ export default {
 		let loadedImage = this.image;
 		if (this.image) {
 			try {
-				loadedImage = require('../assets/images/projects/' + this.image);
+				loadedImage = require(`../assets/images/projects/${this.image}`);
 			} catch (error) {
 				loadImage = null;
 				console.log(error);

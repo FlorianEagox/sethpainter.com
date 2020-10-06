@@ -51,7 +51,7 @@ export default {
 		project = projectData.projects.filter(project => project.identifier == identifier)[0];
 		if (project != null && project.image != null)
 			try {
-				image = require("../../assets/images/projects/" + project.image)
+				image = `../assets/images/projects/${project.image}`
 			} catch (error) {
 				console.log(error)
 			}
