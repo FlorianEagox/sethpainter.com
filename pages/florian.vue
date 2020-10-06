@@ -9,9 +9,9 @@
 			</article>
 			<div id="gallery" @contextmenu="enlarge">
 				<div id="current">
-					<img @click="nextImage" :src="currentImage.image">
-					<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
+clickCarousel					<img @click="nextImage" :src="currentImage.image">
 				</div>
+				<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
 				<div id="carousel" ref="carousel"
 				@mousedown="clickCarousel" @mouseleave="mouseleaveCarousel" @mouseup="mouseupCarousel" @mousemove="mousemoveCarousel" @scroll="scrollCarousel">
 					<img v-for="(image, index) in images" :key="index"
@@ -21,7 +21,7 @@
 			<ModalImage ref="modal" />
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
-				<!-- <model-fbx ref="model" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" /> -->
+				<model-fbx ref="model" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
 			</client-only>
 		</div>
 	</div>
@@ -31,9 +31,10 @@
 import PageHeader from '../components/PageHeader';
 import ModalImage from '../components/ModalImage';
 import { ModelFbx } from 'vue-3d-model';
-import { images } from '../assets/images/florian/images.json';
+import { imageData } from '../assets/images/florian/images.json';
 
 let imageIndex = 0;
+let images = imageData;
 let currentImage = images[imageIndex];
 let slider = null;
 let prevCarouselMouseX = 1;
@@ -52,18 +53,22 @@ export default {
 		}
 	},
 	mounted() {
+		// images = images.filter(image => !image.clone)
 		slider = this.$refs.carousel;
-		let marginOffset = 2 * (0.2 * parseFloat(getComputedStyle(slider).fontSize));
+
+		let marginOffset = 2 * parseFloat(getComputedStyle(slider.children[0]).marginLeft);
 		let imagesCounted = 0;
 		slider.children.forEach((img, index) => {
 			console.log(currentWidth)
 			if(currentWidth < slider.clientWidth) {
 				if(currentWidth + img.clientWidth + marginOffset > slider.clientWidth) {
-					remainder = img.clientWidth - (slider.clientWidth - currentWidth)
+					remainder = marginOffset + img.clientWidth - (slider.clientWidth - currentWidth)
 					currentWidth += remainder;
 				} else
 					currentWidth += img.clientWidth + marginOffset;
-				images.push(images[index]);
+				const clone = images[index];
+				clone.clone = true;
+				images.push(clone);
 			}
 		})
 	},
@@ -83,9 +88,8 @@ export default {
 		},
 		scrollCarousel(e) {
 			console.log(currentWidth)
-			if (e.target.offsetWidth + e.target.scrollLeft >= e.target.scrollWidth - remainder) {
+			if (e.target.offsetWidth + e.target.scrollLeft >= e.target.scrollWidth - remainder)
 				e.target.scrollLeft = 1;
-			}
 			if (e.target.scrollLeft == 0)
 				e.target.scrollLeft = e.target.scrollWidth - e.target.offsetWidth - remainder - 1
 		},
@@ -148,26 +152,31 @@ export default {
 	width: 100%;
 }
 
+#gallery {
+	height: 90vh;
+}
 #current {
 	width: 100%;
+	height: 80%;
 }
 #current img {
 	display: block;
-
-	margin: 0 auto;
-	/* height: 100%; */
-	max-width: 90%;
-	max-height: 90%;
+	margin: auto;
+	object-fit: contain;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 #carousel {
 	display: flex;
 	overflow-x: scroll;
+	height: 20%;
 }
 #carousel img {
-	height: 200px;
-	margin: 0 0.2em;
-	user-drag: none; -moz-user-select: none; -webkit-user-drag: none;
+	height: 100%;
+	object-fit: contain;
+	margin: 0 0.5em;
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
