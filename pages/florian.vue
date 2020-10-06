@@ -9,7 +9,7 @@
 			</article>
 			<div id="gallery" @contextmenu="enlarge">
 				<div id="current">
-clickCarousel					<img @click="nextImage" :src="currentImage.image">
+					<img @click="nextImage" :src="currentImage.image">
 				</div>
 				<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
 				<div id="carousel" ref="carousel"
@@ -21,7 +21,9 @@ clickCarousel					<img @click="nextImage" :src="currentImage.image">
 			<ModalImage ref="modal" />
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
-				<model-fbx ref="model" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }" />
+				<div id="ship-wrapper">
+					<model-fbx id="ship" src="../ship.fbx" backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }"></model-fbx>
+				</div>
 			</client-only>
 		</div>
 	</div>
@@ -180,6 +182,13 @@ export default {
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+#ship-wrapper {
+	height: 50%;
+	width: 50%;
+	min-width: 300px;
+	max-width: 100%;
+	margin: 3em auto 0;
+}
 @media (max-width: 767px) {
 	#intro {
 		width: 100%;
