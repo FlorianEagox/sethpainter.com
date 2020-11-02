@@ -5,7 +5,7 @@
 				<img src="~assets/images/florian/badge transparent.png" alt="">
 				<h2>Welcome to Florian's Secret Page!</h2>
 				<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
-				<p>Unfortunately for you, none of that is ready at the moment, so have this "lovely" pirate ship to tide you over. (Get it, tide? like the ocean!!! Hahaha I'm so funny)</p>
+				<p>3D Model comming soon</p>
 			</article>
 			<div @keydown="switchImage" tabindex="0" id="gallery" @contextmenu="enlarge">
 				<div id="current">
@@ -13,7 +13,7 @@
 				</div>
 				<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
 				<div id="carousel" ref="carousel"
-				@mousedown="clickCarousel" @mouseleave="mouseleaveCarousel" @mouseup="mouseupCarousel" @mousemove="mousemoveCarousel" @scroll="scrollCarousel">
+				@scroll="scrollCarousel">
 					<img v-for="(image, index) in images" :key="index"
 						:src="image.image" @click="selectImage(index)">
 				</div>
@@ -30,6 +30,13 @@
 					<img @click="enlarge" src="~assets/images/florian/ref/front.png">
 					<img @click="enlarge" src="~assets/images/florian/ref/side.png">
 					<img @click="enlarge" src="~assets/images/florian/ref/back.png">
+				</div>
+				<div ref="colors" id="colors">
+					<div id="color"
+						v-for="color in refColors"
+						:key="color"
+						:style="`background: #${color}`"
+						@click="copyColor(color)"></div>
 				</div>
 			</section>
 		</div>
@@ -53,13 +60,15 @@ let startX;
 let scrollLeft;
 let currentWidth = 0;
 let remainder = -1;
+const refColors = ['b85b20', '161616', 'f5f5f5', '359b26', 'daa6aa', 'bb6d73', '8f2d28', 'd7c540', 'd5332a', '1acb16', '1732f1', 'b49821', 'f0dd7a', 'fffbe6', '242320', '5e5b51'];
 export default {
 	components: { PageHeader, ModalImage, ModelFbx },
 	data() {
 		images.forEach(image => image.image = require(`../assets/images/florian/${image.path}`));
 		return {
 			images,
-			currentImage
+			currentImage,
+			refColors
 		}
 	},
 	mounted() {
@@ -116,26 +125,8 @@ export default {
 			else if(e.key == 'ArrowLeft')
 				this.nextImage(null, true);
 		},
-		clickCarousel(e) {
-			isDown = true;
-			startX = e.pageX -slider.offsetLeft;
-			scrollLeft = slider.scrollLeft;
-		},
-		mouseleaveCarousel() {
-			isDown = false;
-			slider.classList.remove('active');
-		},
-		mouseupCarousel() {
-			isDown = false;
-			slider.classList.remove('active');
-		},
-		mousemoveCarousel(e) {
-			if(isDown) {
-				e.preventDefault();
-				const x = e.pageX - slider.offsetLeft;
-				const walk = (x - startX) * 3; //scroll-fast
-				slider.scrollLeft = scrollLeft - walk;
-			}
+		copyColor(color) {
+			navigator.clipboard.writeText(color)
 		}
 	}
 }
@@ -228,6 +219,15 @@ export default {
 #ref-images img {
 	align-self: center;
 	filter: drop-shadow(5px 5px 5px #000000);
+}
+
+#colors {
+	display: flex;
+}
+#color {
+	flex: 1;
+	height: 100px;
+	/* flex: 1; */
 }
 
 @media (max-width: 767px) {

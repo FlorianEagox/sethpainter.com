@@ -5,7 +5,7 @@
 			<!-- <embed ref="resume" src="https://static.sethpainter.com/resume.pdf" type="application/pdf"> -->
 			<iframe ref="resume" src="https://static.sethpainter.com/resume" frameborder="0"></iframe>
 			<p id="download">
-				Download as PDF <a href="https://static.sethpainter.com/resume.pdf" class="accent">here</a>
+				Download as PDF <a href="/resume anonymized.pdf" class="accent">here</a>
 			</p>
 		</div>
 	</div>

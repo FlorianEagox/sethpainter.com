@@ -1,7 +1,7 @@
 <template>
-	<div v-if="visible" class="modal">
+	<div v-if="visible" id="modal" class="modal">
+		<div id="close" @click="visible = false">X</div>
 		<img @click="visible = false" :src="image">
-
 	</div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style scoped>
-	div {
+	#modal {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -27,6 +27,9 @@ export default {
 		height: 100%;
 		background: rgba(0, 0, 0, 0.3);
 		display: grid;
+	}
+	#close {
+		font-weight: bolder;
 	}
 	img {
 		left: 50%;
