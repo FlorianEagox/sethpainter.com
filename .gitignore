@@ -1,7 +1,7 @@
 # Custom configuration
 # These images are REAL big
-/assets/images/florian/*.jpg
-/assets/images/florian/*.png
+/static/images/florian/*.jpg
+/static/images/florian/*.png
 
 
 # Created by .ignore support plugin (hsz.mobi)

@@ -1,6 +1,6 @@
 <template>
 	<div v-if="visible" id="modal" class="modal">
-		<div id="close" @click="visible = false">X</div>
+		<font-awesome-icon id="close" @click="visible = false" :icon="['fas', 'times']" class="fa-2x" />
 		<img @click="visible = false" :src="image">
 	</div>
 </template>
@@ -30,6 +30,12 @@ export default {
 	}
 	#close {
 		font-weight: bolder;
+		color: white;
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin: 10px;
+		cursor: pointer;
 	}
 	img {
 		left: 50%;
@@ -38,5 +44,6 @@ export default {
 		max-width: 90%;
 		max-height: 90%;
 		margin: auto;
+		z-index: 20;
 	}
 </style>

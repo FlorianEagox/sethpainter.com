@@ -2,7 +2,7 @@
 	<div class="container">
 		<div id="wrapper" class="panel">
 			<article id="intro">
-				<img src="~assets/images/florian/badge transparent.png" alt="">
+				<img src="/images/florian/badge transparent.png" alt="">
 				<h2>Welcome to Florian's Secret Page!</h2>
 				<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
 				<p>3D Model comming soon</p>
@@ -12,8 +12,7 @@
 					<img @click="nextImage" :src="currentImage.image">
 				</div>
 				<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
-				<div id="carousel" ref="carousel"
-				@scroll="scrollCarousel">
+				<div id="carousel" ref="carousel" @scroll="scrollCarousel">
 					<img v-for="(image, index) in images" :key="index"
 						:src="image.image" @click="selectImage(index)">
 				</div>
@@ -27,16 +26,18 @@
 			<section id="refsheet">
 				<PageHeader text="Character Reference" />
 				<div id="ref-images">
-					<img @click="enlarge" src="~assets/images/florian/ref/front.png">
-					<img @click="enlarge" src="~assets/images/florian/ref/side.png">
-					<img @click="enlarge" src="~assets/images/florian/ref/back.png">
+					<img @click="enlarge" src="/images/florian/ref/front.png">
+					<img @click="enlarge" src="/images/florian/ref/side.png">
+					<img @click="enlarge" src="/images/florian/ref/back.png">
 				</div>
 				<div ref="colors" id="colors">
-					<div id="color"
+					<div
 						v-for="color in refColors"
+						id="color"
 						:key="color"
 						:style="`background: #${color}`"
-						@click="copyColor(color)"></div>
+						@click="copyColor(color)"
+					/>
 				</div>
 			</section>
 		</div>
@@ -48,38 +49,35 @@
 import PageHeader from '../components/PageHeader';
 import ModalImage from '../components/ModalImage';
 import { ModelFbx } from 'vue-3d-model';
-import imageData from '../assets/images/florian/images.json';
+import imageData from '../assets/florianImages.json';
 
 let imageIndex = 0;
 let images = imageData;
 let currentImage = images[imageIndex];
 let slider = null;
-let prevCarouselMouseX = 1;
-let isDown = false;
-let startX;
-let scrollLeft;
 let currentWidth = 0;
 let remainder = -1;
 const refColors = ['b85b20', '161616', 'f5f5f5', '359b26', 'daa6aa', 'bb6d73', '8f2d28', 'd7c540', 'd5332a', '1acb16', '1732f1', 'b49821', 'f0dd7a', 'fffbe6', '242320', '5e5b51'];
+let modal;
 export default {
 	components: { PageHeader, ModalImage, ModelFbx },
 	data() {
-		images.forEach(image => image.image = require(`../assets/images/florian/${image.path}`));
+		images.forEach(image => image.image = `/images/florian/${image.path}`);
 		return {
 			images,
 			currentImage,
 			refColors
-		}
+		};
 	},
 	mounted() {
 		// images = images.filter(image => !image.clone)
+		modal = this.$refs.modal;
 		slider = this.$refs.carousel;
 
-		let marginOffset = 2 * parseFloat(getComputedStyle(slider.children[0]).marginLeft);
-		let imagesCounted = 0;
+		const marginOffset = 2 * parseFloat(getComputedStyle(slider.children[0]).marginLeft);
 		slider.children.forEach((img, index) => {
-			if(currentWidth < slider.clientWidth) {
-				if(currentWidth + img.clientWidth + marginOffset > slider.clientWidth) {
+			if (currentWidth < slider.clientWidth) {
+				if (currentWidth + img.clientWidth + marginOffset > slider.clientWidth) {
 					remainder = marginOffset + img.clientWidth - (slider.clientWidth - currentWidth)
 					currentWidth += remainder;
 				} else
@@ -88,7 +86,7 @@ export default {
 				clone.clone = true;
 				images.push(clone);
 			}
-		})
+		});
 	},
 	methods: {
 		nextImage(e, backwards) {
@@ -96,12 +94,12 @@ export default {
 			imageIndex += backwards ? -1 : 1;
 			imageIndex = ((imageIndex % images.length) + images.length) % images.length;
 			this.currentImage = images[imageIndex];
+			modal.image = '/images/florian/' + this.currentImage.path;
 			const selectedImage = slider.children[imageIndex];
 			slider.scrollLeft = selectedImage.offsetLeft - selectedImage.clientWidth / 2 - slider.clientWidth / 2;
 			selectedImage.classList.add('selected');
 		},
 		enlarge(e) {
-			const modal = this.$refs.modal;
 			modal.image = e.target.src;
 			modal.visible = true;
 		},
@@ -126,7 +124,7 @@ export default {
 				this.nextImage(null, true);
 		},
 		copyColor(color) {
-			navigator.clipboard.writeText(color)
+			navigator.clipboard.writeText('#' + color);
 		}
 	}
 }
