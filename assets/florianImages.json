@@ -53,5 +53,29 @@
 			"path": "badge transparent.png",
 			"artistName": "KookyC",
 			"link": "https://www.facebook.com/KookyC.Commissions "
+		},
+		{
+			"path": "nsfw/onsen.png",
+			"artistName": "FumonSrikit",
+			"link": "https://www.furaffinity.net/user/fumonsrikit/",
+			"nsfw": true
+		},
+		{
+			"path": "nsfw/alisa walker.png",
+			"artistName": "Alisa-Walker",
+			"link": "https://www.furaffinity.net/user/alisa-walker/",
+			"nsfw": true
+		},
+		{
+			"path": "nsfw/muzzle.gif",
+			"artistName": "FizzyFreshFennec",
+			"link": "https://www.furaffinity.net/user/fizzyfreshfennec/",
+			"nsfw": true
+		},
+		{
+			"path": "nsfw/room party.jpg",
+			"artistName": "Kisera",
+			"link": "https://www.furaffinity.net/user/kisera/",
+			"nsfw": true
 		}
 	]

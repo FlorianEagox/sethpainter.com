@@ -13,7 +13,7 @@ export default {
 		return {
 			visible: false,
 			image
-		}
+		};
 	}
 }
 </script>

@@ -1,15 +1,17 @@
 <template>
 	<div class="container">
 		<div id="wrapper" class="panel">
-			<article id="intro">
-				<img src="/images/florian/badge transparent.png" alt="">
-				<h2>Welcome to Florian's Secret Page!</h2>
-				<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
-				<p>3D Model comming soon</p>
-			</article>
-			<div @keydown="switchImage" tabindex="0" id="gallery" @contextmenu="enlarge">
+			<div>
+				<article id="intro">
+					<img src="/images/florian/badge transparent.png" alt="">
+					<h2>Welcome to Florian's Secret Page!</h2>
+					<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
+					<p>3D Model comming soon</p>
+				</article>
+			</div>
+			<div id="gallery" @keydown="switchImage" tabindex="0">
 				<div id="current">
-					<img @click="nextImage" :src="currentImage.image">
+					<img @click="enlarge" :src="currentImage.image">
 				</div>
 				<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
 				<div id="carousel" ref="carousel" @scroll="scrollCarousel">
@@ -20,7 +22,7 @@
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
 				<div id="ship-wrapper">
-					<model-fbx src="../ship.fbx" :backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }"></model-fbx>
+					<!-- <model-fbx src="../ship.fbx" :backgroundAlpha=0.5 backgroundColor="#0077be" :cameraRotation="{ x: 3, y: 2, z: -1 }"></model-fbx> -->
 				</div>
 			</client-only>
 			<section id="refsheet">
@@ -30,6 +32,7 @@
 					<img @click="enlarge" src="/images/florian/ref/side.png">
 					<img @click="enlarge" src="/images/florian/ref/back.png">
 				</div>
+				<h3 id="color-desc">Colors used, click to copy</h3>
 				<div ref="colors" id="colors">
 					<div
 						v-for="color in refColors"
@@ -62,6 +65,7 @@ let modal;
 export default {
 	components: { PageHeader, ModalImage, ModelFbx },
 	data() {
+		images = images.filter(image => !image.nsfw || this.$route.query.nsfw);
 		images.forEach(image => image.image = `/images/florian/${image.path}`);
 		return {
 			images,
@@ -152,8 +156,7 @@ export default {
 
 #intro {
 	width: 60%;
-	margin: 3em auto;
-	margin-top: 15%;
+	margin: 15% auto 3em;
 	padding: 2em;
 	text-align: center;
 	line-height: 2;
@@ -221,9 +224,11 @@ export default {
 
 #colors {
 	display: flex;
+	flex-wrap: wrap;
 }
 #color {
 	flex: 1;
+	min-width: 75px;
 	height: 100px;
 	/* flex: 1; */
 }
@@ -233,7 +238,7 @@ export default {
 		width: 100%;
 		min-width: inherit;
 		margin: 2em auto;
-		margin-top: 3.5em;
+		margin-top: 35%;
 		padding: 2em 1em;
 		min-width: inherit;
 	}

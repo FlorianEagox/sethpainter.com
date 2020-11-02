@@ -2,7 +2,7 @@
 # These images are REAL big
 /static/images/florian/*.jpg
 /static/images/florian/*.png
-
+/static/images/florian/nsfw/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
