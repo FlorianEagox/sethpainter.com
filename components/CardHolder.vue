@@ -17,7 +17,7 @@
 <script>
 export default {
 	name: 'CardHolder',
-	props: { cards: Array, label: String },
+	props: ['cards', 'label']
 }
 </script>
 

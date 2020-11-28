@@ -38,7 +38,7 @@ export default {
 				{ hid: 'description', name: 'description', content: project ? project.short_description : 'Project Not Found' },
 				{ hid: 'og:description', name: 'og:description', content: project ? project.short_description : 'Project Not Found' },
 				{ hid: 'og:title', name: 'og:title', content: (project ? project.name : 'Project Not Found') + ' | Seth Painter' },
-				{ hid: 'og:image', name: "og:image", content: image || '' },
+				{ hid: 'og:image', name: "og:image", content: image || '' }
 			]
 		}
 	},

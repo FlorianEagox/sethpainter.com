@@ -38,7 +38,7 @@ export default {
 	loading: { color: '#fff' },
 
 	buildModules: [
-		// '@nuxtjs/eslint-module'
+		// '@nuxtjs/eslint-module',
 		'@aceforth/nuxt-optimized-images',
 		['@nuxtjs/robots', {
 			UserAgent: '*',

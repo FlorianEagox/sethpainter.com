@@ -61,7 +61,6 @@
 </template>
 
 <script>
-let date;
 export default {
 	name: 'Footer',
 	data() {

@@ -37,7 +37,8 @@ export default {
 			const rightHalf = ctx.getImageData(canvas.width / 2, 0, canvas.width, canvas.height);
 			const dropShadow = 30, randomSpeedAdjustment = 140;
 			let delta = 0, prevTime = 0;
-			let displacement = 0, speed = 200, offset = 0;
+			const speed = 200;
+			let displacement = 0, offset = 0;
 			let transitionedPage = false;
 			ctx.shadowColor = "black";
 			ctx.shadowBlur = 20;

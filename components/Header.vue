@@ -29,13 +29,8 @@
 const initTitle = "Sethington's Site";
 let currentTitle = initTitle;
 
-// import Logo from '../components/Logo';
-
 export default {
 	name: 'Header',
-	components: {
-		// Logo
-	},
 	data() {
 		return { currentTitle }
 	},
@@ -50,7 +45,7 @@ export default {
 					dir = -1;
 				if (dir == -1 && index <= 0)
 					dir = 1;
-				if (['\'', " "].includes(initTitle[index + dir]))
+				if (['\'', ' '].includes(initTitle[index + dir]))
 					skip = 2;
 				index += dir * skip;
 				this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');

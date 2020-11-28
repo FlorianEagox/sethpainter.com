@@ -1,6 +1,8 @@
 <template>
-	<div class="page-tag base-border">
-		<h1>{{text}}</h1>
+	<div id="holder">
+		<div class="page-tag base-border">
+			<h1>{{text}}</h1>
+		</div>
 	</div>
 </template>
 
@@ -12,12 +14,18 @@ export default {
 </script>
 
 <style scope>
+#holder {
+	width: 100%;
+	display: grid;
+	place-items: center;
+	padding: 0.5em;
+	margin: var(--margin-buffer-desktop) 0;
+}
 .page-tag {
-	display: inline-block;
-	margin: 0 auto;
+	display: grid;
+	place-items: center;
 	background: var(--main-bkg);
-	padding: 0.5em 3em;
+	padding: 0 3em;
 	border-bottom-width: 0.3em;
-	margin-bottom: var(--margin-buffer-desktop);
 }
 </style>

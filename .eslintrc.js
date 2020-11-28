@@ -14,6 +14,7 @@ module.exports = {
 	// add your custom rules here
 	rules: {
 		"vue/html-indent": [1, "tab"],
+		"vue/max-attributes-per-line": 0,
 		"indent": [1, "tab"],
 		"allowIndentationTabs": 0,
 		"no-tabs": 0,
@@ -22,6 +23,7 @@ module.exports = {
 		"space-before-function-paren": [1, "never"],
 		"curly": 0,
 		"eqeqeq": 0,
-		"arrow-parens": 0
+		"arrow-parens": 0,
+		"one-var": 0
 	}
 }

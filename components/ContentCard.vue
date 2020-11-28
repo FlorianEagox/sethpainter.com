@@ -17,7 +17,7 @@ export default {
 			try {
 				loadedImage = require(`../assets/images/projects/${this.image}`);
 			} catch (error) {
-				loadImage = null;
+				loadedImage = null;
 				console.log(error);
 			}
 		}

@@ -1,13 +1,21 @@
 <template>
 	<div class="container">
-		<div id="projects" class="panel">
-			<PageHeader text="Projects" />
-			<CardHolder :cards="allProjects" label="All Projects" />
+		<PageHeader text="Projects" />
+		<div id="project-cards" class="panel">
+			<!-- <CardHolder :cards="allProjects" label="All Projects" />
 			<CardHolder
 				v-for="(catagory, index) in projects"
 				:key="index"
 				:cards="catagory.projects"
 				:label="catagory.name"
+			/> -->
+			<ContentCard
+				v-for="project in allProjects"
+				:key="project.identifier"
+				:title="project.name"
+				:description="project.short_description"
+				:image="project.image"
+				:location="'/project/' + project.identifier"
 			/>
 		</div>
 	</div>
@@ -38,9 +46,10 @@ export default {
 </script>
 
 <style scoped>
-#projects {
+#project-cards {
 	background: var(--body-bkg);
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	gap: 1em;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
 }
 </style>
