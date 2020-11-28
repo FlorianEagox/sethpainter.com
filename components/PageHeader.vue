@@ -27,5 +27,6 @@ export default {
 	background: var(--main-bkg);
 	padding: 0 3em;
 	border-bottom-width: 0.3em;
+	white-space: nowrap;
 }
 </style>

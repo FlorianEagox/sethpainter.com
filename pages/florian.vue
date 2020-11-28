@@ -1,6 +1,5 @@
 <template>
 	<div class="container">
-		AWOO
 		<div id="wrapper" class="panel">
 			<div>
 				<article id="intro">
@@ -28,20 +27,24 @@
 			</client-only>
 			<section id="refsheet">
 				<PageHeader text="Character Reference" />
+				
 				<div id="ref-images">
 					<img @click="enlarge" src="/images/florian/ref/front.png">
 					<img @click="enlarge" src="/images/florian/ref/side.png">
 					<img @click="enlarge" src="/images/florian/ref/back.png">
 				</div>
-				<h3 id="color-desc">Colors used, click to copy</h3>
-				<div ref="colors" id="colors">
-					<div
-						v-for="color in refColors"
-						id="color"
-						:key="color"
-						:style="`background: #${color}`"
-						@click="copyColor(color)"
-					/>
+
+				<div id="colors">
+					<h3 id="color-desc">Colors used, click to copy</h3>
+					<div id="swatches">
+						<div
+							v-for="color in refColors"
+							id="color"
+							:key="color"
+							:style="`background: #${color}`"
+							@click="copyColor(color)"
+						/>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -208,9 +211,10 @@ export default {
 }
 
 #refsheet {
-	margin-top: 2em;
+	/* margin-top: 2em; */
 	text-align: center;
 	width: 100%;
+	min-height: 100vh;
 }
 #ref-images {
 	display: flex;
@@ -218,10 +222,12 @@ export default {
 }
 #ref-images img {
 	align-self: center;
+	flex: 0 1 auto;
+	max-height: 100%;
 	filter: drop-shadow(5px 5px 5px #000000);
 }
 
-#colors {
+#swatches {
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -232,7 +238,7 @@ export default {
 	/* flex: 1; */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 600px) {
 	#intro {
 		width: 100%;
 		min-width: inherit;

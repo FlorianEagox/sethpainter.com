@@ -1,10 +1,9 @@
 <template>
 	<header>
 		<div class="container">
-
 			<div id="title">
 				<nuxt-link to="/">
-					<h1>Seth Painter <span id="title-fun" v-html="currentTitle"></span></h1>
+					<h1><span id="title-fun" v-html="currentTitle"/></h1>
 				</nuxt-link>
 			</div>
 
@@ -26,8 +25,8 @@
 </template>
 
 <script>
-const initTitle = "Sethington's Site";
-let currentTitle = initTitle;
+const initTitle = 'Sethington\'s Site';
+let currentTitle = 'Seth Painter';
 
 export default {
 	name: 'Header',
@@ -36,9 +35,10 @@ export default {
 	},
 	created() {
 		let index = 0;
-		let dir = 1;
-		let skip;
-		if (process.client) // This code only meant to be run on the client, not the server!!!
+		let dir = 1; // the direction to go
+		let skip; // the ammount of chars to jump
+		if (process.client) { // This code only meant to be run on the client, not the server!!!
+			this.currentTitle = initTitle;
 			setInterval(() => {
 				skip = 1;
 				if (dir == 1 && index == initTitle.length - 1)
@@ -50,6 +50,7 @@ export default {
 				index += dir * skip;
 				this.currentTitle = [initTitle.slice(0, index), '<span class="accent">', initTitle.slice(index, index + 1), '</span>', initTitle.slice(index + 1)].join('');
 			}, 350);
+		}
 	}
 };
 </script>
