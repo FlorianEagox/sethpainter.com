@@ -1,9 +1,7 @@
 <template>
 	<div id="app">
-		<div id="main">
-			<Header />
-			<nuxt />
-		</div>
+		<Header />
+		<nuxt />
 		<Footer />
 	</div>
 </template>
@@ -26,21 +24,16 @@
 	box-sizing: border-box;
 	/* border: 1px solid black; */
 }
-html,
-body,
 #app {
-	height: 100vh;
+	min-height: 100vh;
 	background: var(--body-bkg);
-}
-#app {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 	font-family: arial;
 	line-height: 1.6;
 }
-#main {
-	flex: 1 0 auto;
-}
+
+/* Global styles */
 .container {
 	margin: auto;
 	overflow: hidden;
@@ -64,8 +57,8 @@ body,
 .base-border {
 	border-bottom: 0.5em solid var(--accent-color);
 }
-footer {
-	margin-top: auto;
+.rgb_border {
+	box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;
 }
 
 #secret-canvas {
@@ -76,7 +69,7 @@ footer {
 }
 
 @media (max-width: 767px) {
-	div.container {
+	.container {
 		width: 100%;
 	}
 	.panel {
@@ -85,8 +78,6 @@ footer {
 		min-width: inherit;
 		text-align: center;
 	}
-	.rgb_border {
-		box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;
-	}
 }
+
 </style>
