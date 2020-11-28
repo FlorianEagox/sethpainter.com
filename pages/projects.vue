@@ -14,9 +14,7 @@
 </template>
 
 <script>
-import CardHolder from '../components/CardHolder';
 import projectData from '../assets/projects.json';
-import PageHeader from '../components/PageHeader';
 const projects = []
 const allProjects = projectData.projects;
 
@@ -25,10 +23,6 @@ export default {
 		return {
 			titleTemplate: "%s | Projects"
 		}
-	},
-	components: {
-		CardHolder,
-		PageHeader
 	},
 	data() {
 		projects.length = 0;

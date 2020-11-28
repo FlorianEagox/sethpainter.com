@@ -15,16 +15,9 @@
 </template>
 
 <script>
-import ContentCard from './ContentCard'
-
 export default {
 	name: 'CardHolder',
 	props: { cards: Array, label: String },
-	components: {
-		ContentCard
-	},
-	created() {
-	}
 }
 </script>
 

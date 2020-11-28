@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+		AWOO
 		<div id="wrapper" class="panel">
 			<div>
 				<article id="intro">
@@ -49,8 +50,6 @@
 </template>
 
 <script>
-import PageHeader from '../components/PageHeader';
-import ModalImage from '../components/ModalImage';
 import { ModelFbx } from 'vue-3d-model';
 import imageData from '../assets/florianImages.json';
 
@@ -63,7 +62,7 @@ let remainder = -1;
 const refColors = ['b85b20', '161616', 'f5f5f5', '359b26', 'daa6aa', 'bb6d73', '8f2d28', 'd7c540', 'd5332a', '1acb16', '1732f1', 'b49821', 'f0dd7a', 'fffbe6', '242320', '5e5b51'];
 let modal;
 export default {
-	components: { PageHeader, ModalImage, ModelFbx },
+	components: { ModelFbx },
 	data() {
 		images = images.filter(image => !image.nsfw || this.$route.query.nsfw);
 		images.forEach(image => image.image = `/images/florian/${image.path}`);

@@ -12,9 +12,7 @@
 </template>
 
 <script>
-import PageHeader from '../components/PageHeader';
 export default {
-	components: { PageHeader },
 	mounted() {
 		const resume = this.$refs.resume;
 		resume.height = resume.clientWidth * (11 / 8.5);

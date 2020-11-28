@@ -24,16 +24,9 @@
 </template>
 
 <script>
-import ContentCard from '../components/ContentCard'
-import Greeter from '../components/Greeter'
 import projectData from "../assets/projects.json"
 
 export default {
-	components: {
-		ContentCard,
-		Greeter
-	},
-
 	asyncData() {
 		const featuredProjects = [];
 		projectData.featured.forEach(identifier =>
