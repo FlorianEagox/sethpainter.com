@@ -12,13 +12,8 @@
 </template>
 
 <script>
-import Logo from "../components/Logo"
-
 export default {
-	name: "Greeter",
-	components: {
-		Logo
-	},
+	name: 'Greeter',
 	methods: {
 		passEvent() {
 			this.$emit('logoSecret');

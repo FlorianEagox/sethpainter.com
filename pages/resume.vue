@@ -1,46 +1,55 @@
 <template>
 	<div class="container">
-		<div id="wrapper" class="panel">
-			<PageHeader text="Resume" />
-			<!-- <embed ref="resume" src="https://static.sethpainter.com/resume.pdf" type="application/pdf"> -->
-			<iframe ref="resume" src="https://static.sethpainter.com/resume" frameborder="0"></iframe>
-			<p id="download">
-				Download as PDF <a href="/resume anonymized.pdf" class="accent">here</a>
-			</p>
+		<PageHeader text="Resume" />
+		<p id="download">
+			Download as PDF <a href="/resume anonymized.pdf" class="accent">here</a>
+		</p>
+		<div ref="container" id="wrapper">
+			<Resume id="resume" ref="resume" />
 		</div>
 	</div>
 </template>
 
 <script>
+import Resume from '~/components/resume';
+
 export default {
+	components: {Resume},
 	mounted() {
-		const resume = this.$refs.resume;
-		resume.height = resume.clientWidth * (11 / 8.5);
-		console.log(resume.clientWidth, resume.height)
-		window.addEventListener('resize', () => {
-			resume.height = resume.clientWidth * (11 / 8.5);
-		});
+		// setTimeout(this.applyScaling(), 2000)
+	},
+	methods: {
+		applyScaling() {
+			const scaledWrapper = this.$refs.container;
+			const scaledContent = document.querySelector('#resume');
+			const { width: cw, height: ch } = scaledContent.getBoundingClientRect();
+			const { width: ww, height: wh } = scaledWrapper.getBoundingClientRect();
+
+			const scale = Math.min(ww / cw, wh / ch);
+			console.log({cw, ch, ww, wh, scale})
+			// scaledContent.style.transform = `scale(${scale})`;
+		}
 	}
 }
 </script>
 
 <style scoped>
 #wrapper {
-	background: var(--body-bkg);
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+	/* height: 500px; */
+	/* resize: both; */
 }
-
-iframe {
-	margin: auto;
-	border: 1px solid black;
-	width: 50%;
-	/* height: calc(100% * (11 / 8.5)); */
+#resume {
+	--left-pad: 15px;
+	font-family: Arimo, Arial;
+	text-align: left;
+	line-height:initial;
+	/* width: 216mm; */
+	/* height: 279mm; */
+	/* transform: scale(0.5); */
+	/* margin: auto; */
+	overflow: auto;
 }
-@media (max-width: 768px) {
-	iframe {
-		width: 100%;
-	}
+#download {
+	text-align: center;
 }
 </style>

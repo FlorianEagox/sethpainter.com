@@ -17,6 +17,7 @@
 		</g>
 	</svg>
 </template>
+
 <script>
 import html2canvas from 'html2canvas'
 
@@ -79,6 +80,7 @@ export default {
 </script>
 
 <style scoped>
+
 svg.strokeless {
 	/* stroke-opacity: 0 !important; */
 }
@@ -89,6 +91,7 @@ svg {
 	stroke-width: 1.5;
 	transform-origin: center 33%;
 	pointer-events: none;
+	filter: drop-shadow(0 0 10px #ff0000);
 }
 circle {
 	pointer-events: auto;
