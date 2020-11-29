@@ -36,7 +36,7 @@
 /* Global styles */
 .container {
 	margin: auto;
-	/* overflow: hidden; */
+	overflow: hidden;
 	width: 80%;
 }
 .panel {

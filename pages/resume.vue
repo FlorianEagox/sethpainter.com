@@ -37,6 +37,7 @@ export default {
 #wrapper {
 	/* height: 500px; */
 	/* resize: both; */
+	margin: 1em;
 }
 #resume {
 	--left-pad: 15px;
