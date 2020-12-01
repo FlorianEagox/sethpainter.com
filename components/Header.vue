@@ -18,6 +18,9 @@
 					<li :class="{onPage: $route.path.toUpperCase() == '/PROJECTS'}">
 						<nuxt-link to="/projects">Projects</nuxt-link>
 					</li>
+					<li :class="{onPage: $route.path.toUpperCase() == '/BLOG'}">
+						<nuxt-link to="/blog">Blog?</nuxt-link>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -60,7 +63,7 @@ header {
 	color: var(--white-txt);
 	background: var(--dark-bkg);
 	border-bottom: solid var(--accent-color) 6px;
-	padding: 0.8em;
+	padding-bottom: 0.8em;
 	padding-top: 2em;
 }
 header .container {
@@ -96,7 +99,7 @@ li:hover {
 	background: #222;
 	font-weight: bold;
 }
-@media (max-width: 767px) {
+@media (max-width: 805px) {
 	#title {
 		text-align: center;
 	}
@@ -109,8 +112,8 @@ li:hover {
 	ul {
 		margin-top: 1.25em;
 	}
-	li {
-		margin: auto 0.25em;
+	li a {
+		padding: 1em;
 	}
 }
 </style>

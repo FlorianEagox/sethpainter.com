@@ -34,21 +34,23 @@ export default {
 </script>
 
 <style scoped>
+.container {
+}
 #wrapper {
 	/* height: 500px; */
 	/* resize: both; */
 	margin: 1em;
+	overflow: auto;
 }
 #resume {
 	--left-pad: 15px;
 	font-family: Arimo, Arial;
 	text-align: left;
 	line-height:initial;
-	/* width: 216mm; */
+	min-width: 216mm;
 	/* height: 279mm; */
 	/* transform: scale(0.5); */
 	/* margin: auto; */
-	overflow: auto;
 }
 #download {
 	text-align: center;

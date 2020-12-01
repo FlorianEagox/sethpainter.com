@@ -9,9 +9,9 @@
 			</g>
 			<g style="stroke-linecap:round;">
 				<path style="fill:none;" d="M1 1 L51 87 L101 1 Z" />
-				<circle r="25.9808" style="fill:lime; stroke:none;" cx="51" cy="29" />
+				<circle r="25.9808" id="circle-green" style="fill:lime; stroke:none;" cx="51" cy="29" />
 				<circle r="25.9808" style="fill:none;" cx="51" cy="29" />
-				<circle r="15.5885" style="fill:blue; stroke:none;" cx="51" cy="29" />
+				<circle r="15.5885" id="circle-blue" style="fill:blue; stroke:none;" cx="51" cy="29" />
 				<circle r="15.5885" style="fill:none;" cx="51" cy="29" />
 			</g>
 		</g>
@@ -91,7 +91,13 @@ svg {
 	stroke-width: 1.5;
 	transform-origin: center 33%;
 	pointer-events: none;
-	filter: drop-shadow(0 0 10px #ff0000);
+	filter: drop-shadow(0 0 10px #f00);
+}
+#circle-green {
+	filter: drop-shadow(0 0 5px #ff0);
+}
+#circle-blue {
+	filter: drop-shadow(0 0 4px #0ff);
 }
 circle {
 	pointer-events: auto;
