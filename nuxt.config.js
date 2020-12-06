@@ -82,6 +82,6 @@ export default {
 		routes: projectData.projects.map(project => '/project/' + project.identifier).concat('/quizletquery')
 	},
 	server: {
-		// host: 'sethpainter.com'
+		host: 'sethpainter.com'
 	}
 }

@@ -18,9 +18,9 @@
 					<li :class="{onPage: $route.path.toUpperCase() == '/PROJECTS'}">
 						<nuxt-link to="/projects">Projects</nuxt-link>
 					</li>
-					<li :class="{onPage: $route.path.toUpperCase() == '/BLOG'}">
+					<!-- <li :class="{onPage: $route.path.toUpperCase() == '/BLOG'}">
 						<nuxt-link to="/blog">Blog?</nuxt-link>
-					</li>
+					</li> -->
 				</ul>
 			</nav>
 		</div>

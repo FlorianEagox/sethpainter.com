@@ -51,6 +51,11 @@ export default {
 	--gap-space: 4em;
 	flex: 0 1 calc((100% - var(--gap-space)) / 2);
 	margin: calc(var(--gap-space) / 2) 0;
+	max-width: 800px;
+}
+#featured-projects > .card:last-child {
+	margin: auto;
+	margin-top: var(--gap-space) ;
 }
 @media (max-width: 767px) {
 	#featured-projects {

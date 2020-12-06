@@ -1,6 +1,20 @@
 {
 	"projects": [
 		{
+			"name": "BusinessCard Parser",
+			"identifier": "businesscardparser",
+			"short_description": "Snap a photo of a business card, and the app will scrape it for contact info. Add to your contacts or save for later",
+			"image": "business-card.png",
+			"description": "A fullstack app that provides an API & frontend for scraping data from business cards. This was initially created for a code test in a job interview, but I've extended the functionality into its own project. If you provide an image, it will be scanned with Google CloudVision and then the text will be processed. ",
+			"access_label": "Check it out!",
+			"access": "https://sethpainter.com/businesscardparser",
+			"source": "https://github.com/TheFoxarmy/BusinessCardParser",
+			"catagories": [
+				"web",
+				"tools"
+			]
+		},
+		{
 			"name": "Form Stash",
 			"identifier": "FormStash",
 			"short_description": "Quickly stash the contents of HTML forms and reload them later. It's a great productivity tool and even autosaves your forms and syncs across all chrome browsers!",
@@ -107,8 +121,9 @@
 	],
 	"featured": [
 		"FormStash",
-		"closequarters",
+		"businesscardparser",
 		"SubScrubber",
-		"Collide2Nav"
+		"Collide2Nav",
+		"closequarters"
 	]
 }
