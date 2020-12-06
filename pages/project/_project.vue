@@ -5,9 +5,11 @@
 			<div id="content" v-if="project">
 				<main>
 					<h1 class="title">{{project.name}}</h1>
-					<p class="short-desc" v-html="project.short_description"></p>
+					<p class="short-desc" v-text="project.description" />
 					<hr>
-					<article class="description" v-html="project.description"></article>
+					<article class="description">
+						<nuxt-content :document="project" />
+					</article>
 				</main>
 				<aside>
 					<img v-if="project.image" :src="image">
@@ -20,50 +22,43 @@
 				</aside>
 			</div>
 			<div id="content" v-else>
-				<h1 class="error-missing">This project was not found. Perhaps it was moved or deleted.</h1>
+				<h1 class="error-missing">
+					This project was not found. Perhaps it was moved or deleted.
+				</h1>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import NavBack from '../../components/NavBack'
-import projectData from '../../assets/projects.json'
-let project = null, image = null;
+let project, image;
+
 export default {
+	async asyncData({$content, params}) {
+		const identifier = params.project;
+		try {
+			project = await $content('projects', identifier).fetch();
+			image = require(`~/assets/images/projects/${project.image}`);
+		} catch (error) {
+			console.error(error);
+		}
+		return {project, image };
+	},
 	head() {
 		return {
-			titleTemplate: '%s | ' + (project ? project.name : "Project Not Found"),
+			titleTemplate: '%s | ' + (project?.name || 'Project Not Found'),
 			meta: [
-				{ hid: 'description', name: 'description', content: project ? project.short_description : 'Project Not Found' },
-				{ hid: 'og:description', name: 'og:description', content: project ? project.short_description : 'Project Not Found' },
-				{ hid: 'og:title', name: 'og:title', content: (project ? project.name : 'Project Not Found') + ' | Seth Painter' },
-				{ hid: 'og:image', name: "og:image", content: image || '' }
+				{ hid: 'description', name: 'description', content: project?.description || 'Project Not Found' },
+				{ hid: 'og:description', name: 'og:description', content: project?.description || 'Project Not Found' },
+				{ hid: 'og:title', name: 'og:title', content: (project?.name || 'Project Not Found') + ' | Seth Painter' },
+				{ hid: 'og:image', name: 'og:image', content: image || '' }
 			]
-		}
-	},
-	components: {
-		NavBack
-	},
-	data() {
-		const identifier = this.$route.params.identifier;
-
-		project = projectData.projects.filter(project => project.identifier == identifier)[0];
-		if (project != null && project.image != null)
-			try {
-				image = require(`../../assets/images/projects/${project.image}`)
-			} catch (error) {
-				console.log(error)
-			}
-		return {
-			project,
-			image
-		}
+		};
 	}
 }
 </script>
 
-<style scoped>
+<style>
 #project {
 	width: 70%;
 }

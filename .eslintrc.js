@@ -24,6 +24,8 @@ module.exports = {
 		"curly": 0,
 		"eqeqeq": 0,
 		"arrow-parens": 0,
-		"one-var": 0
+		"one-var": 0,
+		"no-console": 0,
+		"vue/attributes-order": 0
 	}
 }

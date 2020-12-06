@@ -8,11 +8,11 @@
 		<div id="featured-projects">
 			<ContentCard
 				v-for="project in featuredProjects"
-				:key="project.identifier"
+				:key="project.slug"
 				:title="project.name"
-				:description="project.short_description"
+				:description="project.description"
 				:image="project.image"
-				:location="'/project/' + project.identifier"
+				:location="'/project/' + project.slug"
 				read-more="true"
 			/>
 		</div>
@@ -24,17 +24,10 @@
 </template>
 
 <script>
-import projectData from "../assets/projects.json"
-
 export default {
-	asyncData() {
-		const featuredProjects = [];
-		projectData.featured.forEach(identifier =>
-			featuredProjects.push(projectData.projects.filter(project => project.identifier == identifier)[0])
-		);
-		return {
-			featuredProjects
-		};
+	async asyncData({ $content }) {
+		const featuredProjects = await $content('projects').where({ featured: true }).fetch();
+		return { featuredProjects };
 	}
 };
 </script>
@@ -45,17 +38,12 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	/* gap: 3em; */ /* because chrome is a poopy head :,-[ */
 }
 #featured-projects > .card {
 	--gap-space: 4em;
 	flex: 0 1 calc((100% - var(--gap-space)) / 2);
 	margin: calc(var(--gap-space) / 2) 0;
 	max-width: 800px;
-}
-#featured-projects > .card:last-child {
-	margin: auto;
-	margin-top: var(--gap-space) ;
 }
 @media (max-width: 767px) {
 	#featured-projects {

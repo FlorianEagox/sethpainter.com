@@ -1,7 +1,7 @@
 <template>
 	<div class="card base-border">
 		<h3><nuxt-link class="card-title" :to="location">{{title}}</nuxt-link></h3>
-		<img v-if="loadedImage != null" :src="loadedImage" :alt="title + ' image missing'">
+		<img v-if="loadedImage" :src="loadedImage" :alt="title + ' image missing'">
 		<hr>
 		<p v-html="description"></p>
 		<nuxt-link v-if="readMore" class="card-title" :to="location"><strong>Read More</strong></nuxt-link>
@@ -11,19 +11,17 @@
 <script>
 export default {
 	name: 'ContentCard',
+	props: ['title', 'link', 'description', 'image', 'location', 'readMore'],
 	data() {
-		let loadedImage = this.image;
-		if (this.image) {
-			try {
-				loadedImage = require(`../assets/images/projects/${this.image}`);
-			} catch (error) {
-				loadedImage = null;
-				console.log(error);
-			}
+		let loadedImage;
+		try {
+			loadedImage = require(`../assets/images/projects/${this?.image}`);
+		} catch (error) {
+			loadedImage = null;
+			console.error(error);
 		}
-		return { loadedImage }
-	},
-	props: ['title', 'link', 'description', 'image', "location", "readMore"]
+		return { loadedImage };
+	}
 }
 </script>
 

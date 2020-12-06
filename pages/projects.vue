@@ -10,37 +10,28 @@
 				:label="catagory.name"
 			/> -->
 			<ContentCard
-				v-for="project in allProjects"
-				:key="project.identifier"
+				v-for="project in projects"
+				:key="project.slug"
 				:title="project.name"
-				:description="project.short_description"
+				:description="project.description"
 				:image="project.image"
-				:location="'/project/' + project.identifier"
+				:location="'/project/' + project.slug"
 			/>
 		</div>
 	</div>
 </template>
 
 <script>
-import projectData from '../assets/projects.json';
-const projects = []
-const allProjects = projectData.projects;
-
 export default {
+	async asyncData({$content}) {
+		const projects = await $content('projects').fetch();
+		console.log(projects);
+		return { projects };
+	},
 	head() {
 		return {
 			titleTemplate: "%s | Projects"
-		}
-	},
-	data() {
-		projects.length = 0;
-		projectData.catagories.forEach(catagory =>
-			projects.push({
-				name: catagory.name,
-				projects: projectData.projects.filter(project => project.catagories.map(catagory => catagory.toUpperCase()).includes(catagory.name.toUpperCase()))
-			})
-		);
-		return { allProjects, projects }
+		};
 	}
 }
 </script>
