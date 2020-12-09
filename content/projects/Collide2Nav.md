@@ -4,7 +4,6 @@ description: A Godot game engine addon to simplify building navigable levels wit
 image: collide2nav.png
 access: undefined
 source: https://github.com/thefoxarmy/collide2nav
-featured: true
 ---
 
 

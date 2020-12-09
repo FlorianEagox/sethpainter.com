@@ -14,7 +14,7 @@
 				<aside>
 					<img v-if="project.image" :src="image">
 					<a target="blank" v-if="project.access" class="link" id="access-link" :href="project.access">
-						{{ project.access_label ? project.access_label : "Download" }}
+						{{ project.access_label || "Check it Out!" }}
 					</a>
 					<a target="blank" v-if="project.source" :href="project.source" class="link" id="source-link">
 						<font-awesome-icon :icon="['fab', 'github']" /> <span class="source-text">Source Code</span>

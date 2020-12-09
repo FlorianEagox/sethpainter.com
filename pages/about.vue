@@ -1,13 +1,13 @@
 <template>
 	<div class="container">
-		<div id="about" class="panel">
+		<article id="about" class="panel page">
 			<h1>About Seth Painter</h1>
 			<hr>
-			<article>
+			<div>
 				<nuxt-content :document="article" />
 				<p>Last updated {{article.updatedAt}}</p>
-			</article>
-		</div>
+			</div>
+		</article>
 	</div>
 </template>
 
@@ -27,14 +27,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-#about {
-	padding: 2em;
-	line-height: 1.8;
-	width: 70%;
-}
-p {
-	margin: 2em auto;
-}
-</style>

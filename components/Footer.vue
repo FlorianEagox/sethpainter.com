@@ -33,10 +33,7 @@
 						<li>
 							<a href="https://www.upwork.com/o/profiles/users/_~01a3effb5d2b8cbd3a/">
 								<span>
-									<img
-										src="~/assets/images/upwork.webp"
-										alt="Upwork"
-									>
+									<img src="~/assets/images/upwork.webp" alt="Upwork">
 								</span>
 							</a>
 						</li>
@@ -100,6 +97,7 @@ footer {
 	justify-content: space-around;
 	flex-basis: 55%;
 	display: flex;
+	align-items: center;
 }
 .content a {
 	padding: 0.1em;

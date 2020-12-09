@@ -32,7 +32,13 @@
 	font-family: arial;
 	line-height: 1.6;
 }
-
+@font-face {
+	font-family: 'Zilla Slab';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/fonts/Zilla Slab.wolf2') format('woff2');
+}
 /* Global styles */
 .container {
 	margin: auto;
@@ -45,6 +51,14 @@
 	padding: 1em;
 	min-width: inherit;
 }
+.page {
+	padding: 2em;
+	line-height: 1.8;
+	width: 70%;
+}
+.page p {
+	margin: 2em auto;
+}
 
 .seperator {
 	margin: 1em auto;
@@ -56,6 +70,9 @@
 }
 .base-border {
 	border-bottom: 0.5em solid var(--accent-color);
+}
+.side-border {
+	border-right: 0.5em solid var(--accent-color);
 }
 .rgb_border {
 	box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;

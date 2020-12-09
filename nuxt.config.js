@@ -79,7 +79,7 @@ export default {
 	sitemap: {
 		hostname: 'https://sethpainter.com',
 		gzip: true,
-		routes: projectData.projects.map(project => '/project/' + project.identifier).concat('/quizletquery')
+		routes: [...projectData.projects.map(project => '/project/' + project.identifier), '/businesscardparser', '/quizletquery']
 	},
 	server: {
 		host: 'sethpainter.com'

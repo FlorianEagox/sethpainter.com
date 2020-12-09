@@ -1,5 +1,5 @@
 <template>
-	<article id="greeter">
+	<article id="greeter" class="side-border">
 		<h2>Ahoy There!</h2>
 		<Logo @logoSecret="passEvent" class="strokeless" />
 		<p>
@@ -31,7 +31,6 @@ export default {
 	text-align: center;
 	line-height: 2;
 	background: var(--main-bkg);
-	border-right: 6px solid var(--accent-color);
 }
 #greeter h1 {
 	margin: 0.5em 0;
