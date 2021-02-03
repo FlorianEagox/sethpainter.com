@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<nuxt-link to="/blog">All Articles</nuxt-link>
 		<article class="panel page">
+		<nav-back text="Blog" path="./" />
 			<h1 class="title" v-text="article.title" />
 			<nuxt-content :document="article" />
 		</article>
@@ -24,5 +24,6 @@ export default {
 	}
 	.title {
 		font-family: 'Zilla Slab';
+		font-size: 2em;
 	}
 </style>

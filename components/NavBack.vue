@@ -1,9 +1,9 @@
 <template>
 	<div class="navback">
-		<nuxt-link to="/projects">
+		<nuxt-link :to="path">
 			<strong>
 				<font-awesome-icon :icon="['fas', 'arrow-left']" />
-				Return to Projects
+				Return to {{ text }}
 			</strong>
 		</nuxt-link>
 	</div>
@@ -11,7 +11,8 @@
 
 <script>
 export default {
-	name: "NavBack"
+	name: 'NavBack',
+	props: ['text', 'path']
 }
 </script>
 

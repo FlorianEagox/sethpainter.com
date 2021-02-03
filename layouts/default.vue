@@ -55,6 +55,7 @@
 	padding: 2em;
 	line-height: 1.8;
 	width: 70%;
+	max-width: 1200px;
 }
 .page p {
 	margin: 2em auto;
@@ -72,7 +73,7 @@
 	border-bottom: 0.5em solid var(--accent-color);
 }
 .side-border {
-	border-right: 0.5em solid var(--accent-color);
+	border-right: 0.5em solid var(--accent-color) !important;
 }
 .rgb_border {
 	box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;

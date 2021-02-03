@@ -18,7 +18,10 @@
 			</div>
 		</section>
 		<section id="blog">
-			<catagory-box :catagories="['Tech', 'Blindness', 'Programming', 'Misc']"/>
+			<aside>
+				<search-bar @change.native="search" />
+				<catagory-box :catagories="['Tech', 'Blindness', 'Programming', 'Misc']" />
+			</aside>
 			<div id="articles">
 				<div class="seperator">
 					<h2 class="heading">Latest Articles</h2>
@@ -28,7 +31,7 @@
 				<div class="article side-border" v-for="article in articles" :key="article.slug">
 					<h2 class="heading">
 						<nuxt-link :to="article.path" v-text="article.title || article.slug" />
-					</h2>	
+					</h2>
 					<summary v-text="article.description" />
 				</div>
 			</div>
@@ -37,16 +40,25 @@
 </template>
 
 <script>
+import SearchBar from '~/components/SearchBar.vue';
+let articles;
 export default {
+	components: { SearchBar },
 	async asyncData({$content}) {
-		const articles = await $content('blog').fetch();
-		const featured = articles.filter(article => article.featured);
+		articles = await $content('blog').where({ hidden: { $ne: true } }).fetch();
+		const featured = await $content('blog').where({ featured: true }).fetch();
 		return { articles, featured };
+	},
+	methods: {
+		async search(e) {
+			this.articles = await this.$content('blog').search(e.target.value).fetch();
+		}
 	}
 }
 </script>
 
 <style scoped>
+	@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&display=swap');
 	.container {
 		width: 100%;
 		display: grid;
@@ -62,6 +74,11 @@ export default {
 		place-items: center;
 		color: var(--white-txt);
 		text-shadow: 0 0 5px;
+	}
+	header h2 {
+		font-size: 2em;
+		backdrop-filter: blur(10px);
+		box-shadow: 25px 25px 50px 0 rgba(0,0,0,0.5) inset, -25px -25px 50px 0 rgba(0,0,0,0.5) inset;
 	}
 	header #name {
 		font-family: cursive;
@@ -81,10 +98,11 @@ export default {
 		align-items: flex-start;
 		width: 100%;
 	}
-	#blog #catagory-box {
-		margin-top: 6em;
+	aside {
+		margin-top: 5em;
 		font-size: 1.1em;
 	}
+
 	#articles {
 		margin: 1em;
 		flex-grow: 1;
@@ -100,15 +118,15 @@ export default {
 	}
 	@media (max-width: 767px) {
 		header {
-			font-size: 1.5em;
+			font-size: 1.3em;
 		}
 		#blog {
-			text-align: center;
+			/* text-align: center; */
 			align-items: center;
 			flex-direction: column;
 		}
 		#blog #catagory-box {
-			margin-top: 1em;
+			margin: 1em;
 		}
 	}
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div id="project" class="panel">
-			<NavBack />
+			<NavBack text="Projects" path="/projects" />
 			<div id="content" v-if="project">
 				<main>
 					<h1 class="title">{{project.name}}</h1>
