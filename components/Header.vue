@@ -113,7 +113,7 @@ li:hover {
 		margin-top: 1.25em;
 	}
 	li a {
-		padding: 1em;
+		padding: 0.7em;
 	}
 }
 </style>

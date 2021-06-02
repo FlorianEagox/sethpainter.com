@@ -2,6 +2,7 @@
 	<div class="container">
 		<header>
 			<h2><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
+			<h4>Tech, Blindness, and everything Sethington</h4>
 		</header>
 		<section id="featured" v-if="featured.length">
 			<div class="seperator">
@@ -17,10 +18,10 @@
 				</div>
 			</div>
 		</section>
-		<section id="blog">
+		<section id="blog" class="container">
 			<aside>
 				<search-bar @change.native="search" />
-				<catagory-box :catagories="['Tech', 'Blindness', 'Programming', 'Misc']" />
+				<catagory-box :catagories="['Tech', 'Blindness', 'Programming', 'miscellaneous']" />
 			</aside>
 			<div id="articles">
 				<div class="seperator">
@@ -58,15 +59,16 @@ export default {
 </script>
 
 <style scoped>
-	@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&display=swap');
+	/* @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&display=swap'); */
+	/* @import url("~assets/fonts/Zilla Slab.wolf2"); */
 	.container {
 		width: 100%;
 		display: grid;
 		place-items: center;
 	}
 	header {
-		width: calc(100% - 1em);
-		margin: 1em;
+		width: 100%;
+		/* margin: 1em; */
 		padding: 1em;
 		font-size: 3em;
 		background: url("~assets/images/blog_bkg.jpg") center fixed;
@@ -79,9 +81,10 @@ export default {
 		font-size: 2em;
 		backdrop-filter: blur(10px);
 		box-shadow: 25px 25px 50px 0 rgba(0,0,0,0.5) inset, -25px -25px 50px 0 rgba(0,0,0,0.5) inset;
+		border-radius: 10px;
 	}
 	header #name {
-		font-family: cursive;
+		font-family: 'Brush Script MT';
 	}
 	header #story {
 		font-family: monospace;
@@ -97,12 +100,15 @@ export default {
 		display: flex;
 		align-items: flex-start;
 		width: 100%;
+		max-width: 2000px;
 	}
 	aside {
-		margin-top: 5em;
+		margin: 5em 1em 0;
 		font-size: 1.1em;
 	}
-
+	aside > * {
+		margin: 1em 0;
+	}
 	#articles {
 		margin: 1em;
 		flex-grow: 1;
@@ -113,7 +119,7 @@ export default {
 		margin: 1em;
 	}
 	.article .heading {
-		font-family: 'Zilla Slab';
+		font-family: "Zilla Slab";
 		margin-bottom: 0.2em;
 	}
 	@media (max-width: 767px) {

@@ -16,7 +16,7 @@ export default {
 <style scoped>
 	#txt-search {
 		display: block;
-		width: 90%;
+		width: 100%;
 		border: none;
 		margin: auto;
 		padding: 1em;

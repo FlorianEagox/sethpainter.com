@@ -37,7 +37,7 @@
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src: url('/fonts/Zilla Slab.wolf2') format('woff2');
+	src: url("/fonts/Zilla Slab.woff2") format('woff2');
 }
 /* Global styles */
 .container {
@@ -54,7 +54,7 @@
 .page {
 	padding: 2em;
 	line-height: 1.8;
-	width: 70%;
+	/* width: 70%; */
 	max-width: 1200px;
 }
 .page p {

@@ -47,16 +47,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 	#catagory-box {
 		background: var(--main-bkg);
-		/* display: inline-block; */
-		margin: 1em;
+		display: inline-block;
+		/* margin: 1em; */
 		padding: 1em;
 		min-width: 250px;
 	}
 	ul {
 		list-style-type: none;
+		text-transform: capitalize;
 	}
 	li {
 		margin: 0.5em;
