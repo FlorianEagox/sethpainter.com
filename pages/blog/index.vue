@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style scoped>
-	/* @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&display=swap'); */
-	/* @import url("~assets/fonts/Zilla Slab.wolf2"); */
 	.container {
 		width: 100%;
 		display: grid;
@@ -68,14 +66,14 @@ export default {
 	}
 	header {
 		width: 100%;
-		/* margin: 1em; */
 		padding: 1em;
 		font-size: 3em;
 		background: url("~assets/images/blog_bkg.jpg") center fixed;
 		display: grid;
 		place-items: center;
 		color: var(--white-txt);
-		text-shadow: 0 0 5px;
+		text-shadow: 0 0 30px;
+		text-align: center;
 	}
 	header h2 {
 		font-size: 2em;
@@ -95,6 +93,7 @@ export default {
 	#featured-articles {
 		display: flex;
 		justify-content: center;
+		flex-wrap: wrap;
 	}
 	#blog {
 		display: flex;
@@ -123,13 +122,25 @@ export default {
 		margin-bottom: 0.2em;
 	}
 	@media (max-width: 767px) {
+		.container {
+			/* text-align: center; */
+		}
 		header {
 			font-size: 1.3em;
+		}
+		#featured-artilces {
+			flex-direction: column;
 		}
 		#blog {
 			/* text-align: center; */
 			align-items: center;
 			flex-direction: column;
+		}
+		aside {
+			margin: 0;
+		}
+		#articles {
+			margin: 0;
 		}
 		#blog #catagory-box {
 			margin: 1em;

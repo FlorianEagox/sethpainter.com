@@ -1,10 +1,8 @@
-import projectData from './assets/projects.json';
-
 export default {
 	target: 'static',
 	components: true,
 	head: {
-		title: 'Seth Painter | Software Development projects, tutorials, and more!',
+		title: 'Seth Painter | Software Development Projects, Tutorials, and more!',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -30,9 +28,6 @@ export default {
 			{ rel: 'manifest', href: '/site.webmanifest' },
 			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
 		]
-	},
-	generate: {
-		routes: projectData.projects.map(project => '/project/' + project.identifier)
 	},
 	plugins: ['~plugins/vue-scrollto.js'],
 	loading: { color: '#fff' },
@@ -79,7 +74,11 @@ export default {
 	sitemap: {
 		hostname: 'https://sethpainter.com',
 		gzip: true,
-		routes: [...projectData.projects.map(project => '/project/' + project.identifier), '/businesscardparser', '/quizletquery']
+		async routes() {
+			const { $content } = require('@nuxt/content')
+			const contentRoutes = (await $content('/', {deep: true}).only(['dir', 'slug']).where({dir: {$ne: '/site'}}).fetch()).map(item => encodeURI(`${item.dir}/${item.slug}`))
+			return [...contentRoutes, '/businesscardparser', '/quizletquery']
+		}
 	},
 	server: {
 		host: 'sethpainter.com'
