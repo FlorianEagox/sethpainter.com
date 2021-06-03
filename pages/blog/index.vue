@@ -4,20 +4,7 @@
 			<h2><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
 			<h4>Tech, Blindness, and everything Sethington</h4>
 		</header>
-		<section id="featured" v-if="featured.length">
-			<div class="seperator">
-				<h2 class="heading">Featured Articles</h2>
-				<hr>
-			</div>
-			<div id="featured-articles">
-				<div class="article side-border" v-for="article in featured" :key="article">
-					<h3 class="heading">
-						<nuxt-link :to="article.path" v-text="article.title || article.slug" />
-					</h3>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, nam?</p>
-				</div>
-			</div>
-		</section>
+		<featured-articles />
 		<section id="blog" class="container">
 			<aside>
 				<search-bar @change.native="search" />
@@ -28,27 +15,18 @@
 					<h2 class="heading">Latest Articles</h2>
 					<hr>
 				</div>
-				<!-- <nuxt-link v-for="article in articles" :key="article.slug" :to="article.path" class="panel">{{article.title || article.slug}}</nuxt-link> -->
-				<div class="article side-border" v-for="article in articles" :key="article.slug">
-					<h2 class="heading">
-						<nuxt-link :to="article.path" v-text="article.title || article.slug" />
-					</h2>
-					<summary v-text="article.description" />
-				</div>
+				<article-preview class="side-border" v-for="article in articles" :key="article.slug" :article="article" />
 			</div>
 		</section>
 	</div>
 </template>
 
 <script>
-import SearchBar from '~/components/SearchBar.vue';
 let articles;
 export default {
-	components: { SearchBar },
 	async asyncData({$content}) {
 		articles = await $content('blog').where({ hidden: { $ne: true } }).fetch();
-		const featured = await $content('blog').where({ featured: true }).fetch();
-		return { articles, featured };
+		return { articles };
 	},
 	methods: {
 		async search(e) {
@@ -90,11 +68,6 @@ export default {
 	.seperator {
 		width: auto;
 	}
-	#featured-articles {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
 	#blog {
 		display: flex;
 		align-items: flex-start;
@@ -111,15 +84,6 @@ export default {
 	#articles {
 		margin: 1em;
 		flex-grow: 1;
-	}
-	.article {
-		background: var(--main-bkg);
-		padding: 1em;
-		margin: 1em;
-	}
-	.article .heading {
-		font-family: "Zilla Slab";
-		margin-bottom: 0.2em;
 	}
 	@media (max-width: 767px) {
 		.container {

@@ -1,6 +1,7 @@
 <template>
 	<div ref="main" class="container">
 		<Greeter />
+		<featured-articles />
 		<div class="seperator" id="projects-seperator">
 			<h2 class="heading">Featured Projects</h2>
 			<hr>
@@ -38,6 +39,7 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	max-width: 1800px;
 }
 #featured-projects > .card {
 	--gap-space: 4em;
