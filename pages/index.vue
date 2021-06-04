@@ -1,5 +1,5 @@
 <template>
-	<div ref="main" class="container">
+	<main ref="main" class="container">
 		<Greeter />
 		<featured-articles />
 		<div class="seperator" id="projects-seperator">
@@ -21,7 +21,7 @@
 			<h2 class="heading">View all my projects <nuxt-link to="/projects">Here</nuxt-link></h2>
 			<hr>
 		</div>
-	</div>
+	</main>
 </template>
 
 <script>
@@ -33,7 +33,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 #featured-projects {
 	margin: 1em auto;
 	display: flex;

@@ -53,7 +53,7 @@ export default {
 		display: inline-block;
 		/* margin: 1em; */
 		padding: 1em;
-		min-width: 250px;
+		min-width: 275px;
 	}
 	ul {
 		list-style-type: none;

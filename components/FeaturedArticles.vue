@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+#featured {
+	display: inline-block;
+}
 #featured-articles {
 	display: flex;
 	justify-content: center;

@@ -9,6 +9,7 @@
 			<aside>
 				<search-bar @change.native="search" />
 				<catagory-box :catagories="['Tech', 'Blindness', 'Programming', 'miscellaneous']" />
+				<mailing-list />
 			</aside>
 			<div id="articles">
 				<div class="seperator">
@@ -25,7 +26,7 @@
 let articles;
 export default {
 	async asyncData({$content}) {
-		articles = await $content('blog').where({ hidden: { $ne: true } }).fetch();
+		articles = await $content('blog').where({ hidden: { $ne: true } }).sortBy('createdAt', 'desc').fetch();
 		return { articles };
 	},
 	methods: {

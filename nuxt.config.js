@@ -67,8 +67,7 @@ export default {
 					icons: ['fab']
 				}
 			]
-		}
-		],
+		}],
 		'@nuxt/content'
 	],
 	sitemap: {

@@ -28,4 +28,7 @@ export default {
 	.title {
 		font-size: 2em;
 	}
+	.panel {
+		text-align: left;
+	}
 </style>
