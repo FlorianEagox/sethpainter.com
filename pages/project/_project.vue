@@ -38,6 +38,9 @@ export default {
 		const identifier = params.project;
 		try {
 			project = await $content('projects', identifier).fetch();
+			if(project.appendReadme) {
+				
+			}
 			image = require(`~/assets/images/projects/${project.image}`);
 		} catch (error) {
 			console.error(error);
