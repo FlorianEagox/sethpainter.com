@@ -3,8 +3,8 @@
 		<h3>Join my mailing list!</h3>
 		<p>I'll send out occasional emails with new Articles, Projects, and Updates.</p>
 		<div id="email-form">
-			<input type="email" id="txt-email" placeholder="someone@example.com">
-			<button>
+			<input type="email" id="txt-email" placeholder="someone@example.com" v-model="email">
+			<button @click="addToMailingList">
 				<font-awesome-icon :icon="['fas', 'arrow-right']"/>
 			</button>
 		</div>
@@ -12,8 +12,24 @@
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+import Toast from './Toast';
 
+let email;
+export default {
+	data: {email},
+	methods: {
+		async addToMailingList() {
+			const reqAdd = await fetch(`https://api.sethpainter.com/mailinglist/add/${this.email}`)
+			const toastClass = Vue.extend(Toast);
+			const mailStatusToast = new toastClass({ propsData: { 
+				text: await reqAdd.text()
+			}});
+			mailStatusToast.$mount();
+			mailStatusToast.$el.classList.add(reqAdd.ok ? 'success' : 'error');
+			this.$el.appendChild(mailStatusToast.$el);
+		}
+	}
 }
 </script>
 
