@@ -1,6 +1,6 @@
 import express from 'express';
-import cors from 'cors'
-import { mailinglist } from './mailinglist.js'
+import cors from 'cors';
+import { mailinglist } from './mailinglist.js';
 
 const server = express();
 server.use(cors())
