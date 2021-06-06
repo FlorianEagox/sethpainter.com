@@ -5,7 +5,7 @@
 			<hr>
 		</div>
 		<div id="featured-articles">
-			<article-preview class="side-border" v-for="article in featured" :key="article" :article="article" />
+			<article-preview class="side-border" v-for="article in featured" :key="article.slug" :article="article" />
 		</div>
 	</section>
 </template>

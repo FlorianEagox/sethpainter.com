@@ -2,12 +2,12 @@
 	<div id="mailing-list" class="side-border">
 		<h3>Join my mailing list!</h3>
 		<p>I'll send out occasional emails with new Articles, Projects, and Updates.</p>
-		<div id="email-form">
-			<input type="email" id="txt-email" placeholder="someone@example.com" v-model="email">
-			<button @click="addToMailingList">
+		<form id="email-form" @submit.prevent="addToMailingList">
+			<input type="email" id="txt-email" placeholder="someone@example.com" v-model="email" required>
+			<button type="submit">
 				<font-awesome-icon :icon="['fas', 'arrow-right']"/>
 			</button>
-		</div>
+		</form>
 	</div>
 </template>
 
@@ -15,19 +15,19 @@
 import Vue from 'vue'
 import Toast from './Toast';
 
-let email;
 export default {
-	data: {email},
+	props: ['email'],
 	methods: {
 		async addToMailingList() {
 			const reqAdd = await fetch(`https://api.sethpainter.com/mailinglist/add/${this.email}`)
 			const toastClass = Vue.extend(Toast);
 			const mailStatusToast = new toastClass({ propsData: { 
-				text: await reqAdd.text()
+				text: await reqAdd.text(),
+				TTL: "5"
 			}});
 			mailStatusToast.$mount();
 			mailStatusToast.$el.classList.add(reqAdd.ok ? 'success' : 'error');
-			this.$el.appendChild(mailStatusToast.$el);
+			this.$el.parentElement.appendChild(mailStatusToast.$el);
 		}
 	}
 }
@@ -38,6 +38,7 @@ export default {
 		background: var(--main-bkg);
 		padding: 1em;
 		font-size: 0.9em;
+		margin: 1em 0;
 	}
 	h3 {
 		font-family: "Zilla Slab";

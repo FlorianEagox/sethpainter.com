@@ -1,6 +1,7 @@
 import router from 'express';
-import monk from 'monk'
-import { createTransport } from 'nodemailer'
+import monk from 'monk';
+import { readFileSync } from 'fs';
+import { createTransport } from 'nodemailer';
 import {config as dotenv} from 'dotenv';
 dotenv();
 
@@ -39,14 +40,16 @@ mailinglist.get('/remove/:email', async (req, res) => {
 	const mailing_list = db.get('mailing_list');
 	const removed = await mailing_list.remove({email: req.params.email});
 	db.close();
-	res.redirect(`https://sethpainter.com/leavemailinglist/?email=${removed.deletedCount ? req.params.email : 'none'}`);
+	res.redirect(`https://sethpainter.com/leavemailinglist${removed.deletedCount ? '?email=' + req.params.email : ''}`);
 });
 
 async function sendWelcomeEmail(email) {
+	const emailTemplate = readFileSync('./backend/WelcomeEmail.html', 'utf8'); // Read the file containing the welcome email
+	let emailDoc = emailTemplate.replace('{0}', email); // The unsubscribe link must reference the user's email, so we replace the placeholder in the template.
 	return (await transporter.sendMail({
 		from: '"Seth Painter" <seth@sethpainter.com>',
 		to: email,
 		subject: "You've joined Sethington's Mailing List!",
-		html: "<h1>Thank you!</h1>"
+		html: emailDoc
 	}));
 }

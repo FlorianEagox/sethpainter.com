@@ -21,6 +21,7 @@
 			<h2 class="heading">View all my projects <nuxt-link to="/projects">Here</nuxt-link></h2>
 			<hr>
 		</div>
+		<mailing-list />
 	</main>
 </template>
 
