@@ -1,6 +1,9 @@
 <template>
 	<div id="mailing-list" class="side-border">
-		<h3>Join my mailing list!</h3>
+		<h3>
+			<font-awesome-icon :icon="['far', 'envelope']" />
+			Join my mailing list!
+		</h3>
 		<p>I'll send out occasional emails with new Articles, Projects, and Updates.</p>
 		<form id="email-form" @submit.prevent="addToMailingList">
 			<input type="email" id="txt-email" placeholder="someone@example.com" v-model="email" required>

@@ -78,6 +78,7 @@ export default {
 	aside {
 		margin: 5em 1em 0;
 		font-size: 1.1em;
+		
 	}
 	aside > * {
 		margin: 1em 0;

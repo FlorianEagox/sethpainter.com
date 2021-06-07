@@ -136,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .image-modal {
 	position: absolute;
 	top: 0;
@@ -254,6 +254,9 @@ export default {
 	#ref-images {
 		flex-direction: column;
 		width: 100%;
+	}
+	#ref-images img {
+		/* margin: 1em; */
 	}
 }
 </style>
