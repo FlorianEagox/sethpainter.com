@@ -8,7 +8,7 @@
 		<section id="blog" class="container">
 			<aside>
 				<search-bar @change.native="search" />
-				<catagory-box :catagories="['Tech', 'Blindness', 'Programming', 'miscellaneous']" />
+				<category-box :categories="['Tech', 'Blindness', 'Programming', 'miscellaneous']" />
 				<mailing-list />
 			</aside>
 			<div id="articles">
@@ -108,7 +108,7 @@ export default {
 		#articles {
 			margin: 0;
 		}
-		#blog #catagory-box {
+		#blog #category-box {
 			margin: 1em;
 		}
 	}

@@ -4,10 +4,10 @@
 		<div id="project-cards" class="panel">
 			<!-- <CardHolder :cards="allProjects" label="All Projects" />
 			<CardHolder
-				v-for="(catagory, index) in projects"
+				v-for="(category, index) in projects"
 				:key="index"
-				:cards="catagory.projects"
-				:label="catagory.name"
+				:cards="category.projects"
+				:label="category.name"
 			/> -->
 			<ContentCard
 				v-for="project in projects"

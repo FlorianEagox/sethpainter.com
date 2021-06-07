@@ -8,7 +8,7 @@ Now it's time to swallow that icky pit of fear and insecurity deep in my stomach
 
 Here I'm gonna share all my biggest ideas, things I want to teach, or just personal stories and self-reflections I think are interesting. The topics will most likely be centered around technology, programming, blindness / visual imparement, myself and life experiences, and anything else I have a lot to say about.
 
-I really enjoy writting, and some of the things on here will be very me-centric, and thus will be put into the "personal" catagory.
+I really enjoy writting, and some of the things on here will be very me-centric, and thus will be put into the "personal" category.
 
 I'm going to think about some of these writtings like a bucket for a mental leak. Meaning, the thought pipes are flowwing with brain juice, and I desperately need to crack them open. Some of these articles will be like buckets, where I'll tip my skull and let all the juice flow out as quickly as psosible so I won't forget.
 

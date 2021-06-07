@@ -1,30 +1,30 @@
 <template>
-	<div id="catagory-box" class="base-border">
-		<h2>Catagories</h2>
+	<div id="category-box" class="base-border">
+		<h2>Categories</h2>
 		<hr>
 		<ul>
 			<li>
 				<input type="checkbox" v-model="allChecked" id="chk-all">
 				<label for="chk-all">All</label>
 			</li>
-			<li v-for="(value, catagory) in catagoryData" :key="catagory" v-if="typeof catagory == 'string'">
-				<input type="checkbox" v-model="catagoryData[catagory]" :id="`chk-${catagory}`">
-				<label v-text="catagory" :for="`chk-${catagory}`" />
+			<li v-for="(value, category) in categoryData" :key="category" v-if="typeof category == 'string'">
+				<input type="checkbox" v-model="categoryData[category]" :id="`chk-${category}`">
+				<label v-text="category" :for="`chk-${category}`" />
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
-const catagoryData = {};
+const categoryData = {};
 let allChecked = true;
 export default {
-	name: 'CatagoryBox',
-	props: ['catagories'],
+	name: 'categoryBox',
+	props: ['categories'],
 	data() {
-		for (const catagory of this.catagories)
-			catagoryData[catagory] = false;
-		return { catagoryData, allChecked };
+		for (const category of this.categories)
+			categoryData[category] = false;
+		return { categoryData, allChecked };
 	},
 	methods: {
 		cat2Obj(data, newCats, parrent=null) {
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-	#catagory-box {
+	#category-box {
 		background: var(--main-bkg);
 		display: inline-block;
 		/* margin: 1em; */

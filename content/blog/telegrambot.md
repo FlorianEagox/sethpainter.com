@@ -1,6 +1,6 @@
 ---
 title: Create a contact form with a Telegram bot
-catagory: tech
+category: tech
 description: Create a contact form for your website with minimal code using the Telegram bot API
 ---
 

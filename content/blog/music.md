@@ -1,6 +1,6 @@
 ---
 title: My experiences with music
-catagories: personal
+categories: personal
 hidden: true
 ---
 
