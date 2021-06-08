@@ -7,8 +7,8 @@
 		<featured-articles />
 		<section id="blog" class="container">
 			<aside>
-				<search-bar @change.native="search" />
-				<category-box :categories="['Tech', 'Blindness', 'Programming', 'miscellaneous']" />
+				<search-bar @keydown.native="search" />
+				<category-box :categories="existingCategories || ['Tech', 'Blindness', 'Programming', 'miscellaneous']" @change.native="filter" ref="categoryBox" />
 				<mailing-list />
 			</aside>
 			<div id="articles">
@@ -16,7 +16,7 @@
 					<h2 class="heading">Latest Articles</h2>
 					<hr>
 				</div>
-				<article-preview class="side-border" v-for="article in articles" :key="article.slug" :article="article" />
+				<article-preview class="side-border" v-for="article in currentArticles" :key="article.slug" :article="article" />
 			</div>
 		</section>
 	</div>
@@ -24,16 +24,39 @@
 
 <script>
 let articles;
+let existingCategories;
 export default {
 	async asyncData({$content}) {
 		articles = await $content('blog').where({ hidden: { $ne: true } }).sortBy('createdAt', 'desc').fetch();
-		return { articles };
+		existingCategories = [...new Set(
+			articles.filter(article => article.categories)
+			.reduce((allCategories, {categories}) =>
+				allCategories.concat(categories), []
+			)
+		)];
+		return { articles, currentArticles: articles, existingCategories };
 	},
 	methods: {
 		async search(e) {
-			this.articles = await this.$content('blog').search(e.target.value).fetch();
+			this.currentArticles = await this.$content('blog').search(e.target.value).fetch();
+		},
+		filter() {
+			const categoryBox = this.$refs.categoryBox.$data;
+			const selectedCategories = Object.keys(categoryBox.categoryData).filter(category => categoryBox.categoryData[category]);
+			console.log(categoryBox.categoryData)
+			if(categoryBox.allChecked)
+				this.currentArticles = this.articles;
+			else {
+				this.currentArticles = this.articles.filter(article => {
+					if(article.categories)
+					if(typeof article?.categories == 'string')
+						return selectedCategories.includes(article.categories)
+					else
+						return selectedCategories.some(category => article?.categories.includes(category));
+				});
+			}
 		}
-	}
+	},
 }
 </script>
 
@@ -78,7 +101,7 @@ export default {
 	aside {
 		margin: 5em 1em 0;
 		font-size: 1.1em;
-		
+		max-width: 275px;
 	}
 	aside > * {
 		margin: 1em 0;
@@ -104,6 +127,7 @@ export default {
 		}
 		aside {
 			margin: 0;
+			max-width: 95%;
 		}
 		#articles {
 			margin: 0;
@@ -113,3 +137,4 @@ export default {
 		}
 	}
 </style>
+ 

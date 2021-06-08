@@ -1,6 +1,10 @@
 ---
 title: My Path to Programming
 description: Recounting my journey of learning to code from the beginning.
+categories:
+  - personal
+  - programming
+  - tech
 featured: true
 ---
 

@@ -39,9 +39,9 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin: 1em auto;
 }
 #featured-projects {
-	margin: 1em auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -60,6 +60,9 @@ main {
 	}
 	#featured-projects .card {
 		--gap-space: 1em;
+	}
+	#mailing-list {
+		margin: 1em;
 	}
 }
 </style>

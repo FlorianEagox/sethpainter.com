@@ -4,11 +4,11 @@
 		<hr>
 		<ul>
 			<li>
-				<input type="checkbox" v-model="allChecked" id="chk-all">
+				<input type="checkbox" v-model="allChecked" id="chk-all" @change="checkAll">
 				<label for="chk-all">All</label>
 			</li>
-			<li v-for="(value, category) in categoryData" :key="category" v-if="typeof category == 'string'">
-				<input type="checkbox" v-model="categoryData[category]" :id="`chk-${category}`">
+			<li v-for="(value, category) in categoryData" :key="category">
+				<input type="checkbox" v-model="categoryData[category]" :id="`chk-${category}`" @change="uncheckAll">
 				<label v-text="category" :for="`chk-${category}`" />
 			</li>
 		</ul>
@@ -16,34 +16,30 @@
 </template>
 
 <script>
-const categoryData = {};
-let allChecked = true;
+let categoryData;
 export default {
 	name: 'categoryBox',
 	props: ['categories'],
 	data() {
-		for (const category of this.categories)
-			categoryData[category] = false;
-		return { categoryData, allChecked };
+		categoryData = this.categories.reduce((categoriesObj, category) => {
+			categoriesObj[category] = false;
+			return categoriesObj;
+		}, {});
+		return {
+			allChecked: true,
+			categoryData
+		}
 	},
 	methods: {
-		cat2Obj(data, newCats, parrent=null) {
-			for (let cat of newCats) {
-				if (typeof cat == 'string') {
-					if (parrent != null) {
-						data[cat] = [false, parrent]
-						console.log('HERE', cat)
-					} else {
-						data[cat] = false
-					}
-				} else {
-					data[cat[0]] = false
-					this.cat2Obj(data, cat.slice(1), cat[0])
-				}
-			}
-			return data;
+		checkAll() {
+			if(this.allChecked)
+				Object.keys(this.categoryData).forEach(category => this.categoryData[category] = false);
+		},
+		uncheckAll(e) {
+			if(e.target.checked)
+				this.allChecked = false;
 		}
-	}
+	},
 }
 </script>
 
