@@ -8,7 +8,7 @@
 		<section id="blog" class="container">
 			<aside>
 				<search-bar @keydown.native="search" />
-				<category-box :categories="existingCategories || ['Tech', 'Blindness', 'Programming', 'miscellaneous']" @change.native="filter" ref="categoryBox" />
+				<category-box ref="categoryBox" :categories="existingCategories || ['Tech', 'Blindness', 'Programming', 'miscellaneous']" @change.native="filter" />
 				<mailing-list />
 			</aside>
 			<div id="articles">
@@ -35,6 +35,16 @@ export default {
 			)
 		)];
 		return { articles, currentArticles: articles, existingCategories };
+	},
+	mounted() {
+		setTimeout(() => {
+			const queryCategory = this.$route.query.category;
+			if (queryCategory) {
+				this.$refs.categoryBox.$data.categoryData[queryCategory] = true
+				this.$refs.categoryBox.$data.allChecked = false;
+				this.filter();
+			}
+		}, 0)
 	},
 	methods: {
 		async search(e) {

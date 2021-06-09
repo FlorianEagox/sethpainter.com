@@ -5,15 +5,19 @@
 				<h2>Categories</h2>
 				<hr>
 				<ul>
-					<li v-if="typeof article.categories == 'string'" v-text="article.categories" />
-					<li v-else v-for="category in article.categories" :key="category" v-text="category" />
+					<li v-if="typeof article.categories == 'string'">
+						<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
+					</li>
+					<li v-else v-for="category in article.categories" :key="category" >
+						<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
+					</li>
 				</ul>
 			</div>
 			<h2>On This Page</h2>
 			<hr>
 			<ul id="contents">
 				<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
-					<NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+					<nuxt-link :to="`#${link.id}`">{{ link.text }}</nuxt-link>
 				</li>
 			</ul>
 		</aside>
@@ -59,6 +63,11 @@ export default {
 		padding: 0.1em 0.4em;
 		margin: 0.25em;
 	}
+	#categories a {
+		color: inherit;
+		text-decoration: none;
+	}
+
 	#categories li:hover {
 		background: darkgrey;
 	}
