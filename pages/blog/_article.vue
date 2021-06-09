@@ -13,18 +13,20 @@
 					</li>
 				</ul>
 			</div>
-			<h2>On This Page</h2>
-			<hr>
-			<ul id="contents">
-				<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
-					<nuxt-link :to="`#${link.id}`">{{ link.text }}</nuxt-link>
-				</li>
-			</ul>
+			<div id="contents" v-if="article.toc.length">
+				<h2>On This Page</h2>
+				<hr>
+				<ul id="contents">
+					<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
+						<nuxt-link :to="`#${link.id}`" v-text="link.text" />
+					</li>
+				</ul>
+			</div>
 		</aside>
 		<article class="panel page">
 			<nav-back text="Blog" path="./" />
 			<h1 class="title" v-text="article.title" />
-			<span id="date-written">Written: {{new Date(article.createdAt)}}, Updated: {{article.updatedAt}}</span>
+			<span id="date-written">Written: {{article.createdAt}}, Updated: {{article.updatedAt}}</span>
 			<nuxt-content :document="article" />
 		</article>
 	</main>
@@ -71,7 +73,7 @@ export default {
 	#categories li:hover {
 		background: darkgrey;
 	}
-	ul#contents {
+	#contents ul {
 		list-style-position: inside;
 	}
 	#contents li {
