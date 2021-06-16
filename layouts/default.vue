@@ -39,6 +39,10 @@
 	font-display: swap;
 	src: url("/fonts/Zilla Slab.woff2") format('woff2');
 }
+@font-face {
+	font-family: 'Brush Script MT';
+	src: url("/fonts/Brush Script MT.ttf");
+}
 /* Global styles */
 .container {
 	margin: auto;
@@ -95,6 +99,9 @@
 		margin: var(--margin-buffer-mobile) auto;
 		min-width: inherit;
 		text-align: center;
+	}
+	.page {
+		max-width: 95%;
 	}
 }
 

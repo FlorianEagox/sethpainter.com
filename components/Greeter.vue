@@ -55,9 +55,9 @@ export default {
 		min-width: inherit;
 		margin: 2em auto;
 		padding: 2em 1em;
-		border-right: none;
 		border-bottom: 6px solid var(--accent-color);
 		min-width: inherit;
+		border-right: none !important;
 	}
 }
 </style>

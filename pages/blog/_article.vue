@@ -1,7 +1,7 @@
 <template>
 	<main class="container">
 		<aside class="base-border">
-			<div id="categories">
+			<div id="categories" v-if="article.categories">
 				<h2>Categories</h2>
 				<hr>
 				<ul>
@@ -14,9 +14,12 @@
 				</ul>
 			</div>
 			<div id="contents" v-if="article.toc.length">
-				<h2>On This Page</h2>
+				<h2>
+					On This Page
+					<button id="btn-collapse" @click="showContents = !showContents"><font-awesome-icon :icon="['fas', 'sort-down']" size="2x" /></button>
+				</h2>
 				<hr>
-				<ul id="contents">
+				<ul id="contents" v-if="showContents">
 					<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
 						<nuxt-link :to="`#${link.id}`" v-text="link.text" />
 					</li>
@@ -26,7 +29,10 @@
 		<article class="panel page">
 			<nav-back text="Blog" path="./" />
 			<h1 class="title" v-text="article.title" />
-			<span id="date-written">Written: {{article.createdAt}}, Updated: {{article.updatedAt}}</span>
+			<div class="dates">
+				<span id="date-written">Written: {{diaplayDate(article.createdAt)}}, </span>
+				<span id="date-edited">Updated: {{diaplayDate(article.updatedAt)}}</span>
+			</div>
 			<nuxt-content :document="article" />
 		</article>
 	</main>
@@ -36,7 +42,19 @@
 export default {
 	async asyncData({$content, params}) {
 		return {
+			showContents: true,
 			article: await $content('blog', params.article).fetch()
+		}
+	},
+	mounted() {
+		console.log(window.innerWidth)
+		if(window.innerWidth < 767)
+			this.showContents = false;
+	},
+	methods: {
+		diaplayDate(date) {
+			date = typeof date == 'string' ? new Date(date) : date;
+			return date.toDateString();
 		}
 	}
 }
@@ -73,6 +91,10 @@ export default {
 	#categories li:hover {
 		background: darkgrey;
 	}
+	#btn-collapse {
+		background: none;
+		border: none;
+	}
 	#contents ul {
 		list-style-position: inside;
 	}
@@ -88,9 +110,20 @@ export default {
 	article {
 		text-align: left;
 		margin: 0 1em;
-		max-width: 1200px;
 	}
 	.title {
 		font-size: 2em;
+	}
+	@media (max-width: 767px) {
+		main {
+			flex-direction: column;
+		}
+		aside {
+			margin: 0 auto 1em;
+			width: 90%;
+		}
+		article {
+			padding: 1em 0.5em;
+		}
 	}
 </style>

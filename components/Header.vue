@@ -80,6 +80,13 @@ header .container {
 }
 #title >>> .accent {
 	color: green;
+	animation: wiggle 0.15s infinite;
+	display: inline-block;
+	font-weight: bold;
+}
+@keyframes wiggle {
+	from { transform: rotate(-20deg) }
+	to { transform: rotate(20deg) }
 }
 ul {
 	list-style-type: none;
