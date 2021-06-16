@@ -6,7 +6,7 @@
 				<hr>
 				<ul>
 					<li v-if="typeof article.categories == 'string'">
-						<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
+						<nuxt-link :to="`/blog?category=${category}`" v-text="article.categories" />
 					</li>
 					<li v-else v-for="category in article.categories" :key="category" >
 						<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
@@ -51,8 +51,20 @@ export default {
 		if(window.innerWidth < 767)
 			this.showContents = false;
 	},
+	head() {
+		return {
+			titleTemplate: (this.article?.title || 'Article Not Found') + ' | %s',
+			meta: [
+				{ hid: 'description', name: 'description', content: this.article?.description || 'Project Not Found' },
+				{ hid: 'og:description', name: 'og:description', content: this.article?.description || 'Project Not Found' },
+				{ hid: 'og:title', name: 'og:title', content: (this.article?.description || 'Project Not Found') + ' | Seth Painter' },
+				{ hid: 'og:image', name: 'og:image', content: (this.article?.mainImg || '') }
+			]
+		}
+	},
 	methods: {
 		diaplayDate(date) {
+			console.log(this.article.categories)
 			date = typeof date == 'string' ? new Date(date) : date;
 			return date.toDateString();
 		}
@@ -72,6 +84,8 @@ export default {
 		background: var(--main-bkg);
 		max-width: 300px;
 		padding: 1em;
+		margin: 0 0.5em;
+		flex: 0 0 auto;
 	}
 	#categories ul {
 		list-style-type: none;
@@ -87,7 +101,10 @@ export default {
 		color: inherit;
 		text-decoration: none;
 	}
-
+	.toc3 {
+		font-size: 0.9rem;
+		text-indent: 1em;
+	}
 	#categories li:hover {
 		background: darkgrey;
 	}
@@ -104,12 +121,14 @@ export default {
 	#contents a {
 		color: inherit;
 	}
-	h1, h2 {
-		font-family: 'Zilla Slab';
-	}
 	article {
 		text-align: left;
-		margin: 0 1em;
+		margin: 0 0.5em;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+	h1, h2, h3 {
+		font-family: 'Zilla Slab';
 	}
 	.title {
 		font-size: 2em;
@@ -117,6 +136,7 @@ export default {
 	@media (max-width: 767px) {
 		main {
 			flex-direction: column;
+			align-items: center;
 		}
 		aside {
 			margin: 0 auto 1em;

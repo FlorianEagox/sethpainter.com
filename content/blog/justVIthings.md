@@ -1,5 +1,5 @@
 ---
-title: Things I notice as a Visually Impaired Person - a Living List
+title: Things I Notice as a Visually Impaired Person - a Living List
 description: A list of striking things I've noticed about myself as a visually impaired person.
 featured: true
 categories: blindness
