@@ -28,4 +28,7 @@ export default {
 	justify-content: center;
 	flex-wrap: wrap;
 }
+#featured-articles > * {
+	flex: 1 1 auto;
+}
 </style>

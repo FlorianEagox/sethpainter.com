@@ -18,6 +18,10 @@ export default {
 		passEvent() {
 			this.$emit('logoSecret');
 		}
+	},
+	mounted() {
+		window.onresize = () => this.$el.className = matchMedia('(max-width: 767px)').matches ? 'base-border' : 'side-border';
+		window.onresize();
 	}
 }
 </script>
@@ -55,9 +59,7 @@ export default {
 		min-width: inherit;
 		margin: 2em auto;
 		padding: 2em 1em;
-		border-bottom: 6px solid var(--accent-color);
 		min-width: inherit;
-		border-right: none !important;
 	}
 }
 </style>
