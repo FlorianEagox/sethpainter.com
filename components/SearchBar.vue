@@ -1,5 +1,5 @@
 <template>
-	<div id="search-bar" class="side-border">
+	<div id="search-bar" class="side-border drop-shadow">
 		<font-awesome-icon :icon="['fas', 'search']"/>
 		<input
 			type="search"

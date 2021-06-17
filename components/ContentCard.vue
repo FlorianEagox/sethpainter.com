@@ -1,5 +1,5 @@
 <template>
-	<div class="card base-border">
+	<div class="card base-border drop-shadow">
 		<h3><nuxt-link class="card-title" :to="location">{{title}}</nuxt-link></h3>
 		<img v-if="loadedImage" :src="loadedImage" :alt="title + ' image missing'">
 		<hr>

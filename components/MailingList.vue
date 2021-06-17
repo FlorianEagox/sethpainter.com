@@ -1,5 +1,5 @@
 <template>
-	<div id="mailing-list" class="side-border">
+	<div id="mailing-list" class="side-border drop-shadow">
 		<h3>
 			<font-awesome-icon :icon="['far', 'envelope']" />
 			Join my mailing list!

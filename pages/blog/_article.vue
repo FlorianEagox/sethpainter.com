@@ -1,6 +1,6 @@
 <template>
 	<main class="container">
-		<aside class="base-border">
+		<aside class="base-border drop-shadow">
 			<div id="categories" v-if="article.categories">
 				<h2>Categories</h2>
 				<hr>
@@ -26,7 +26,7 @@
 				</ul>
 			</div>
 		</aside>
-		<article class="panel page">
+		<article class="panel page drop-shadow">
 			<nav-back text="Blog" path="./" />
 			<h1 class="title" v-text="article.title" />
 			<div class="dates">
@@ -79,6 +79,7 @@ export default {
 		justify-content: center;
 		margin: var(--margin-buffer-desktop) auto;
 		width: 100%;
+		padding: 1em 0;
 	}
 	aside {
 		background: var(--main-bkg);

@@ -1,6 +1,6 @@
 <template>
 	<main ref="main" class="container">
-		<Greeter />
+		<Greeter class="drop-shadow" />
 		<featured-articles />
 		<div class="seperator" id="projects-seperator">
 			<h2 class="heading">Featured Projects</h2>

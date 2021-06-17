@@ -1,5 +1,5 @@
 <template>
-	<div class="article">
+	<div class="article drop-shadow">
 		<h2 class="heading">
 			<nuxt-link :to="article.path" v-text="article.title || article.slug" />
 		</h2>

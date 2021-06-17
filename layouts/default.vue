@@ -82,7 +82,10 @@
 .rgb_border {
 	box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;
 }
-
+.drop-shadow {
+	box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.2);
+	  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
 #secret-canvas {
 	position: fixed;
 	pointer-events: none;

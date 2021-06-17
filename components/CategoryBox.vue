@@ -1,5 +1,5 @@
 <template>
-	<div id="category-box" class="base-border">
+	<div id="category-box" class="base-border drop-shadow">
 		<h2>Categories</h2>
 		<hr>
 		<ul>

@@ -20,7 +20,10 @@ export default {
 		}
 	},
 	mounted() {
-		window.onresize = () => this.$el.className = matchMedia('(max-width: 767px)').matches ? 'base-border' : 'side-border';
+		window.onresize = () => {
+			this.$el.classList.add(matchMedia('(max-width: 767px)').matches ? 'base-border' : 'side-border');
+			this.$el.classList.remove(matchMedia('(max-width: 767px)').matches ? 'side-border' : 'base-border');
+		}
 		window.onresize();
 	}
 }
