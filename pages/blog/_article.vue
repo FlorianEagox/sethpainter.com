@@ -47,7 +47,6 @@ export default {
 		}
 	},
 	mounted() {
-		console.log(window.innerWidth)
 		if(window.innerWidth < 767)
 			this.showContents = false;
 	},
@@ -64,7 +63,6 @@ export default {
 	},
 	methods: {
 		diaplayDate(date) {
-			console.log(this.article.categories)
 			date = typeof date == 'string' ? new Date(date) : date;
 			return date.toDateString();
 		}

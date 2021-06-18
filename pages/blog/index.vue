@@ -37,7 +37,7 @@ export default {
 		return { articles, currentArticles: articles, existingCategories };
 	},
 	mounted() {
-		setTimeout(() => {
+		setTimeout(() => { // This is to access refs, I need to find a better way to do this.
 			const queryCategory = this.$route.query.category;
 			if (queryCategory) {
 				this.$refs.categoryBox.$data.categoryData[queryCategory] = true
@@ -53,7 +53,6 @@ export default {
 		filter() {
 			const categoryBox = this.$refs.categoryBox.$data;
 			const selectedCategories = Object.keys(categoryBox.categoryData).filter(category => categoryBox.categoryData[category]);
-			console.log(categoryBox.categoryData)
 			if(categoryBox.allChecked)
 				this.currentArticles = this.articles;
 			else {

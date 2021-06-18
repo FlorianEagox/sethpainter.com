@@ -1,7 +1,6 @@
 ---
 name: Quizlet Query
 description: An API that relies on google custom search engine to search and deliver relevant answers from quizlet!
-image: undefined
 access: https://sethpainter.com/quizletquery
 source: https://github.com/TheFoxarmy/QuizletQuery
 ---

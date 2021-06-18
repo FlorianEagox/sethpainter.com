@@ -1,3 +1,40 @@
+// this example declares the function at the top of the nuxt.config.js file
+const fs = require('fs').promises;
+const path = require('path');
+
+const constructFeedItem = async (article, dir, hostname) => {  
+	// note the path used here, we are using a dummy page with an empty layout in order to not send that data along with our other content
+	const content = await fs.readFile(path.join(__dirname, `dist/rss/${article.slug}/index.html`), 'utf8');
+	const url = encodeURI(`${hostname}/${dir}/${article.slug}`);
+	return {
+		title: article.title,
+		id: url,
+		link: url,
+		description: article.description,
+		published: new Date(article.createdAt),
+		content: content
+	}
+} 
+
+const create = async (feed, args) => {
+	const [filePath, ext] = args;  
+	const hostname = 'https://sethpainter.com'
+	feed.options = {
+		title: "Sethington's Story",
+		description: "Tech, Blindness, and everything Sethington",
+		language: 'en',
+		author: 'Seth Painter',
+		link: `${hostname}/feed.${ext}`
+	}
+	const { $content } = require('@nuxt/content')
+	const articles = await $content(filePath).where({ hidden: { $ne: true } }).sortBy('createdAt', 'desc').fetch();
+
+	for (const article of articles) {
+		feed.addItem(await constructFeedItem(article, filePath, hostname));
+	}
+	return feed;
+}
+
 export default {
 	target: 'static',
 	components: true,
@@ -72,7 +109,8 @@ export default {
 				}
 			]
 		}],
-		'@nuxt/content'
+		'@nuxt/content',
+		'@nuxtjs/feed'
 	],
 	sitemap: {
 		hostname: 'https://sethpainter.com',
@@ -85,5 +123,20 @@ export default {
 	},
 	server: {
 		host: 'sethpainter.com'
-	}
+	},
+	generate: {
+		async routes() {
+			const { $content } = require('@nuxt/content')
+			return (await $content('blog').only(['slug']).fetch()).map(item => encodeURI(`rss/${item.slug}`))
+		}
+	},
+	feed: [
+		{
+			path: '/feed.xml',
+			create,
+			cacheTime: 1000 * 60 * 1,
+			type: 'rss2',
+			data: ['blog', 'xml']
+		},
+	],
 }

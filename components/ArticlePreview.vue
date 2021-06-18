@@ -1,7 +1,7 @@
 <template>
 	<div class="article drop-shadow">
 		<h2 class="heading">
-			<nuxt-link :to="article.path" v-text="article.title || article.slug" />
+			<nuxt-link :to="encodeURI(article.path)" v-text="article.title || article.slug" />
 		</h2>
 		<summary v-text="article.description" />
 	</div>

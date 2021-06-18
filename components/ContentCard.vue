@@ -13,11 +13,11 @@ export default {
 	name: 'ContentCard',
 	props: ['title', 'link', 'description', 'image', 'location', 'readMore'],
 	data() {
-		let loadedImage;
+		let loadedImage = null;
 		try {
-			loadedImage = require(`../assets/images/projects/${this?.image}`);
+			if(this.image)
+				loadedImage = require(`../assets/images/projects/${this?.image}`);
 		} catch (error) {
-			loadedImage = null;
 			console.error(error);
 		}
 		return { loadedImage };

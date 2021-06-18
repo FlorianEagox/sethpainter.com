@@ -20,7 +20,6 @@ export default {
 	},
 	async asyncData({$content, params}) {
 		const article = await $content('site', 'about').fetch();
-		console.log({article});
 		return {
 			article
 		}

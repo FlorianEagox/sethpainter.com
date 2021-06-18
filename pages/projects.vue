@@ -25,7 +25,6 @@
 export default {
 	async asyncData({$content}) {
 		const projects = await $content('projects').fetch();
-		console.log(projects);
 		return { projects };
 	},
 	head() {
