@@ -5,7 +5,7 @@
 			Download as PDF <a href="/resume anonymized.pdf" class="accent">here</a>
 		</p>
 		<div ref="container" id="wrapper">
-			<Resume id="resume" ref="resume" />
+			<Resume id="resume" class="drop-shadow" ref="resume" />
 		</div>
 	</div>
 </template>
@@ -51,6 +51,8 @@ export default {
 	/* height: 279mm; */
 	/* transform: scale(0.5); */
 	/* margin: auto; */
+	max-width: 1200px;
+	margin: 1em auto;
 }
 #download {
 	text-align: center;

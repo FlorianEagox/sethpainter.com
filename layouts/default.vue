@@ -11,12 +11,12 @@
 	--accent-color: green;
 	--main-bkg: white;
 	--white-txt: #eee;
+	--light-text: #666;
 	--body-bkg: #ddd;
 	--dark-bkg: #444;
 	--responsive-switch: 767px;
 
-	--margin-buffer-desktop: 4em;
-	--margin-buffer-mobile: 2em;
+	--margin-buffer: 4em;
 }
 * {
 	margin: 0;
@@ -51,7 +51,7 @@
 }
 .panel {
 	background: var(--main-bkg);
-	margin: var(--margin-buffer-desktop) auto;
+	margin: var(--margin-buffer) auto;
 	padding: 1em;
 	min-width: inherit;
 }
@@ -64,7 +64,9 @@
 .page p {
 	margin: 2em auto;
 }
-
+.page h2 ~ p {
+	margin: 1em auto;
+}
 .seperator {
 	margin: 1em auto;
 	width: 90%;
@@ -94,17 +96,22 @@
 }
 
 @media (max-width: 767px) {
+	:root {
+		--margin-buffer: 2em;
+	}
 	.container {
 		width: 100%;
 	}
 	.panel {
-		width: 90% !important;
-		margin: var(--margin-buffer-mobile) auto;
+		width: 90% !important;	
 		min-width: inherit;
 		text-align: center;
 	}
 	.page {
 		max-width: 95%;
+	}
+	.page p {
+		margin: 1em auto;
 	}
 }
 

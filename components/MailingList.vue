@@ -41,6 +41,9 @@ export default {
 		background: var(--main-bkg);
 		padding: 1em;
 		font-size: 0.9em;
+		margin: 1em 1em;
+	}
+	aside #mailing-list {
 		margin: 1em 0;
 	}
 	h3 {

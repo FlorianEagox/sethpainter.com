@@ -1,38 +1,42 @@
 <template>
 	<main class="container">
-		<aside class="base-border drop-shadow">
-			<div id="categories" v-if="article.categories">
-				<h2>Categories</h2>
-				<hr>
-				<ul>
-					<li v-if="typeof article.categories == 'string'">
-						<nuxt-link :to="`/blog?category=${category}`" v-text="article.categories" />
-					</li>
-					<li v-else v-for="category in article.categories" :key="category" >
-						<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
-					</li>
-				</ul>
-			</div>
-			<div id="contents" v-if="article.toc.length">
-				<h2>
-					On This Page
-					<button id="btn-collapse" @click="showContents = !showContents"><font-awesome-icon :icon="['fas', 'sort-down']" size="2x" /></button>
-				</h2>
-				<hr>
-				<ul id="contents" v-if="showContents">
-					<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
-						<nuxt-link :to="`#${link.id}`" v-text="link.text" />
-					</li>
-				</ul>
+		<aside>
+			<div class="base-border drop-shadow">
+				<section id="categories" v-if="article.categories">
+					<h2>Categories</h2>
+					<hr>
+					<ul>
+						<li v-if="typeof article.categories == 'string'">
+							<nuxt-link :to="`/blog?category=${article.categories}`" v-text="article.categories" />
+						</li>
+						<li v-else v-for="category in article.categories" :key="category" >
+							<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
+						</li>
+					</ul>
+				</section>
+				<section id="contents" v-if="article.toc.length">
+					<h2>
+						On This Page
+						<button id="btn-collapse" @click="showContents = !showContents"><font-awesome-icon :icon="['fas', 'sort-down']" size="2x" /></button>
+					</h2>
+					<hr>
+					<ul id="contents" v-if="showContents">
+						<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
+							<nuxt-link :to="`#${link.id}`" v-text="link.text" />
+						</li>
+					</ul>
+				</section>
 			</div>
 		</aside>
 		<article class="panel page drop-shadow">
 			<nav-back text="Blog" path="./" />
 			<h1 class="title" v-text="article.title" />
-			<div class="dates">
-				<span id="date-written">Written: {{diaplayDate(article.createdAt)}}, </span>
-				<span id="date-edited">Updated: {{diaplayDate(article.updatedAt)}}</span>
+			<div id="dates">
+				<span id="date-written">Written {{diaplayDate(article.createdAt)}}, </span>
+				<span id="date-edited">Updated {{diaplayDate(article.updatedAt)}}</span>
 			</div>
+			<div id="description" v-text="article.description" />
+			<!-- <hr> -->
 			<nuxt-content :document="article" />
 		</article>
 	</main>
@@ -75,16 +79,18 @@ export default {
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
-		margin: var(--margin-buffer-desktop) auto;
+		margin: var(--margin-buffer) auto;
 		width: 100%;
-		padding: 1em 0;
+		overflow: visible;
 	}
 	aside {
-		background: var(--main-bkg);
 		max-width: 300px;
-		padding: 1em;
 		margin: 0 0.5em;
-		flex: 0 0 auto;
+		flex: 1 1 auto;
+	}
+	aside > :first-child {
+		padding: 1em;
+		background: var(--main-bkg)
 	}
 	#categories ul {
 		list-style-type: none;
@@ -126,11 +132,14 @@ export default {
 		flex: 1 1 auto;
 		min-width: 0;
 	}
-	h1, h2, h3 {
+	h1, article >>> h2, article >>> h3 {
 		font-family: 'Zilla Slab';
 	}
 	.title {
 		font-size: 2em;
+	}
+	#dates {
+		color: var(--light-text)
 	}
 	@media (max-width: 767px) {
 		main {
@@ -139,10 +148,23 @@ export default {
 		}
 		aside {
 			margin: 0 auto 1em;
+			max-width: 100%;
 			width: 90%;
 		}
+		aside > #mailing-list {
+			display: none;
+		}
 		article {
-			padding: 1em 0.5em;
+			padding: 1em 0.75em;
+		}
+		#categories ul {
+			padding: 0.25em;
+		}
+		.title {
+			font-size: 1.75em;
+		}
+		#dates {
+			font-size: 0.7em;
 		}
 	}
 </style>

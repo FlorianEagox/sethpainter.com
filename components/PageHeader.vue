@@ -1,6 +1,6 @@
 <template>
 	<div id="holder">
-		<div class="page-tag base-border">
+		<div class="page-tag base-border drop-shadow">
 			<h1>{{text}}</h1>
 		</div>
 	</div>
@@ -19,7 +19,7 @@ export default {
 	display: grid;
 	place-items: center;
 	padding: 0.5em;
-	margin: var(--margin-buffer-desktop) 0;
+	margin: var(--margin-buffer) 0;
 }
 .page-tag {
 	display: grid;

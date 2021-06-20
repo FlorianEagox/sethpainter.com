@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<article id="about" class="panel page">
+		<article id="about" class="panel page drop-shadow">
 			<h1>About Seth Painter</h1>
 			<hr>
 			<div>
@@ -15,13 +15,12 @@
 export default {
 	head() {
 		return {
-			titleTemplate: "%s | About"
+			titleTemplate: "About | %s"
 		}
 	},
 	async asyncData({$content, params}) {
-		const article = await $content('site', 'about').fetch();
 		return {
-			article
+			article: await $content('site', 'about').fetch()
 		}
 	}
 }

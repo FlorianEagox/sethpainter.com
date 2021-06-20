@@ -27,8 +27,9 @@ export default {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	align-content: stretch;
 }
 #featured-articles > * {
-	flex: 1 1 auto;
+	flex: 1 1 400px;
 }
 </style>

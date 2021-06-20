@@ -107,6 +107,9 @@ li:hover {
 	font-weight: bold;
 }
 @media (max-width: 805px) {
+	header {
+		padding-top: 1em;
+	}
 	#title {
 		text-align: center;
 	}
@@ -117,7 +120,7 @@ li:hover {
 		flex-direction: column;
 	}
 	ul {
-		margin-top: 1.25em;
+		margin-top: 0.5em;
 	}
 	li a {
 		padding: 0.7em;
