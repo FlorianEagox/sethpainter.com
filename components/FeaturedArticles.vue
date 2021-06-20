@@ -22,6 +22,7 @@ export default {
 <style scoped>
 #featured {
 	display: inline-block;
+	grid-area: featured;
 }
 #featured-articles {
 	display: flex;

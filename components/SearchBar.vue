@@ -17,6 +17,7 @@ export default {
 		display: flex;
 		align-items: center;
 		background: var(--main-bkg);
+		grid-area: search;
 	}
 	svg {
 		margin: 0 0.5em;

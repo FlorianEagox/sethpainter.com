@@ -1,25 +1,23 @@
 <template>
-	<div class="container">
+	<main>
 		<header>
 			<h2><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
 			<h4>Tech, Blindness, and everything Sethington</h4>
 		</header>
-		<featured-articles />
 		<section id="blog" class="container">
-			<aside>
-				<search-bar @keydown.native="search" />
-				<category-box ref="categoryBox" :categories="existingCategories || ['Tech', 'Blindness', 'Programming', 'miscellaneous']" @change.native="filter" />
-				<mailing-list />
-			</aside>
-			<div id="articles">
+			<featured-articles />
+			<search-bar @keydown.native="search" />
+			<category-box ref="categoryBox" :categories="existingCategories || ['Tech', 'Blindness', 'Programming', 'miscellaneous']" @change.native="filter" />
+			<mailing-list />
 				<div class="seperator">
 					<h2 class="heading">Latest Articles</h2>
 					<hr>
 				</div>
-				<article-preview class="side-border" v-for="article in currentArticles" :key="article.slug" :article="article" />
+			<div id="articles">
+				<article-preview class="side-border" v-for="article in currentArticles" :key="article.slug" :article="article" />	
 			</div>
 		</section>
-	</div>
+	</main>
 </template>
 
 <script>
@@ -70,7 +68,7 @@ export default {
 </script>
 
 <style scoped>
-	.container {
+	main {
 		width: 100%;
 		display: grid;
 		place-items: center;
@@ -98,51 +96,58 @@ export default {
 	header #story {
 		font-family: monospace;
 	}
-	.seperator {
-		width: auto;
-	}
 	#blog {
-		display: flex;
-		align-items: flex-start;
-		width: 100%;
+		display: grid;
+		min-width: 750px;
 		max-width: 2000px;
+		grid-template-areas:
+		'featured featured'
+		'. head'
+		'search articles'
+		'categories articles'
+		'mailing articles'
+		'. articles';
+		grid-template-columns: 275px auto;
+		align-items: start;
+		overflow: visible;
+		gap: 2em;
 	}
-	aside {
-		margin: 5em 1em 0;
+	.seperator {
+		grid-area: head;
+		justify-self: stretch;
+	}
+	#search-bar, #category-box {
 		font-size: 1.1em;
-		max-width: 275px;
-	}
-	aside > * {
-		margin: 1em 0;
 	}
 	#articles {
-		margin: 1em;
-		flex-grow: 1;
+		grid-area: articles;
+		justify-self: stretch;
 	}
+	#articles > :first-child {
+		margin-top: 0;
+	}
+	
 	@media (max-width: 767px) {
-		.container {
-			/* text-align: center; */
-		}
 		header {
 			font-size: 1.3em;
 		}
-		#featured-artilces {
-			flex-direction: column;
-		}
 		#blog {
-			/* text-align: center; */
-			align-items: center;
-			flex-direction: column;
+			grid-template-columns: 1fr;
+			grid-template-areas: 
+			'featured'
+			'head'
+			'search'
+			'categories'
+			'articles'
+			'mailing';
+			align-content: start;
+			align-items: start;
+			min-width: 0;
+			width: 90%;
+			margin: 1em 0;
 		}
-		aside {
-			margin: 0;
-			max-width: 95%;
-		}
-		#articles {
-			margin: 0;
-		}
-		#blog #category-box {
-			margin: 1em;
+		.article, #featured-articles >>> .article {
+			margin: 1em 0 !important;
 		}
 	}
 </style>

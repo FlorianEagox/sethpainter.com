@@ -50,6 +50,7 @@ export default {
 		/* margin: 1em; */
 		padding: 1em;
 		min-width: 275px;
+		grid-area: categories;
 	}
 	ul {
 		list-style-type: none;
