@@ -4,15 +4,15 @@
 			<h2><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
 			<h4>Tech, Blindness, and everything Sethington</h4>
 		</header>
-		<section id="blog" class="container">
+		<section id="blog">
 			<featured-articles />
 			<search-bar @keydown.native="search" />
 			<category-box ref="categoryBox" :categories="existingCategories || ['Tech', 'Blindness', 'Programming', 'miscellaneous']" @change.native="filter" />
 			<mailing-list />
-				<div class="seperator">
-					<h2 class="heading">Latest Articles</h2>
-					<hr>
-				</div>
+			<div class="seperator">
+				<h2 class="heading">Latest Articles</h2>
+				<hr>
+			</div>
 			<div id="articles">
 				<article-preview class="side-border" v-for="article in currentArticles" :key="article.slug" :article="article" />	
 			</div>
@@ -72,12 +72,17 @@ export default {
 		width: 100%;
 		display: grid;
 		place-items: center;
+		width: 98%;
+		margin: auto;
 	}
 	header {
 		width: 100%;
+		height: 100%;
 		padding: 1em;
 		font-size: 3em;
 		background: url("~assets/images/blog_bkg.jpg") center fixed;
+		background-size: cover;
+		background-repeat: no-repeat;
 		display: grid;
 		place-items: center;
 		color: var(--white-txt);
@@ -98,7 +103,6 @@ export default {
 	}
 	#blog {
 		display: grid;
-		min-width: 750px;
 		max-width: 2000px;
 		grid-template-areas:
 		'featured featured'
@@ -108,7 +112,6 @@ export default {
 		'mailing articles'
 		'. articles';
 		grid-template-columns: 275px auto;
-		align-items: start;
 		overflow: visible;
 		gap: 2em;
 	}
