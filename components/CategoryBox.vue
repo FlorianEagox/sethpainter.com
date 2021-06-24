@@ -1,7 +1,6 @@
 <template>
-	<div id="category-box" class="base-border drop-shadow">
-		<h2>Categories</h2>
-		<hr>
+	<collapsable id="category-box" class="base-border drop-shadow">
+		<h2 slot="before">Categories</h2>
 		<ul>
 			<li>
 				<input type="checkbox" v-model="allChecked" id="chk-all" @change="checkAll">
@@ -12,12 +11,14 @@
 				<label v-text="category" :for="`chk-${category}`" />
 			</li>
 		</ul>
-	</div>
+	</collapsable>
 </template>
 
 <script>
+import Collapsable from './Collapsable.vue';
 let categoryData;
 export default {
+	components: { Collapsable },
 	name: 'categoryBox',
 	props: ['categories'],
 	data() {

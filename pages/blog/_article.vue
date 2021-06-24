@@ -1,34 +1,47 @@
 <template>
-	<main class="container">
-		<aside>
-			<div class="base-border drop-shadow">
-				<section id="categories" v-if="article.categories">
-					<h2>Categories</h2>
-					<hr>
-					<ul>
-						<li v-if="typeof article.categories == 'string'">
-							<nuxt-link :to="`/blog?category=${article.categories}`" v-text="article.categories" />
-						</li>
-						<li v-else v-for="category in article.categories" :key="category" >
-							<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
-						</li>
-					</ul>
-				</section>
-				<section id="contents" v-if="article.toc.length">
-					<h2>
-						On This Page
-						<button id="btn-collapse" @click="showContents = !showContents"><font-awesome-icon :icon="['fas', 'sort-down']" size="2x" /></button>
-					</h2>
-					<hr>
-					<ul id="contents" v-if="showContents">
-						<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
-							<nuxt-link :to="`#${link.id}`" v-text="link.text" />
-						</li>
-					</ul>
-				</section>
-			</div>
-		</aside>
-		<article class="panel page drop-shadow">
+	<main>
+		<div id="meta" class="base-border drop-shadow">
+			<section id="categories" v-if="article.categories">
+				<h2>Categories</h2>
+				<hr>
+				<ul>
+					<li v-if="typeof article.categories == 'string'">
+						<nuxt-link :to="`/blog?category=${article.categories}`" v-text="article.categories" />
+					</li>
+					<li v-else v-for="category in article.categories" :key="category" >
+						<nuxt-link :to="`/blog?category=${category}`" v-text="category" />
+					</li>
+				</ul>
+			</section>
+			<section id="share">
+				<h2>Share this Article</h2>
+				<hr>
+				<ul>
+					<li>
+						<a title="Click to Copy" @click.prevent="copy(url)" class="tooltip"><font-awesome-icon icon="link" size="lg"/></a>
+					</li>
+					<li>
+						<a :href="`https://twitter.com/intent/tweet?url=${url}&text=${article.title}`" title="Share to Twitter" class="tooltip" target="blank">
+							<font-awesome-icon :icon="['fab', 'twitter']" size="lg"/>
+						</a>
+					</li>
+					<li><a title="Copy RSS Feed" class="tooltip" @click="copy('https://sethpainter.com/feed.xml')"><font-awesome-icon icon="rss" size="lg"/></a></li>
+					<li v-if="article.medium"><a :href="article.medium" target="_blank" title="Read on Medium" class="tooltip"><font-awesome-icon :icon="['fab', 'medium']" size="lg"/></a></li>
+					<li v-if="article.devTo"><a href="" title="Read on Dev.to" class="tooltip"><font-awesome-icon :icon="['fab', 'dev']" size="lg"/></a></li>
+
+				</ul>
+			</section>
+			<Collapsable id="contents" v-if="article.toc.length">
+				<h2 slot="before">On This Page</h2>
+				<ul id="contents">
+					<li v-for="link of article.toc" :key="link.id" :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }">
+						<nuxt-link :to="`#${link.id}`" v-text="link.text" />
+					</li>
+				</ul>
+			</Collapsable>
+		</div>
+		<mailing-list />
+		<article class="page drop-shadow">
 			<nav-back text="Blog" path="./" />
 			<h1 class="title" v-text="article.title" />
 			<div id="dates">
@@ -36,7 +49,6 @@
 				<span id="date-edited">Updated {{diaplayDate(article.updatedAt)}}</span>
 			</div>
 			<div id="description" v-text="article.description" />
-			<!-- <hr> -->
 			<nuxt-content :document="article" />
 		</article>
 	</main>
@@ -46,13 +58,8 @@
 export default {
 	async asyncData({$content, params}) {
 		return {
-			showContents: true,
 			article: await $content('blog', params.article).fetch()
 		}
-	},
-	mounted() {
-		if(window.innerWidth < 767)
-			this.showContents = false;
 	},
 	head() {
 		return {
@@ -69,6 +76,14 @@ export default {
 		diaplayDate(date) {
 			date = typeof date == 'string' ? new Date(date) : date;
 			return date.toDateString();
+		},
+		copy(text) {
+			window.navigator.clipboard.writeText(text);
+		}
+	},
+	computed: {
+		url() {
+			return `https://sethpainter.com/${this.$route.fullPath}`;
 		}
 	}
 }
@@ -76,49 +91,50 @@ export default {
 
 <style scoped>
 	main {
-		display: flex;
-		align-items: flex-start;
-		justify-content: center;
 		margin: var(--margin-buffer) auto;
-		width: 100%;
 		overflow: visible;
+		display: grid;
+		grid-template-areas:
+		'meta    article'
+		'mailing article'
+		'.       article';
+		grid-template-columns: 300px 1fr;
+		gap: 2em;
+		place-items: center;
 	}
-	aside {
-		max-width: 300px;
-		margin: 0 0.5em;
-		flex: 1 1 auto;
-	}
-	aside > :first-child {
+	
+	#meta {
 		padding: 1em;
-		background: var(--main-bkg)
+		background: var(--main-bkg);
+		grid-area: meta;
+		min-width: 300px;
 	}
-	#categories ul {
+	#categories ul, #share ul {
 		list-style-type: none;
 		padding: 1em 0.5em;
 	}
 	#categories li {
 		background: var(--body-bkg);
-		display: inline-block;
 		padding: 0.1em 0.4em;
 		margin: 0.25em;
 	}
-	#categories a {
+	#categories li, #share li {
+		display: inline-block;
+	}
+	#categories a, #share a {
 		color: inherit;
 		text-decoration: none;
-	}
-	.toc3 {
-		font-size: 0.9rem;
-		text-indent: 1em;
 	}
 	#categories li:hover {
 		background: darkgrey;
 	}
-	#btn-collapse {
-		background: none;
-		border: none;
+
+	#share ul {
+		display: flex;
+		justify-content: space-around;
 	}
-	#contents ul {
-		list-style-position: inside;
+	#share a:hover {
+		color: var(--accent-color);
 	}
 	#contents li {
 		margin: 1em;
@@ -126,14 +142,14 @@ export default {
 	#contents a {
 		color: inherit;
 	}
+	.toc3 {
+		font-size: 0.9rem;
+		text-indent: 1em;
+	}
+
 	article {
 		text-align: left;
-		margin: 0 0.5em;
-		flex: 1 1 auto;
-		min-width: 0;
-	}
-	h1, article >>> h2, article >>> h3 {
-		font-family: 'Zilla Slab';
+		grid-area: article;
 	}
 	.title {
 		font-size: 2em;
@@ -141,21 +157,22 @@ export default {
 	#dates {
 		color: var(--light-text)
 	}
-	@media (max-width: 767px) {
+	#description {
+		font-style: italic;
+	}
+	h1, article >>> h2, article >>> h3 {
+		font-family: 'Zilla Slab';
+	}
+	@media (max-width: 900px) {
 		main {
-			flex-direction: column;
-			align-items: center;
-		}
-		aside {
-			margin: 0 auto 1em;
-			max-width: 100%;
-			width: 90%;
-		}
-		aside > #mailing-list {
-			display: none;
+			grid-template-areas: 'meta' 'article' 'mailing';
+			grid-template-columns: 100%;
+			place-items: center;
+			width: 95%;
 		}
 		article {
 			padding: 1em 0.75em;
+			max-width: 100%;
 		}
 		#categories ul {
 			padding: 0.25em;

@@ -50,7 +50,6 @@ export default {
 	min-width: 216mm;
 	/* height: 279mm; */
 	/* transform: scale(0.5); */
-	/* margin: auto; */
 	max-width: 1200px;
 	margin: 1em auto;
 }

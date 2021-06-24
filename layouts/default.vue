@@ -59,6 +59,7 @@
 	padding: 2em;
 	line-height: 1.8;
 	/* width: 70%; */
+	background: var(--main-bkg);
 	max-width: 1200px;
 }
 .page p {
@@ -113,6 +114,25 @@
 	.page p {
 		margin: 1em auto;
 	}
+}
+
+.tooltip {
+	position: relative;
+}
+
+.tooltip:hover:after {
+	background: rgba(0, 0, 0, .8);
+	border-radius: .5em;
+	bottom: 2em;
+	color: var(--white-txt);
+	content: attr(title);
+	display: block;
+	left: -3em;
+	padding: .3em 1em;
+	position: absolute;
+	text-shadow: 0 1px 0 #000;
+	white-space: nowrap;
+	z-index: 98;
 }
 
 </style>

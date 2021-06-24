@@ -72,7 +72,6 @@ export default {
 		width: 100%;
 		display: grid;
 		place-items: center;
-		width: 98%;
 		margin: auto;
 	}
 	header {
@@ -114,6 +113,7 @@ export default {
 		grid-template-columns: 275px auto;
 		overflow: visible;
 		gap: 2em;
+		width: 98%;
 	}
 	.seperator {
 		grid-area: head;
