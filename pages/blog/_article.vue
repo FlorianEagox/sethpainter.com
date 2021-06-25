@@ -83,7 +83,7 @@ export default {
 	},
 	computed: {
 		url() {
-			return `https://sethpainter.com/${this.$route.fullPath}`;
+			return `https://sethpainter.com${this.$route.fullPath}`;
 		}
 	}
 }
@@ -101,6 +101,7 @@ export default {
 		grid-template-columns: 300px 1fr;
 		gap: 2em;
 		place-items: center;
+		padding: 0 1em;
 	}
 	
 	#meta {
@@ -169,6 +170,7 @@ export default {
 			grid-template-columns: 100%;
 			place-items: center;
 			width: 95%;
+			padding: 0;
 		}
 		article {
 			padding: 1em 0.75em;

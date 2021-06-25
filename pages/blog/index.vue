@@ -135,22 +135,23 @@ export default {
 			font-size: 1.3em;
 		}
 		#blog {
-			grid-template-columns: 1fr;
+			grid-template-columns: 0.5fr 1fr;
 			grid-template-areas: 
-			'featured'
-			'head'
-			'search'
-			'categories'
-			'articles'
-			'mailing';
-			align-content: start;
-			align-items: start;
+			'featured featured featured'
+			'head head head'
+			'search search categories'
+			'articles articles articles'
+			'mailing mailing mailing';
+			gap: 1em;
 			min-width: 0;
 			width: 90%;
 			margin: 1em 0;
 		}
 		.article, #featured-articles >>> .article {
 			margin: 1em 0 !important;
+		}
+		#category-box {
+			justify-self: end;
 		}
 	}
 </style>
