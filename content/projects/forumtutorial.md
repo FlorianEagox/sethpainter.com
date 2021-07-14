@@ -3,6 +3,9 @@ name: PHP Forum Tutorial
 description: A YouTube tutorial series that teaches you how to build a forum with PHP!
 access: https://www.youtube.com/playlist?list=PLDRb1GlTnhn369_F0DHBeb0jzntO3laW7
 source: https://github.com/TheFoxarmy/PHP-Forum-Tutorial
+technologies:
+  - php
+  - mysql
 ---
 
 

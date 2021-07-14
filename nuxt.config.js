@@ -109,7 +109,9 @@ export default {
 				}
 			]
 		}],
-		'@nuxt/content',
+		['@nuxt/content', {
+			liveEdit: false
+		}],
 		'@nuxtjs/feed'
 	],
 	sitemap: {

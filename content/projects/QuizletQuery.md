@@ -3,6 +3,13 @@ name: Quizlet Query
 description: An API that relies on google custom search engine to search and deliver relevant answers from quizlet!
 access: https://sethpainter.com/quizletquery
 source: https://github.com/TheFoxarmy/QuizletQuery
+technologies:
+  - python
+  - flask
+  - google
+  - html5
+  - css3
+  - javascript
 ---
 
 

@@ -4,6 +4,12 @@ description: Quickly stash the contents of HTML forms and reload them later. It'
 image: formstash.png
 access: https://chrome.google.com/webstore/detail/form-stash/ammkklhpnfcoapcogmlhkbbbcnkngnpm
 source: https://github.com/TheFoxarmy/formstash
+technologies:
+  - chrome
+  - firefox
+  - javascript
+  - html5
+  - css3
 featured: true
 ---
 

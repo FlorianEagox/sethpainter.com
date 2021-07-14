@@ -2,6 +2,8 @@
 name: Collide2Nav
 description: A Godot game engine addon to simplify building navigable levels with complex collision geometry.
 image: collide2nav.png
+technologies:
+  - godot
 access: undefined
 source: https://github.com/thefoxarmy/collide2nav
 ---

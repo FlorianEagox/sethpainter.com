@@ -3,6 +3,9 @@ name: Tree Hook
 description: An API and webhook for Mr. Beast's #TeamTrees charity project
 access: https://sethpainter.com/treehook
 source: https://github.com/TheFoxarmy/TreeHook
+technologies:
+  - python
+  - flask
 ---
 
 

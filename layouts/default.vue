@@ -124,7 +124,7 @@
 	position: relative;
 }
 
-.tooltip:hover:after {
+.tooltip:hover::after {
 	background: rgba(0, 0, 0, .8);
 	border-radius: .5em;
 	bottom: 2em;

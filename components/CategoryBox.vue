@@ -1,7 +1,7 @@
 <template>
 	<collapsable id="category-box" class="base-border drop-shadow" ref="collapsable" @resize="resize" :hr="!minimal">
 		<h2 slot="before" v-if="!minimal">Categories</h2>
-		<font-awesome-icon v-else slot="btn" :icon="['fas', 'filter']" size="lg" />
+		<font-awesome-icon v-else slot="btn" :icon="['fas', 'filter']" size="lg" title="categories" />
 		<ul :class="{'base-border': minimal, 'drop-shadow': minimal}">
 			<li>
 				<input type="checkbox" v-model="allChecked" id="chk-all" @change="checkAll">

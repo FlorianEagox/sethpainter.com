@@ -2,20 +2,10 @@
 	<div class="container">
 		<PageHeader text="Projects" />
 		<div id="project-cards" class="panel">
-			<!-- <CardHolder :cards="allProjects" label="All Projects" />
-			<CardHolder
-				v-for="(category, index) in projects"
-				:key="index"
-				:cards="category.projects"
-				:label="category.name"
-			/> -->
 			<ContentCard
 				v-for="project in projects"
 				:key="project.slug"
-				:title="project.name"
-				:description="project.description"
-				:image="project.image"
-				:location="'/project/' + project.slug"
+				:project="project"
 			/>
 		</div>
 	</div>

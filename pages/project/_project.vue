@@ -1,15 +1,19 @@
 <template>
 	<div class="container">
-		<div id="project" class="panel">
+		<div id="project" class="panel base-border">
 			<NavBack text="Projects" path="/projects" />
 			<div id="content" v-if="project">
 				<main>
-					<h1 class="title">{{project.name}}</h1>
+					<h1 id="title">{{project.name}}</h1>
 					<p class="short-desc" v-text="project.description" />
 					<hr>
-					<article class="description">
+					<article id="description">
 						<nuxt-content :document="project" />
 					</article>
+					<div id="icons" v-if="project.technologies">
+						<b>Built with: </b>
+						<tech-icons :icons="project.technologies" />
+					</div>
 				</main>
 				<aside>
 					<img v-if="project.image" :src="image">
@@ -63,8 +67,14 @@ export default {
 #project {
 	width: 70%;
 }
+
 #project:first-child {
 	border-bottom: 2px solid black;
+}
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 #project #content {
 	display: flex;
@@ -81,18 +91,18 @@ article >>> p {
 	margin: 0.5em 0;
 }
 aside {
-	flex: 1 0 30%;
+	flex: 0 0 30%;
 	text-align: center;
 }
 .short-desc {
 	color: grey;
 	font-size: 0.8em;
 }
-.description {
+#description {
 	margin-top: 2em;
 }
 aside img {
-	display: block;
+	display: inline-block;
 	width: 100%;
 	padding-bottom: 2em;
 }
@@ -122,6 +132,14 @@ aside img {
 	color: white;
 	background: black;
 }
+
+#icons {
+	display: flex;
+	align-items: center;
+	margin-top: auto;
+	justify-content: flex-start;
+}
+
 @media (max-width: 767px) {
 	#project,
 	#content {

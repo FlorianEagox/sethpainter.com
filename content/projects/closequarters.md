@@ -4,6 +4,8 @@ description: A pirate game created for LudumDare42
 image: closequarters.png
 access: https://ldjam.com/events/ludum-dare/42/close-quarters
 source: https://github.com/TheFoxarmy/CloseQuarters
+technologies:
+  - java
 featured: true
 ---
 

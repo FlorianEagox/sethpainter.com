@@ -10,10 +10,7 @@
 			<ContentCard
 				v-for="project in featuredProjects"
 				:key="project.slug"
-				:title="project.name"
-				:description="project.description"
-				:image="project.image"
-				:location="'/project/' + project.slug"
+				:project="project"
 				read-more="true"
 			/>
 		</div>

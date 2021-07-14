@@ -1,26 +1,31 @@
 <template>
 	<div class="card base-border drop-shadow">
-		<h3><nuxt-link class="card-title" :to="location">{{title}}</nuxt-link></h3>
-		<img v-if="loadedImage" :src="loadedImage" :alt="title + ' image missing'">
+		<h3><nuxt-link class="card-title" :to="location" v-text="project.name" /></h3>
+		<img v-if="loadedImage" :src="loadedImage" :alt="project.title + ' image missing'">
 		<hr>
-		<p v-html="description"></p>
+		<p v-html="project.description" />
 		<nuxt-link v-if="readMore" class="card-title" :to="location"><strong>Read More</strong></nuxt-link>
+		<tech-icons v-if="project.technologies" :icons="project.technologies" />
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'ContentCard',
-	props: ['title', 'link', 'description', 'image', 'location', 'readMore'],
+	props: ['project', 'readMore'],
 	data() {
 		let loadedImage = null;
 		try {
-			if(this.image)
-				loadedImage = require(`../assets/images/projects/${this?.image}`);
+			if(this.project.image)
+				loadedImage = require(`../assets/images/projects/${this.project?.image}`);
 		} catch (error) {
 			console.error(error);
 		}
 		return { loadedImage };
+	},
+	computed: {
+		location() {
+			return `project/${this.project.slug}`;
+		}
 	}
 }
 </script>
