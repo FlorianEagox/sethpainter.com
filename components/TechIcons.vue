@@ -21,6 +21,7 @@ export default {
 		display: flex;
 		justify-content: center;
 		justify-self: flex-start;
+		flex: 0 1;
 	}
 	#icons img {
 		width: 2em;

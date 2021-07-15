@@ -10,7 +10,7 @@
 					<article id="description">
 						<nuxt-content :document="project" />
 					</article>
-					<div id="icons" v-if="project.technologies">
+					<div id="icon-display" v-if="project.technologies">
 						<b>Built with: </b>
 						<tech-icons :icons="project.technologies" />
 					</div>
@@ -133,7 +133,7 @@ aside img {
 	background: black;
 }
 
-#icons {
+#icon-display {
 	display: flex;
 	align-items: center;
 	margin-top: auto;
@@ -145,6 +145,15 @@ aside img {
 	#content {
 		flex-direction: column;
 		text-align: center;
+	}
+	#content {
+		padding: 2em 0 !important;
+	}
+	main {
+		flex-basis: 100%;
+	}
+	#icon-display {
+		margin: 1em auto;
 	}
 }
 </style>
