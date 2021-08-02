@@ -131,7 +131,8 @@
 	color: var(--white-txt);
 	content: attr(title);
 	display: block;
-	left: -3em;
+	transform: translate(-50%);
+	left: 50%;
 	padding: .3em 1em;
 	position: absolute;
 	text-shadow: 0 1px 0 #000;

@@ -4,5 +4,5 @@ description: Finally clean out your YouTube sub-box, once and for all! A collabo
 image: subscrubber.png
 access: undefined
 source: https://github.com/AidanLovelace/SubScrubber
-featured: true
+featured: false
 ---

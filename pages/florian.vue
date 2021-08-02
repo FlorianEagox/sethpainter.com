@@ -145,9 +145,6 @@ export default {
 	height: 100vh;
 	margin: auto auto;
 }
-</style>
-
-<style scoped>
 
 #wrapper {
 	background: var(--body-bkg);

@@ -45,9 +45,12 @@ export default {
 	color: black;
 }
 img {
-	max-height: 150px;
+	max-height: 200px;
 	padding: 0.1em;
+	max-width: 200px;
 	/* width: 100%; */
 	align-self: center;
+	filter: drop-shadow(0px 0px 5px #000000);
+	margin-bottom: 0.5em;
 }
 </style>

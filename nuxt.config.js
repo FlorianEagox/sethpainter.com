@@ -141,4 +141,11 @@ export default {
 			data: ['blog', 'xml']
 		},
 	],
+	content: {
+		markdown: {
+			prism: {
+				theme: 'prism-themes/themes/prism-material-oceanic.css'
+			}
+		}
+	},
 }
