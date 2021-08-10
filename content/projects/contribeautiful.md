@@ -24,6 +24,9 @@ A vue & express webapp to generate custom GitHub contribution history!
 ![Project Status: Done](https://img.shields.io/badge/Project%20Status-Done-limegreen)
 ## Running live at
 https://sethpainter.com/contribeautiful
+
+!(/images/projects/contribeautiful-screenshot.png)[Screenshot of Contribeautiful]
+
 # TODO
 
 ## Definitely

@@ -2,7 +2,7 @@
 	<div class="container">
 		<PageHeader text="Resume" />
 		<p id="download">
-			Download as PDF <a href="/resume anonymized.pdf" class="accent">here</a>
+			<a href="/resume anonymized.pdf" class="accent">Download as PDF</a>
 		</p>
 		<div ref="container" id="wrapper">
 			<Resume id="resume" class="drop-shadow" ref="resume" />
@@ -36,6 +36,9 @@ export default {
 <style scoped>
 .container {
 }
+#holder {
+	margin: 1em auto;
+}
 #wrapper {
 	/* height: 500px; */
 	/* resize: both; */
@@ -55,5 +58,13 @@ export default {
 }
 #download {
 	text-align: center;
+}
+#download a, #download a:visited {
+	color: green;
+}
+@media (max-width: 1200px) {
+	#resume {
+		/* font-size: 0.1rem; */
+	}
 }
 </style>

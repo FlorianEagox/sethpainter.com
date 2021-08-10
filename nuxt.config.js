@@ -120,7 +120,7 @@ export default {
 		async routes() {
 			const { $content } = require('@nuxt/content')
 			const contentRoutes = (await $content('/', {deep: true}).only(['dir', 'slug']).where({dir: {$ne: '/site'}}).fetch()).map(item => encodeURI(`${item.dir}/${item.slug}`))
-			return [...contentRoutes, '/businesscardparser', '/quizletquery']
+			return [...contentRoutes, '/businesscardparser', '/quizletquery', '/contribeautiful']
 		}
 	},
 	server: {

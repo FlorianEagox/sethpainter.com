@@ -151,6 +151,7 @@ export default {
 	article {
 		text-align: left;
 		grid-area: article;
+		overflow: hidden;
 	}
 	.title {
 		font-size: 2em;
