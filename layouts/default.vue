@@ -3,6 +3,7 @@
 		<Header />
 		<nuxt />
 		<Footer />
+		<elevator-button />
 	</div>
 </template>
 
@@ -81,7 +82,7 @@
 	padding-bottom: 0.75em;
 }
 .base-border {
-	border-bottom: var(--accent-border);
+	border-bottom: var(--accent-border) !important;
 }
 .side-border {
 	border-right: var(--accent-border) !important;

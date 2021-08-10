@@ -98,7 +98,7 @@ export default {
 		'meta    article'
 		'mailing article'
 		'.       article';
-		grid-template-columns: 300px 1fr;
+		grid-template-columns: 300px minmax(0, 1fr);
 		gap: 2em;
 		place-items: center;
 		padding: 0 1em;
@@ -151,7 +151,8 @@ export default {
 	article {
 		text-align: left;
 		grid-area: article;
-		overflow: hidden;
+		overflow: auto;
+		max-width: 100%;
 	}
 	.title {
 		font-size: 2em;
@@ -164,6 +165,10 @@ export default {
 	}
 	h1, article >>> h2, article >>> h3 {
 		font-family: 'Zilla Slab';
+	}
+	article >>> .nuxt-content-highlight {
+		max-width: 100%;
+		overflow: hidden;
 	}
 	@media (max-width: 900px) {
 		main {

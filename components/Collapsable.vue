@@ -3,7 +3,7 @@
 		<slot name="before" />
 		<button id="btn-collapse" @click="collapsed = !collapsed">
 			<slot name="btn" v-if="this.$slots.btn" />
-			<font-awesome-icon :icon="['fas', 'sort-down']" size="2x" />
+			<font-awesome-icon :icon="['fas', 'chevron-' + (collapsed ? 'down' : 'up')]" size="lg" />
 		</button>
 		<hr v-if="this.hr">
 		<slot v-if="!collapsed" />
