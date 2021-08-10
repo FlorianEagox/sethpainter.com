@@ -1,5 +1,5 @@
 <template>
-	<button v-if="visible" id="elevator" class="base-border drop-shadow" v-scroll-to="'.title' || 'h2' || 'h1'">
+	<button v-if="visible" id="elevator" class="base-border drop-shadow" v-scroll-to=" pageTitle ? '.title' : 'body'">
 		<font-awesome-icon :icon="['fas', 'chevron-up']" size="lg" />
 	</button>
 </template>
@@ -7,11 +7,12 @@
 <script>
 export default {
 	data() {
-		return { visible: false }
+		return { visible: false, pageTitle: false }
 	},
 	mounted() {
+		this.pageTitle = Boolean(document.querySelector('.title'));
 		document.addEventListener('scroll', () =>
-			this.visible = (window.scrollY > window.innerHeight / 2)
+			this.visible = (window.scrollY > window.innerHeight)
 		);
 	}
 }

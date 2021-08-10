@@ -4,7 +4,7 @@
 			<NavBack text="Projects" path="/projects" />
 			<div id="content" v-if="project">
 				<main>
-					<h1 id="title">{{project.name}}</h1>
+					<h1 class="title">{{project.name}}</h1>
 					<p class="short-desc" v-text="project.description" />
 					<hr>
 					<article id="description">

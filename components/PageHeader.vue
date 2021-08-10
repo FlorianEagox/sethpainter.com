@@ -1,7 +1,7 @@
 <template>
 	<div id="holder">
 		<div class="page-tag base-border drop-shadow">
-			<h1>{{text}}</h1>
+			<h1 class="title">{{text}}</h1>
 		</div>
 	</div>
 </template>

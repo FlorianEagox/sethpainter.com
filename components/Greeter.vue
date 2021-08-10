@@ -1,6 +1,6 @@
 <template>
 	<article id="greeter" class="side-border">
-		<h2>Ahoy There!</h2>
+		<h2 class="title">Ahoy There!</h2>
 		<Logo @logoSecret="passEvent" class="strokeless" />
 		<p>
 			I'm Seth Painter, a software developer and freelancer located in Memphis Tennessee. This is the home of my projects and ideas. I like to make games, WebApps, and really any kinds of software. I also plan to create some more programming tutorials and maybe even CTF walkthroughs. Below you can find my featured projects, articles, and links to my various social platforms. Feel free to drop me a line if you're interested in professional opportunities or just want to chat! I do plenty of work on commission, so don't hesitate to contact me if you're interested in my services.

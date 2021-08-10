@@ -98,7 +98,7 @@ export default {
 		'meta    article'
 		'mailing article'
 		'.       article';
-		grid-template-columns: 300px minmax(0, 1fr);
+		grid-template-columns: 300px minmax(0, 1200px);
 		gap: 2em;
 		place-items: center;
 		padding: 0 1em;
