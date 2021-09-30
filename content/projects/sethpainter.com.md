@@ -5,10 +5,11 @@ image: sethpainter.com.svg
 access: https://sethpainter.com/
 source: https://github.com/TheFoxarmy/sethpainter.com
 technologies:
-  - nginx
+  - nuxtjs
   - vuejs
+  - nginx
+  - ubuntu-plain
   - html5
   - css3
   - javascript
-  - ubuntu-plain
 ---

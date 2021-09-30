@@ -1,81 +1,81 @@
 [
-		{
-			"path": "Dimonis Bust.png",
-			"artistName": "Dimonis",
-			"link": "https://www.furaffinity.net/user/dimonis/"
-		},
-		{
-			"path": "aurora.jpg",
-			"artistName": "Yumi",
-			"link": "https://aminoapps.com/p/vmph3d9"
-		},
-		{
-			"path": "Yeehaw.jpg",
-			"artistName": "RayoCoyote",
-			"link": "https://t.me/RayoCoyote"
-		},
-		{
-			"path": "ref.png",
-			"artistName": "Punkcroc",
-			"link": "https://www.furaffinity.net/user/punkcroc/"
-		},
-		{
-			"path": "Flying Florian.png",
-			"artistName": "Shiesen [B0rk]",
-			"link": "https://aminoapps.com/c/furry-amino/page/user/shisien-b0rk-20-150/L2Wq_D8kiYfP5vJXBLWMVmXaYlQ55x65JlTP"
-		},
-		{
-			"path": "Alyssa Bust.png",
-			"artistName": "@AlyssaDraws",
-			"link": "https://t.me/AlyssaDraws"
-		},
-		{
-			"path": "Holiday Movie Night.png",
-			"artistName": "Punkcroc",
-			"link": "https://www.furaffinity.net/user/punkcroc/"
-		},
-		{
-			"path": "paw transparent.png",
-			"artistName": "SOMEBODY",
-			"link": "https://www.furaffinity.net/user/punkcroc/"
-		},
-		{
-			"path": "Alyssa Icon.png",
-			"artistName": "@AlyssaDraws",
-			"link": "https://t.me/AlyssaDraws"
-		},
-		{
-			"path": "blind bois.png",
-			"artistName": "fairytale5353",
-			"link": "https://www.furaffinity.net/user/Fairytale5353/"
-		},
-		{
-			"path": "badge transparent.png",
-			"artistName": "KookyC",
-			"link": "https://www.facebook.com/KookyC.Commissions "
-		},
-		{
-			"path": "nsfw/onsen.png",
-			"artistName": "FumonSrikit",
-			"link": "https://www.furaffinity.net/user/fumonsrikit/",
-			"nsfw": true
-		},
-		{
-			"path": "nsfw/alisa walker.png",
-			"artistName": "Alisa-Walker",
-			"link": "https://www.furaffinity.net/user/alisa-walker/",
-			"nsfw": true
-		},
-		{
-			"path": "nsfw/muzzle.gif",
-			"artistName": "FizzyFreshFennec",
-			"link": "https://www.furaffinity.net/user/fizzyfreshfennec/",
-			"nsfw": true
-		},
-		{
-			"path": "nsfw/room party.jpg",
-			"artistName": "Kisera",
-			"link": "https://www.furaffinity.net/user/kisera/",
-			"nsfw": true
-		}
-	]
+	{
+		"path": "Dimonis Bust.png",
+		"artistName": "Dimonis",
+		"link": "https://www.furaffinity.net/user/dimonis/"
+	},
+	{
+		"path": "aurora.jpg",
+		"artistName": "Yumi",
+		"link": "https://aminoapps.com/p/vmph3d9"
+	},
+	{
+		"path": "Yeehaw.jpg",
+		"artistName": "RayoCoyote",
+		"link": "https://t.me/RayoCoyote"
+	},
+	{
+		"path": "ref.png",
+		"artistName": "Punkcroc",
+		"link": "https://www.furaffinity.net/user/punkcroc/"
+	},
+	{
+		"path": "Flying Florian.png",
+		"artistName": "Shiesen [B0rk]",
+		"link": "https://aminoapps.com/c/furry-amino/page/user/shisien-b0rk-20-150/L2Wq_D8kiYfP5vJXBLWMVmXaYlQ55x65JlTP"
+	},
+	{
+		"path": "Alyssa Bust.png",
+		"artistName": "@AlyssaDraws",
+		"link": "https://t.me/AlyssaDraws"
+	},
+	{
+		"path": "Holiday Movie Night.png",
+		"artistName": "Punkcroc",
+		"link": "https://www.furaffinity.net/user/punkcroc/"
+	},
+	{
+		"path": "paw transparent.png",
+		"artistName": "SOMEBODY",
+		"link": "https://www.furaffinity.net/user/punkcroc/"
+	},
+	{
+		"path": "Alyssa Icon.png",
+		"artistName": "@AlyssaDraws",
+		"link": "https://t.me/AlyssaDraws"
+	},
+	{
+		"path": "blind bois.png",
+		"artistName": "fairytale5353",
+		"link": "https://www.furaffinity.net/user/Fairytale5353/"
+	},
+	{
+		"path": "badge transparent.png",
+		"artistName": "KookyC",
+		"link": "https://www.facebook.com/KookyC.Commissions "
+	},
+	{
+		"path": "nsfw/onsen.png",
+		"artistName": "FumonSrikit",
+		"link": "https://www.furaffinity.net/user/fumonsrikit/",
+		"nsfw": true
+	},
+	{
+		"path": "nsfw/alisa walker.png",
+		"artistName": "Alisa-Walker",
+		"link": "https://www.furaffinity.net/user/alisa-walker/",
+		"nsfw": true
+	},
+	{
+		"path": "nsfw/muzzle.gif",
+		"artistName": "FizzyFreshFennec",
+		"link": "https://www.furaffinity.net/user/fizzyfreshfennec/",
+		"nsfw": true
+	},
+	{
+		"path": "nsfw/room party.jpg",
+		"artistName": "Kisera",
+		"link": "https://www.furaffinity.net/user/kisera/",
+		"nsfw": true
+	}
+]

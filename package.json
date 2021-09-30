@@ -10,7 +10,8 @@
 		"start": "nuxt start",
 		"generate": "nuxt generate",
 		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-		"server": "node backend/server"
+		"server": "node backend/server",
+		"thumbnails": "node --experimental-json-modules utils/GenerateThumbnails"
 	},
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^5.15.1",
@@ -43,6 +44,7 @@
 		"imagemin": "^6.1.0",
 		"imagemin-pngquant": "^9.0.1",
 		"nuxt-compress": "^3.0.0",
+		"sharp": "^0.29.1",
 		"typescript": "^3.9.7",
 		"webpack-cli": "^3.3.12"
 	}

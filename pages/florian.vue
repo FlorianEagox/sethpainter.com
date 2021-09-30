@@ -9,16 +9,11 @@
 					<p>3D Model comming soon</p>
 				</article>
 			</div>
-			<div id="gallery" @keydown="switchImage" tabindex="0">
-				<div id="current">
-					<img @click="enlarge" :src="currentImage.image">
-				</div>
-				<p>Piece done by <a :href="currentImage.link"> {{ currentImage.artistName }}</a></p>
-				<div id="carousel" ref="carousel" @scroll="scrollCarousel">
-					<img v-for="(image, index) in images" :key="index"
-						:src="image.image" @click="selectImage(index)">
-				</div>
-			</div>
+			<gallery basePath="/images/florian/" thumbnailPath="/images/florian/thumbnails" :imageData="florianImages">
+				<template v-slot:caption="slotProps">
+					<p>Piece done by <a :href="slotProps.currentImage.link"> {{ slotProps.currentImage.artistName }}</a></p>
+				</template>
+			</gallery>
 			<client-only>
 				<!-- <model-fbx ref="model" src="../florian.fbx" :width="100" /> -->
 				<div id="ship-wrapper">
@@ -29,9 +24,9 @@
 				<PageHeader text="Character Reference" />
 				
 				<div id="ref-images">
-					<img @click="enlarge" src="/images/florian/ref/front.png">
-					<img @click="enlarge" src="/images/florian/ref/side.png">
-					<img @click="enlarge" src="/images/florian/ref/back.png">
+					<img @click="$nuxt.$emit('enlarge', '/images/florian/ref/front.png')" src="/images/florian/ref/front.png">
+					<img @click="$nuxt.$emit('enlarge')" src="/images/florian/ref/side.png">
+					<img @click="$nuxt.$emit('enlarge')" src="/images/florian/ref/back.png">
 				</div>
 
 				<div id="colors">
@@ -48,87 +43,19 @@
 				</div>
 			</section>
 		</div>
-		<ModalImage ref="modal" />
 	</div>
 </template>
 
 <script>
-import { ModelFbx } from 'vue-3d-model';
-import imageData from '../assets/florianImages.json';
+import florianImages from '../assets/florianImages.json';
 
-let imageIndex = 0;
-let images = imageData;
-let currentImage = images[imageIndex];
-let slider = null;
-let currentWidth = 0;
-let remainder = -1;
 const refColors = ['b85b20', '161616', 'f5f5f5', '359b26', 'daa6aa', 'bb6d73', '8f2d28', 'd7c540', 'd5332a', '1acb16', '1732f1', 'b49821', 'f0dd7a', 'fffbe6', '242320', '5e5b51'];
-let modal;
-export default {
-	components: { ModelFbx },
-	data() {
-		images = images.filter(image => !image.nsfw || this.$route.query.nsfw);
-		images.forEach(image => image.image = `/images/florian/${image.path}`);
-		return {
-			images,
-			currentImage,
-			refColors
-		};
-	},
-	mounted() {
-		// images = images.filter(image => !image.clone)
-		modal = this.$refs.modal;
-		slider = this.$refs.carousel;
 
-		const marginOffset = 2 * parseFloat(getComputedStyle(slider.children[0]).marginLeft);
-		slider.children.forEach((img, index) => {
-			if (currentWidth < slider.clientWidth) {
-				if (currentWidth + img.clientWidth + marginOffset > slider.clientWidth) {
-					remainder = marginOffset + img.clientWidth - (slider.clientWidth - currentWidth)
-					currentWidth += remainder;
-				} else
-					currentWidth += img.clientWidth + marginOffset;
-				const clone = images[index];
-				clone.clone = true;
-				images.push(clone);
-			}
-		});
+export default {
+	data() { 
+		return { florianImages, refColors }
 	},
 	methods: {
-		nextImage(e, backwards) {
-			slider.children[imageIndex].classList.remove('selected');
-			imageIndex += backwards ? -1 : 1;
-			imageIndex = ((imageIndex % images.length) + images.length) % images.length;
-			this.currentImage = images[imageIndex];
-			modal.image = '/images/florian/' + this.currentImage.path;
-			const selectedImage = slider.children[imageIndex];
-			slider.scrollLeft = selectedImage.offsetLeft - selectedImage.clientWidth / 2 - slider.clientWidth / 2;
-			selectedImage.classList.add('selected');
-		},
-		enlarge(e) {
-			modal.image = e.target.src;
-			modal.visible = true;
-		},
-		selectImage(index) {
-			slider.children[imageIndex].classList.remove('selected');
-			imageIndex = index;
-			this.currentImage = images[imageIndex % images.length];
-			const selectedImage = slider.children[imageIndex];
-			slider.scrollLeft = selectedImage.offsetLeft - selectedImage.clientWidth / 2 - slider.clientWidth / 2;
-			selectedImage.classList.add('selected');
-		},
-		scrollCarousel(e) {
-			if (e.target.offsetWidth + e.target.scrollLeft >= e.target.scrollWidth - remainder)
-				e.target.scrollLeft = 1;
-			if (e.target.scrollLeft == 0)
-				e.target.scrollLeft = e.target.scrollWidth - e.target.offsetWidth - remainder - 1
-		},
-		switchImage(e) {
-			if(e.key == 'ArrowRight')
-				this.nextImage();
-			else if(e.key == 'ArrowLeft')
-				this.nextImage(null, true);
-		},
 		copyColor(color) {
 			navigator.clipboard.writeText('#' + color);
 		}
@@ -168,38 +95,7 @@ export default {
 	filter: drop-shadow(5px 5px 10px #000000);
 }
 
-#gallery {
-	height: 90vh;
-}
-#current {
-	width: 100%;
-	height: 80%;
-}
-#current img {
-	display: block;
-	margin: auto;
-	object-fit: contain;
-	height: 100%;
-	max-width: 100%;
-	max-height: 100%;
-}
-
-#carousel {
-	display: flex;
-	overflow-x: scroll;
-	height: 20%;
-}
-#carousel img {
-	height: 100%;
-	object-fit: contain;
-	margin: 0 0.5em;
-	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-}
-#carousel img.selected {
-	box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.5);
-	border: 4px solid #000;
-}
-#ship-wrapper {
+#model-wrapper {
 	height: 50%;
 	width: 50%;
 	min-width: 300px;
@@ -211,7 +107,7 @@ export default {
 	/* margin-top: 2em; */
 	text-align: center;
 	width: 100%;
-	min-height: 100vh;
+	max-height: 100vh;
 }
 #ref-images {
 	display: flex;

@@ -4,8 +4,25 @@
 		<nuxt />
 		<Footer />
 		<elevator-button />
+		<ModalImage ref="modal" />
 	</div>
 </template>
+
+<script>
+
+export default {
+	created() {
+		this.$nuxt.$on('enlarge', (image) => this.enlarge(image));
+	},
+	methods: {
+		enlarge(path) {
+			this.$refs.modal.image = path;
+			this.$refs.modal.visible = true;
+		},
+	}
+};
+</script>
+
 
 <style>
 :root {
