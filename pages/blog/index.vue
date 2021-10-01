@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<header>
-			<h2><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
+			<h2 class="title"><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
 			<h4>Tech, Blindness, and everything Sethington</h4>
 		</header>
 		<section id="blog">

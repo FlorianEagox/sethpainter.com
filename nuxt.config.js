@@ -1,10 +1,10 @@
 // this example declares the function at the top of the nuxt.config.js file
 const fs = require('fs').promises;
 const path = require('path');
-
+const deployPath = '/home/seth/www/sethpainter.com';
 const constructFeedItem = async (article, dir, hostname) => {  
 	// note the path used here, we are using a dummy page with an empty layout in order to not send that data along with our other content
-	const content = await fs.readFile(path.join(__dirname, `dist/rss/${article.slug}/index.html`), 'utf8');
+	const content = await fs.readFile(path.join(deployPath, `rss/${article.slug}/index.html`), 'utf8');
 	const url = encodeURI(`${hostname}/${dir}/${article.slug}`);
 	return {
 		title: article.title,
@@ -130,7 +130,8 @@ export default {
 		async routes() {
 			const { $content } = require('@nuxt/content')
 			return (await $content('blog').only(['slug']).fetch()).map(item => encodeURI(`rss/${item.slug}`))
-		}
+		},
+		dir: deployPath
 	},
 	feed: [
 		{

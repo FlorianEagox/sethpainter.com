@@ -28,7 +28,6 @@
 					<li><a title="Copy RSS Feed" class="tooltip" @click="copy('https://sethpainter.com/feed.xml')"><font-awesome-icon icon="rss" size="lg"/></a></li>
 					<li v-if="article.medium"><a :href="article.medium" target="_blank" title="Read on Medium" class="tooltip"><font-awesome-icon :icon="['fab', 'medium']" size="lg"/></a></li>
 					<li v-if="article.devTo"><a href="" title="Read on Dev.to" class="tooltip"><font-awesome-icon :icon="['fab', 'dev']" size="lg"/></a></li>
-
 				</ul>
 			</section>
 			<Collapsable id="contents" v-if="article.toc.length">
@@ -50,24 +49,26 @@
 			</div>
 			<div id="description" v-text="article.description" />
 			<nuxt-content :document="article" />
-			<div id="wrap-nav">
-				<NuxtLink v-if="prev" :to="{ name: 'blog-slug', params: { slug: prev.slug } }">
-					{{ prev.title }}
-				</NuxtLink>
-
-				<NuxtLink v-if="next" :to="{ name: 'blog-slug', params: { slug: next.slug } }">
-					{{ next.title }}
-				</NuxtLink>
-			</div>
 		</article>
+		<nav id="wrap-nav">
+			<NuxtLink id="prev" class="drop-shadow base-border" v-if="prev" :to="prev.slug">
+				<font-awesome-icon :icon="['fas', 'arrow-left']" size="lg"/>
+				<p>{{ prev.title }}</p>
+			</NuxtLink>
+			<div v-else />
+			<NuxtLink id="next" class="drop-shadow base-border" v-if="next" :to="next.slug">
+				<p>{{ next.title }}</p>
+				<font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/>
+			</NuxtLink>
+			<div v-else />
+		</nav>
 	</main>
 </template>
 
 <script>
 export default {
 	async asyncData({$content, params}) {
-		
-		const [prev, next] = await $content('articles')
+		const [prev, next] = await $content('blog')
 			.only(['title', 'slug'])
 			.sortBy('createdAt', 'asc')
 			.surround(params.article)
@@ -114,7 +115,8 @@ export default {
 		grid-template-areas:
 		'meta    article'
 		'mailing article'
-		'.       article';
+		'.       article'
+		'.       wrap';
 		grid-template-columns: 300px minmax(0, 1200px);
 		gap: 2em;
 		place-items: center;
@@ -180,6 +182,8 @@ export default {
 	#description {
 		font-style: italic;
 	}
+
+	/* CSS for content IN the article */
 	h1, article >>> h2, article >>> h3 {
 		font-family: 'Zilla Slab';
 	}
@@ -187,9 +191,40 @@ export default {
 		max-width: 100%;
 		overflow: hidden;
 	}
+
+	#wrap-nav {
+		grid-area: wrap;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		display:flex;
+	}
+	#wrap-nav a {
+		padding: 0.8em;
+		background: var(--main-bkg);
+		font-weight: bold;
+		font-family: 'Zilla Slab';
+		display: inline-flex;
+		align-items: center;
+		/* max-width: 50%; */
+	}
+	#prev {
+		margin-right: 1em;
+	}
+	#prev p {
+		margin-left: 1em;
+	}
+	#next {
+		margin-left: 1em;
+	}
+	#next p {
+		margin-right: 1em;
+		text-align: right;
+	}
+
 	@media (max-width: 900px) {
 		main {
-			grid-template-areas: 'meta' 'article' 'mailing';
+			grid-template-areas: 'meta' 'article' 'wrap' 'mailing';
 			grid-template-columns: 100%;
 			place-items: center;
 			width: 95%;
@@ -207,6 +242,16 @@ export default {
 		}
 		#dates {
 			font-size: 0.7em;
+		}
+
+		#wrap-nav {
+			flex-direction: column;
+		}
+		#wrap-nav > * {
+			margin-bottom: 1em;
+		}
+		#wrap-nav > *:last-child {
+			margin-bottom: 0;
 		}
 	}
 </style>

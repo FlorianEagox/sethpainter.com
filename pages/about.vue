@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<article id="about" class="panel page drop-shadow">
-			<h1>About Seth Painter</h1>
+			<h1 class="title">About Seth Painter</h1>
 			<hr>
 			<div>
 				<nuxt-content :document="article" />

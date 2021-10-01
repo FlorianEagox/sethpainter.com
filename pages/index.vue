@@ -25,8 +25,7 @@
 <script>
 export default {
 	async asyncData({ $content }) {
-		const featuredProjects = await $content('projects').where({ featured: true }).fetch();
-		return { featuredProjects };
+		return { featuredProjects: await $content('projects').where({ featured: true }).fetch() };
 	}
 };
 </script>
@@ -54,6 +53,7 @@ main {
 	#featured-projects {
 		flex-direction: column;
 		width: 85%;
+		flex-wrap: unset;
 	}
 	#featured-projects .card {
 		--gap-space: 1em;
