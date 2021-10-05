@@ -39,6 +39,7 @@ export default {
 	--margin-buffer: 4em;
 	--main-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.19);
 	--accent-border: 0.5em solid var(--accent-color);
+	--secret-duration: 3s;
 }
 * {
 	margin: 0;
@@ -98,12 +99,17 @@ export default {
 .seperator .heading {
 	padding-bottom: 0.75em;
 }
+
 .base-border {
 	border-bottom: var(--accent-border) !important;
 }
 .side-border {
 	border-right: var(--accent-border) !important;
 }
+.reverse-side-border {
+	border-left: var(--accent-border) !important;
+}
+
 .rgb_border {
 	box-shadow: 5px 5px 8px blue, 10px 10px 8px red, 15px 15px 8px green;
 }
@@ -111,11 +117,36 @@ export default {
 	box-shadow: var(--main-shadow);
 	  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
-#secret-canvas {
+#left-canvas, #right-canvas {
 	position: fixed;
 	pointer-events: none;
-	width: 100%;
-	height: 100%;
+	width: 50vw;
+	height: 100vh;
+	box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.19);
+	animation-duration: var(--secret-duration);
+	animation-timing-function: ease-in-out;
+}
+#left-canvas {
+	animation-name: moveLeft;
+	left: 0;
+}
+#right-canvas {
+	animation-name: moveRight;
+	left: 50%;
+}
+@keyframes moveLeft {
+	from { transform: translateX(0) }
+	to { transform: translateX(-100%); display: none; }
+}
+@keyframes moveRight {
+	from { transform: translateX(0) }
+	to { transform: translateX(100%); display: none; }
+}
+#screen-shade {
+	width: 100vw;
+	height: 100vw;
+	background: rgba(0, 0, 0, 0.15);
+	position: fixed;
 }
 
 @media (max-width: 767px) {

@@ -13,7 +13,6 @@
 
 <script>
 export default {
-	name: 'Greeter',
 	methods: {
 		passEvent() {
 			this.$emit('logoSecret');

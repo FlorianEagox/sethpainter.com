@@ -25,15 +25,15 @@
 				
 				<div id="ref-images">
 					<img @click="$nuxt.$emit('enlarge', '/images/florian/ref/front.png')" src="/images/florian/ref/front.png">
-					<img @click="$nuxt.$emit('enlarge')" src="/images/florian/ref/side.png">
-					<img @click="$nuxt.$emit('enlarge')" src="/images/florian/ref/back.png">
+					<img @click="$nuxt.$emit('enlarge', '/images/florian/ref/side.png')" src="/images/florian/ref/side.png">
+					<img @click="$nuxt.$emit('enlarge', '/images/florian/ref/back.png')" src="/images/florian/ref/back.png">
 				</div>
 
 				<div id="colors">
 					<h3 id="color-desc">Colors used, click to copy</h3>
 					<div id="swatches">
 						<div
-							v-for="color in refColors"
+							v-for="color in refColors" 
 							id="color"
 							:key="color"
 							:style="`background: #${color}`"
@@ -104,10 +104,8 @@ export default {
 }
 
 #refsheet {
-	/* margin-top: 2em; */
 	text-align: center;
 	width: 100%;
-	max-height: 100vh;
 }
 #ref-images {
 	display: flex;

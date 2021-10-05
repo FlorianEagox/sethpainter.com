@@ -22,58 +22,38 @@
 import html2canvas from 'html2canvas'
 
 export default {
-	name: 'Logo',
 	methods: {
 		async tearScreen() {
 			const pageRoot = document.querySelector('#app');
-			let canvas = await html2canvas(pageRoot, {
-				imageTimeout: 0
-			});
-			canvas.id = 'secret-canvas';
-			pageRoot.appendChild(canvas);
-			this.$router.push('florian')
-			const ctx = canvas.getContext("2d");
+			let sourceCanvas = await html2canvas(pageRoot, {imageTimeout: 0, scale: 1});
 
-			const leftHalf = ctx.getImageData(0, 0, canvas.width / 2, canvas.height);
-			const rightHalf = ctx.getImageData(canvas.width / 2, 0, canvas.width, canvas.height);
-			const dropShadow = 30, randomSpeedAdjustment = 140;
-			let delta = 0, prevTime = 0;
-			const speed = 200;
-			let displacement = 0, offset = 0;
-			let transitionedPage = false;
-			ctx.shadowColor = "black";
-			ctx.shadowBlur = 20;
-			ctx.globalCompositeOperation = 'multiply';
-			ctx.textBaseline = '100'
-			// const _this = this;
-			function rip(time) {
-				if (displacement <= canvas.width / 2) {
-					ctx.clearRect(0, 0, canvas.width, canvas.height);
-					ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-					ctx.fillRect(0, 0, canvas.width, canvas.height);
-					if (!transitionedPage && displacement >= canvas.width / 4) {
-						// _this.$router.push('florian');
-						transitionedPage = true
-					}
-					ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-					ctx.fillRect(pageRoot.clientWidth / 2 - displacement - dropShadow, 0, dropShadow, canvas.height)
-					ctx.putImageData(leftHalf, -displacement, 0);
-					ctx.fillRect(pageRoot.clientWidth / 2 + displacement, 0, dropShadow, canvas.height)
-					ctx.putImageData(rightHalf, canvas.width / 2 + displacement, 0);
+			const duration = 3.5;
+			document.documentElement.style.setProperty('--secret-duration', duration + 's');
 
-					delta = (time - prevTime) / 1000;
-					delta = Math.min(delta, 0.1);
-					prevTime = time;
+			const screenShade = document.createElement('div');
+			screenShade.id = 'screen-shade';
+			pageRoot.appendChild(screenShade);
 
-					offset = Math.floor(Math.random() * (randomSpeedAdjustment - -randomSpeedAdjustment + 1)) + -randomSpeedAdjustment;
-					displacement += (speed + offset) * delta;
-					window.requestAnimationFrame(rip);
-				} else {
-					canvas.remove();
-					canvas = null;
-				}
-			}
-			window.requestAnimationFrame(rip);
+			const leftCanvas = document.createElement('canvas');
+			leftCanvas.id = 'left-canvas';
+			pageRoot.appendChild(leftCanvas);
+			const rightCanvas = document.createElement('canvas');
+			rightCanvas.id = 'right-canvas';
+			pageRoot.appendChild(rightCanvas);
+			requestAnimationFrame(() => {
+				leftCanvas.width = leftCanvas.scrollWidth;
+				leftCanvas.height = leftCanvas.clientHeight;
+				leftCanvas.getContext('2d').drawImage(sourceCanvas, 0, 0);
+				rightCanvas.width = rightCanvas.scrollWidth;
+				rightCanvas.height = rightCanvas.clientHeight;
+				rightCanvas.getContext('2d').drawImage(sourceCanvas, sourceCanvas.width / 2, 0, sourceCanvas.width / 2, rightCanvas.height, 0, 0, rightCanvas.width, rightCanvas.height);
+			})
+			setTimeout(() => {
+				leftCanvas.remove();
+				rightCanvas.remove();
+				screenShade.remove();
+			}, duration * 1000);
+			this.$router.push('florian');
 		}
 	}
 }

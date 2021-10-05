@@ -51,13 +51,13 @@
 			<nuxt-content :document="article" />
 		</article>
 		<nav id="wrap-nav">
-			<NuxtLink id="prev" class="drop-shadow base-border" v-if="prev" :to="prev.slug">
+			<NuxtLink id="prev" class="drop-shadow reverse-side-border" v-if="prev" :to="prev.slug">
 				<font-awesome-icon :icon="['fas', 'arrow-left']" size="lg"/>
-				<p>{{ prev.title }}</p>
+				<p v-text="prev.title" />
 			</NuxtLink>
 			<div v-else />
-			<NuxtLink id="next" class="drop-shadow base-border" v-if="next" :to="next.slug">
-				<p>{{ next.title }}</p>
+			<NuxtLink id="next" class="drop-shadow side-border" v-if="next" :to="next.slug">
+				<p v-text="next.title" />
 				<font-awesome-icon :icon="['fas', 'arrow-right']" size="lg"/>
 			</NuxtLink>
 			<div v-else />
@@ -71,6 +71,7 @@ export default {
 		const [prev, next] = await $content('blog')
 			.only(['title', 'slug'])
 			.sortBy('createdAt', 'asc')
+			.where({ hidden: { $ne: true } })
 			.surround(params.article)
 			.fetch();
 
@@ -210,16 +211,20 @@ export default {
 	}
 	#prev {
 		margin-right: 1em;
+		display: flex;
+		align-content: flex-end;
 	}
 	#prev p {
 		margin-left: 1em;
 	}
 	#next {
 		margin-left: 1em;
+		display: flex;
+		justify-content: flex-end;
+		text-align: right;
 	}
 	#next p {
 		margin-right: 1em;
-		text-align: right;
 	}
 
 	@media (max-width: 900px) {
@@ -243,7 +248,8 @@ export default {
 		#dates {
 			font-size: 0.7em;
 		}
-
+	}
+	@media(max-width: 700px) {
 		#wrap-nav {
 			flex-direction: column;
 		}

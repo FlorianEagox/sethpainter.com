@@ -109,8 +109,18 @@ export default {
 		margin: 0 0.5em;
 		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 	}
+	/* #carousel img:not(.selected):not(.selected + img), #carousel img:not(.selected):not(.selected + img):not(img + .selected) {
+		border: red 2px solid !important;
+	} */
+	/* #carousel .selected + img, #carousel img + .selected { 
+		border: red 2px solid !important;
+	}
+	#carousel .selected + img, #carousel img + .selected {
+		transform: scale3d(0.85);
+	} */
 	#carousel img.selected {
 		box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.5);
 		border: 4px solid #000;
+		/* transform: translateZ(5); */
 	}
 </style>

@@ -41,8 +41,9 @@ export default {
 		left: 50%;
 		transform: translate3d(0, 0, 0);
 		animation: zoomin 1s ease;
-		max-width: 90%;
-		max-height: 90%;
+		width: 90vw;
+		height: 90vh;
+		object-fit: contain;
 		margin: auto;
 		z-index: 20;
 	}
