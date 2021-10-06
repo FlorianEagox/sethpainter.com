@@ -1,27 +1,27 @@
 ---
-title: How to literally rip your website in ahlf
+title: How to Literally Rip your Website in Half!
 categories:
 	- programming
-description: A guide to creating simple, but unique transition effects with Javascript through image composition.
+description: A guide to creating unique transition and graphical effects with HTML2Canvas, CSS animation and Javascript image composition.
 ---
 
-I love websites with easer eggs, and when building this one, I knew I had to include some. This site is home to my crowning achievement in web development. If you search around, you'll find it, but for those who can't, give the traingle logo a double click!
+I love websites with easer eggs, and when building this one, I knew I had to include something great. This site is home to my crowning achievement in web development. If you search around, you'll find it, but for those who can't, give the triangle logo a double click!
 
-You'll step back in amazement as the entire site rips itself in two halves revealing a secret page dedicated to my fursona Florian. Something like this might seem imposible without some intense Javascript behind the scenes, but it's not increadibly difficult, and can be modified in a myriad of ways to create ncredible effects.
+You'll step back in amazement as the entire site rips itself in two halves revealing a secret page dedicated to my fursona, Florian. Something like this might seem impossible without some intense Javascript behind the scenes, but it's not incredibly difficult, and can be modified in a myriad of ways to create some incredible effects.
 
 The magic behind this effect is a library called HTML2Canvas. This library essentially generates a screenshot of the page by rendering it like an SVG to a canvas object. Once you have a screenshot of the current page, you can render the canvas on top of the whole page with CSS. To make unique effects, you can use all the power of the javascript canvas API or any image manipulation libraries you want to animate your effect.
 
 ## Basic setup
-I went through several steps to refine and tune my effect for good performance, smoothness, and compatibility. I would reccomend reading the HTML2Canvas documentation in addition to this guide, but I will explain exactly how to use it for anything you want to make.
+I went through several steps to refine and tune my effect for good performance, smoothness, and compatibility. I would recommend reading the short HTML2Canvas documentation in addition to this guide, but I will explain exactly how to use it for anything you want to make.
 
-The first thing you'll need is a function to trigger it, this could be a button, page load, or really anything you want. We'll just go with a button load to call the event
+The first thing you'll need is a function to trigger it, this could be a button, page load, or really anything you want. We'll just go with a button click to call the event
 
 ### Getting a page screenshot
 ```js
 import html2canvas from 'html2canvas' // if you're working with node, otherwise, include it as a script tag
 
 document.querySelector('#btn-effect').addEventListener(async () => {
-	const pageRoot = document.body; // This is the element will "take a screenshot" of.
+	const pageRoot = document.body; // This is the element to "take a screenshot" of.
 	const screenshot = await html2canvas(pageRoot, {
 		imageTimeout: 0, // This disables the default delay
 		scale: 1 // By default this uses the device's pixel ratio, but this will produce odd results on mobile
@@ -117,19 +117,19 @@ Next is the CSS that animates the two canvases moving across the screen in oppos
 }
 ```
 
-This code uses the `transform` property, but you can just as well use any other method to animate the positoin of the elemnt. However, most of the time, `transform` is the most performant as it is better optimized for animated graphics and doesn't have to redraw the whole DOM.
+This code uses the `transform` property, but you can just as well use any other method to animate the position of the element. However, most of the time, `transform` is the most performant as it is better optimized for animated graphics and doesn't have to redraw the whole DOM.
 
 ## Triggering an event during the effect.
 The purpose of mine was to create a unique, "secret doors" effect. One page opened up and revealed the secret. But you can use it to highlight whatever you want.
-Without a Javascript framework, it might be difficult to implement a page transition like that, because the transition elements takes place outside the virtual DOM. But I will show you how I implemented it in Vue
+Without a Javascript framework, it might be difficult to implement a page transition like that, because the transition elements exist outside the virtual DOM. But I will show you how I implemented it in Vue
 
-Immediatly after the effect starts, we can call a new page load like this anywhere in the code
+Immediately after the effect starts, we can call a new page load like this anywhere in the code
 
 ```js
 this.$router.push('nextRoute');
 ```
 
-## Cleaning up
+### Cleaning up
 We can call some code after the event has finished. This should be exactly after our specified `animationDuration` has ellapsed.
 ```js
 setTimeout(() => {
@@ -141,7 +141,7 @@ setTimeout(() => {
 ```
 
 ## More complicated effects
-The previous example allows you to create some very neat, but rather simple effects. If you want per-pixel control, you'll have to modify the canvas every frame. You could also use something like p5.JS or some other animation library that can modify canvases, but I'm going to show how this can be done froms cratch.
+The previous example allows you to create some very neat, but rather simple effects. If you want per-pixel control, you'll have to modify the canvas every frame. You could also use something like p5.JS or some other animation library that can modify canvases, but I'm going to show how this can be done from scratch.
 
 ### Setting up an animation loop
 Because we're animating with Javascript, we'll need to handle the timing manually. Essentially what we need to do is call a function to draw to the canvas every time we want to render a new frame. This is just like a game loop
@@ -166,7 +166,7 @@ animateEffect();
 ```
 
 ### Compositing a frame
-Now that we have a loop for drawing by calling the `drawFrame` function, we can actually create that function and start making our effect. This will most likely be done by either minipulating the original canvas or creating a new canvas and using image regions from the source canvas. I will show you how you can create my effect with these methods and one more, but that's where you get off and make your own effects. By compositing a screenshot of the image over-top of the actual page, you can create pretty much any effect you coulddn't do with CSS.
+Now that we have a loop for drawing by calling the `drawFrame` function, we can actually create that function and start making our effect. This will most likely be done by either manipulating the original canvas or creating a new canvas and using image regions from the source canvas. I will show you how you can create my effect with these methods and one more, but that's where you get off and make your own effects. By compositing a screenshot of the image over-top of the actual page, you can create pretty much any effect you couldn't do with CSS.
 
 ```js
 const pageRoot = document.querySelector('#app');
@@ -177,40 +177,48 @@ canvas.id = 'secret-canvas';
 pageRoot.appendChild(canvas);
 
 const ctx = canvas.getContext("2d");
+// Get the two halves
 const leftHalf = ctx.getImageData(0, 0, canvas.width / 2, canvas.height);
 const rightHalf = ctx.getImageData(canvas.width / 2, 0, canvas.width, canvas.height);
+
 const dropShadow = 30, randomSpeedAdjustment = 140;
 let delta = 0, prevTime = 0;
-const speed = 200;
-let displacement = 0, offset = 0;
-let transitionedPage = false;
-ctx.shadowColor = "black";
-ctx.shadowBlur = 20;
-ctx.globalCompositeOperation = 'multiply';
-ctx.textBaseline = '100'
-function rip(time) {
-	if (displacement <= canvas.width / 2) {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		if (!transitionedPage && displacement >= canvas.width / 4) {
-			transitionedPage = true
-		}
-		ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-		ctx.fillRect(pageRoot.clientWidth / 2 - displacement - dropShadow, 0, dropShadow, canvas.height)
+const speed = 200; // this alters the speed the halves move at.
+let displacement = 0; // The position of our halves from the center
+const renderInterval = (1 / 60)  * 1000;
+ctx.globalCompositeOperation = 'multiply'; // This allows us to use things like drop shadows that build "layers" on the canvas
+ctx.fillStyle = 'rgba(0, 0, 0, 0.15)'; // By default fill shapes with semi-opaque black.
+function rip(time) { // This function will continue to run until the effect has ended
+	if (displacement <= canvas.width / 2) { // Instead of using a duration, we just go until it's done.
+		const time = performance.now();
+		const delta = (time - prevTime) / renderInterval;
+		
+		ctx.clearRect(0, 0, canvas.width, canvas.height); // we have to clear the canvas every frame because there is movement going on
+		ctx.fillRect(0, 0, canvas.width, canvas.height); // darken the background to make the effect stand out
+		
+		// Draw the two sites side of the screenshot at its current position
 		ctx.putImageData(leftHalf, -displacement, 0);
-		ctx.fillRect(pageRoot.clientWidth / 2 + displacement, 0, dropShadow, canvas.height)
-		ctx.putImageData(rightHalf, canvas.width / 2 + displacement, 0);
-		delta = (time - prevTime) / 1000;
-		delta = Math.min(delta, 0.1);
+		ctx.putImageData(rightHalf, canvas.width / 2 + dis placement, 0);
+		// Draw the drop-shadow as a sime-opaque rectangle
+		ctx.fillRect(pageRoot.clientWidth / 2 - displacement - dropShadow, 0, dropShadow, canvas.height);
+		ctx.fillRect(pageRoot.clientWidth / 2 + displacement, 0, dropShadow, canvas.height);
+		
+		const offset = Math.floor(Math.random() * (randomSpeedAdjustment - -randomSpeedAdjustment + 1)) + -randomSpeedAdjustment; // generate a random number to add to the displacement, giving the effect a bit of "jitter" like the doors are quaking
+		displacement += (speed + offset) * delta; // this sets the position of the halves.
 		prevTime = time;
-		offset = Math.floor(Math.random() * (randomSpeedAdjustment - -randomSpeedAdjustment + 1)) + -randomSpeedAdjustment;
-		displacement += (speed + offset) * delta;
 		window.requestAnimationFrame(rip);
 	} else {
 		canvas.remove();
-		canvas = null;
+		delete canvas;
 	}
 }
 window.requestAnimationFrame(rip);
 ```
+
+As you can see, we're working with the canvas's `ctx` context object. Useful functions to work with your canvas are `getImageData` for storing parts of the image, `putImageData` for adding those image regions to the canvas, and `drawRect` for clearing the screen and drawing rectangles. `fillRect` can also be used to delete parts of the image by changing the fill color to fully transparent (`rgba(0, 0, 0, 0)`) and composition operation back to `source-over`.
+
+It's also worth noting that you can use `putImageData` or `drawImage`. Supposedly `putImageData` is slower, but this seems disputed. If you want to use drawImage, you'll have to convert any image data from `getImageData` with `createBitmapImage`. `drawImage` also has some neat features like native drop shadows (so we wouldn't have to make them manually), but I couldn't get it working correctly on mobile devices.
+
+By manipulating the `displacement` variable and drawing our objects at positions of it, we can create movement and animation. With these basic tools, you can pretty much create any transition/composition effect you can imagine right on the page.
+
+If you build any interesting effects with this tutorial, please send them my way and I'll mention them in this article. If you have any questions, you can also email me and I'll do my best to help you out. Otherwise, have fun making neat effects for your websites!
