@@ -44,7 +44,7 @@
 		"imagemin": "^6.1.0",
 		"imagemin-pngquant": "^9.0.1",
 		"nuxt-compress": "^3.0.0",
-		"sharp": "^0.29.1",
+		"sharp": "^0.30.5",
 		"typescript": "^3.9.7",
 		"webpack-cli": "^3.3.12"
 	}
