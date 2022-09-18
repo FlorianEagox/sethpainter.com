@@ -63,7 +63,7 @@ export default {
 		scrollCarousel(e) {
 			if (e.target.scrollLeft == 0)
 				e.target.scrollLeft = e.target.scrollWidth - e.target.offsetWidth - remainder - 1
-			if (e.target.offsetWidth + e.target.scrollLeft >= e.target.scrollWidth - remainder)
+			else if (e.target.offsetWidth + e.target.scrollLeft >= e.target.scrollWidth - remainder)
 				e.target.scrollLeft = 1;
 		},
 		switchImage(e) {

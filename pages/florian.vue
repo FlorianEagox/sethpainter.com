@@ -5,7 +5,7 @@
 				<article id="intro">
 					<img src="/images/florian/badge transparent.png" alt="">
 					<h2>Welcome to Florian's Secret Page!</h2>
-					<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of him, as well as an in-depth description of lore, personality, and the 3D model of him.</p>
+					<p>Congratulations, you've found the secret page for Florian, my fursona! Here you will find all the art of I've commissioned of them, as well as an in-depth description of lore, personality, and the 3D model of them.</p>
 					<p>3D Model comming soon</p>
 				</article>
 			</div>
@@ -42,6 +42,13 @@
 					</div>
 				</div>
 			</section>
+			<article id="lore">
+				<h2>Lore</h2>
+				<div>
+					<nuxt-content :document="article" />
+					<p>Last updated {{article.updatedAt}}</p>
+				</div>
+			</article>
 		</div>
 	</div>
 </template>
@@ -54,6 +61,22 @@ const refColors = ['b85b20', '161616', 'f5f5f5', '359b26', 'daa6aa', 'bb6d73', '
 export default {
 	data() { 
 		return { florianImages, refColors }
+	},
+	head() {
+		return {
+			titleTemplate: "Florian's Secret Page | %s",
+			meta: [
+				{ hid: 'description', name: 'description', content: "Art, Lore, Colors, and a 3D model of my fursona, Florian" },
+				{ hid: 'og:description', name: 'og:description', content: "Art, Lore, Colors, and a 3D model of my fursona, Florian" },
+				{ hid: 'og:title', name: 'og:title', content: "Florian's Secret Page" },
+				{ hid: 'og:image', name: 'og:image', content: '/images/florian/thumbnails/badge transparent.png' }
+			]
+		}
+	},
+	async asyncData({$content, params}) {
+		return {
+			article: await $content('site', 'florian').fetch()
+		}
 	},
 	methods: {
 		copyColor(color) {
@@ -77,10 +100,13 @@ export default {
 	background: var(--body-bkg);
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
 }
-
-#intro {
+.container {
+	max-width: 100vw;
+}
+article {
 	width: 60%;
 	margin: 15% auto 3em;
 	padding: 2em;
@@ -88,6 +114,10 @@ export default {
 	line-height: 2;
 	background: var(--main-bkg);
 	border-bottom: 6px solid var(--accent-color);
+}
+#lore {
+	width: 100%;
+	text-align: left;
 }
 #intro img {
 	width: 50%;
@@ -114,7 +144,7 @@ export default {
 #ref-images img {
 	align-self: center;
 	flex: 0 1 auto;
-	max-height: 100%;
+	width: 33%;
 	filter: drop-shadow(5px 5px 5px #000000);
 }
 
@@ -147,7 +177,8 @@ export default {
 		width: 100%;
 	}
 	#ref-images img {
-		/* margin: 1em; */
+		margin: 1em;
+		width: 100%;
 	}
 }
 </style>

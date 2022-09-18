@@ -42,6 +42,7 @@ main {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	max-width: 1800px;
+	overflow: visible;
 }
 #featured-projects > .card {
 	--gap-space: 4em;

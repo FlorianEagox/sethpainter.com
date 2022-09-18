@@ -67,6 +67,11 @@
 
 <script>
 export default {
+	mounted() {
+		this.$el.querySelectorAll('img').forEach(img =>
+			img.src = `/images/blog/${this.$route.params.article}/${img.src.split('/').slice(-1)}`
+		);
+	},
 	async asyncData({$content, params}) {
 		const [prev, next] = await $content('blog')
 			.only(['title', 'slug'])
@@ -77,7 +82,7 @@ export default {
 
 		return {
 			article: await $content('blog', params.article).fetch(),
-			prev, next 
+			prev, next
 		}
 	},
 	head() {
@@ -86,8 +91,8 @@ export default {
 			meta: [
 				{ hid: 'description', name: 'description', content: this.article?.description || 'Project Not Found' },
 				{ hid: 'og:description', name: 'og:description', content: this.article?.description || 'Project Not Found' },
-				{ hid: 'og:title', name: 'og:title', content: (this.article?.description || 'Project Not Found') + ' | Seth Painter' },
-				{ hid: 'og:image', name: 'og:image', content: (this.article?.mainImg || '') }
+				{ hid: 'og:title', name: 'og:title', content: (this.article?.title || 'Project Not Found') + ' | Seth Painter' },
+				{ hid: 'og:image', name: 'og:image', content: (`/images/blog/${this.article.slug}/${this.article?.mainImg}` || '') }
 			]
 		}
 	},
@@ -192,7 +197,15 @@ export default {
 		max-width: 100%;
 		overflow: hidden;
 	}
-
+	article >>> img {
+		width: 100%;
+		margin: auto;
+		min-height: 300px;
+		background: #ccc;
+	}
+	article >>> ul {
+		list-style-position: inside;
+	}
 	#wrap-nav {
 		grid-area: wrap;
 		display: flex;

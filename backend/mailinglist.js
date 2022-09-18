@@ -17,7 +17,7 @@ let transporter = createTransport({
 	}
 });
 
-mailinglist.get('/add/:email', async (req, res) => {
+mailinglist.get('/:email', async (req, res) => {
 	if(!/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/i.test(req.params.email)) { // Test if the email is valid
 		res.status(400).send('Invalid email address');
 		return;
@@ -33,7 +33,7 @@ mailinglist.get('/add/:email', async (req, res) => {
 	});
 	db.close();
 	sendWelcomeEmail(req.params.email).catch(e => console.error(e));
-	res.send(`${req.params.email} Added to mailing list`);
+	res.send(`${req.params.email} Added to Mailing List`);
 });
 
 mailinglist.get('/remove/:email', async (req, res) => {
