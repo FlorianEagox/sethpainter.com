@@ -19,3 +19,10 @@ By far the most important thing in elementary school was developing strong liter
 
 ## I tend to stick my nose in everything
 Aside from being a deeply curious and nosey person, I've been told that VI folks tend to literally go nose-first into everything. In the post about the NFB STEM EQ program, I mentioned learning to work with saws and other tools of moderate risk. The instructors spoke to the partially sighted people in particular and warned us that we might have the instinct to get real close to the woodworking tools to get a good view. Many of the lessons emphasized working by feel instead of visually. This is because we would be at greater risk for facial injury. I've been getting very close looking into tight spaces for a long time, possibly to my detriment.
+
+## A formless world of figures
+There are many times when I see something far away and can't quite make it out, I'll think I'm seeing something different. A coat hanging on a chair 20 feet away, maybe it's my brother. Once I was sitting in a meeting and a woman had a monochrome cotton tote depicting a nature scene. I thought the jagged cutoff between the edges of the trees contrasting the white sky looked more like anime hair from a distance, and I told her I liked her Goku bag to much confusion. A great example of this can be found in this painting, "Windy Day" by Claude Monet:
+
+![This image depicts an optical illusion of two women walking up a hill. From a distance, the women's figures form an image of a stern old man](twogalsoldman.png)
+
+The painting depicts two women with parasols walking up a hill. But their figures also form the illusion of a stren old man facing to the left. Contrary to what Tiktok and Buzzfeed would have you believe, which one you see first probably doesn't have to say about your personality, but this image is a great example of how I see. Everything for me is the old man. Connecting dots and making inferences from what may or may not be there. This is why I also really love cubist art because it often depicts the texture and shape accurately, but forgoes details and instead relies on the implications.

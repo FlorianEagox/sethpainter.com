@@ -1,8 +1,8 @@
 ---
-name: SethPainter.com
-description: the personal website of Seth Painter
+name: TessaPainter.com
+description: the personal website of Tessa Painter
 image: sethpainter.com.svg
-access: https://sethpainter.com/
+access: https://tessapainter.com/
 source: https://github.com/TheFoxarmy/sethpainter.com
 technologies:
   - nuxtjs

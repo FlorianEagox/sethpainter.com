@@ -1,6 +1,6 @@
 # sethpainter.com
 
-> The personal website of Seth Painter
+> The personal website of Tessa Painter
 
 ## Build Setup
 

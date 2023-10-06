@@ -1,8 +1,8 @@
 <template>
 	<main>
 		<header>
-			<h2 class="title"><span id="name">{Sethington's</span> <span id="story">Story}</span></h2>
-			<h4>Tech, Blindness, and everything Sethington</h4>
+			<h2 class="title"><span id="name">{Tessa's</span> <span id="story">Tales}</span></h2>
+			<h4>Tech, Blindness, and everything Tessa</h4>
 		</header>
 		<section id="blog">
 			<featured-articles />

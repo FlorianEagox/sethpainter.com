@@ -151,7 +151,7 @@ A basic style for this might look like
 Example of simple progress bar:
 <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="poPKQXG" data-editable="true" data-user="FlorianEagox" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/FlorianEagox/pen/poPKQXG">
-  Simple Progress bar</a> by Sethington (<a href="https://codepen.io/FlorianEagox">@FlorianEagox</a>)
+  Simple Progress bar</a> by Tessa (<a href="https://codepen.io/FlorianEagox">@FlorianEagox</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
@@ -159,7 +159,7 @@ Example of simple progress bar:
 I decided to get very fancy with the one used in Contribeautiful which you can see here:
 <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="qBmKLVm" data-editable="true" data-user="FlorianEagox" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/FlorianEagox/pen/qBmKLVm">
-  Contribeautiful progress bar</a> by Sethington (<a href="https://codepen.io/FlorianEagox">@FlorianEagox</a>)
+  Contribeautiful progress bar</a> by Tessa (<a href="https://codepen.io/FlorianEagox">@FlorianEagox</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 

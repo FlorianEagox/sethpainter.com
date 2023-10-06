@@ -91,7 +91,7 @@ export default {
 			meta: [
 				{ hid: 'description', name: 'description', content: this.article?.description || 'Project Not Found' },
 				{ hid: 'og:description', name: 'og:description', content: this.article?.description || 'Project Not Found' },
-				{ hid: 'og:title', name: 'og:title', content: (this.article?.title || 'Project Not Found') + ' | Seth Painter' },
+				{ hid: 'og:title', name: 'og:title', content: (this.article?.title || 'Project Not Found') + ' | Tessa Painter' },
 				{ hid: 'og:image', name: 'og:image', content: (`/images/blog/${this.article.slug}/${this.article?.mainImg}` || '') }
 			]
 		}

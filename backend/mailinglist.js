@@ -47,9 +47,9 @@ async function sendWelcomeEmail(email) {
 	const emailTemplate = readFileSync('./backend/WelcomeEmail.html', 'utf8'); // Read the file containing the welcome email
 	let emailDoc = emailTemplate.replace('{0}', email); // The unsubscribe link must reference the user's email, so we replace the placeholder in the template.
 	return (await transporter.sendMail({
-		from: '"Seth Painter" <seth@sethpainter.com>',
+		from: '"Tessa Painter" <tessa@tessapainter.com>',
 		to: email,
-		subject: "You've joined Sethington's Mailing List!",
+		subject: "You've joined Tessington's Mailing List!",
 		html: emailDoc
 	}));
 }

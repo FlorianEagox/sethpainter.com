@@ -1,3 +1,9 @@
+<img 
+	src="images/me_irl.jpg"
+	alt="A Picture of me standing on a new-orleans street corner. I'm wearing a plaid shirt and skirt, knee-high stockings, and a cool new bucket hat!"
+	id="literally_me"
+/>
+
 Hello there, and welcome to my website! Looking around, you may find yourself confused at what my general focus here is, given all the wacky projects and lack of coherence across projects, but I like to think of it like this. I love to create things, it's well... my favorite thing. Especially with software. When I have a problem to solve or an idea for a project, I go immediately into trying to solve it, and the projects, good or bad, end up here. I'll try to prioritize the visibility of the good stuff and keep the bad to a minimum so you see the most interesting and useful stuff. Given this approach, I've dipped my toes into a lot of different buckets, I do web stuff, games, desktop stuff, mobile apps, and even extensions and plugins for other programs. Although it's fun to think about dipping toes into buckets, I think my workflow is more akin to a stove, in which I'm quickly running out of backburners. Give it enough time, and my whole kitchen will burn down!
 
 In addition to my personal projects, I've been working since early 2019 professionally. I've done work both as a freelance software developer doing gigs on Upwork, and I've held two internship positions, one as a game developer, and one doing cybersecurity software with Microsoft Access. I've done some other work through clubs and academia, and you can find my resume here if you're looking for a more detailed account of my work history. I'm always looking for new ways to expand my business, and I'm looking into doing on-contract websites, resume commissions, and possibly other services. I don't have a professional headshot yet because, well I haven't gotten around to having one made, so you're just going to have to deal with this abhorrently bland wall of text.

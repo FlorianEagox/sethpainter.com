@@ -28,8 +28,8 @@
 </template>
 
 <script>
-const initTitle = 'Sethington\'s Site';
-let currentTitle = 'Seth Painter';
+const initTitle = 'Tessington\'s Site';
+let currentTitle = 'Tessa Painter';
 
 export default {
 	name: 'Header',

@@ -2,6 +2,9 @@
 const fs = require('fs').promises;
 const path = require('path');
 const deployPath = '/home/seth/www/sethpainter.com';
+const name = 'Tessa Painter';
+
+// Generate RSS FEED
 const constructFeedItem = async (article, dir, hostname) => {  
 	// note the path used here, we are using a dummy page with an empty layout in order to not send that data along with our other content
 	const content = await fs.readFile(path.join(deployPath, `rss/${article.slug}/index.html`), 'utf8');
@@ -14,16 +17,15 @@ const constructFeedItem = async (article, dir, hostname) => {
 		published: new Date(article.createdAt),
 		content: content
 	}
-} 
-
+}
 const create = async (feed, args) => {
 	const [filePath, ext] = args;  
 	const hostname = 'https://sethpainter.com'
 	feed.options = {
-		title: "Sethington's Story",
-		description: "Tech, Blindness, and everything Sethington",
+		title: "Tessa's Tales",
+		description: "Tech, Blindness, and everything Tessa",
 		language: 'en',
-		author: 'Seth Painter',
+		author: name,
 		link: `${hostname}/feed.${ext}`
 	}
 	const { $content } = require('@nuxt/content')
@@ -35,18 +37,21 @@ const create = async (feed, args) => {
 	return feed;
 }
 
+// NUXT CONFIGURATION
+const description = `${name}'s personal website for software development. Home to all my projects, portfolio, tutorials, and writtings about the software world.`
+const siteTitle = `${name} | Software Development projects, tutorials, and more!`
 export default {
 	target: 'static',
 	components: true,
 	head: {
-		title: 'Seth Painter | Software Development Projects, Tutorials, and more!',
+		title: `${name} | Software Development Projects, Tutorials, and more!`,
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: 'Seth Painter\'s personal website for software development. Home to all my projects, portfolio, tutorials, and writtings about the software world.' },
-			{ hid: 'og:description', name: 'og:description', content: 'Seth Painter\'s personal website for software development. Home to all my projects, portfolio, tutorials, and writtings about the software world.' },
-			{ hid: 'og:title', name: 'og:title', content: 'Seth Painter | Software Development projects, tutorials, and more!' },
-			{ hid: 'og:url', name: 'og:url', content: 'https://sethpainter.com' },
+			{ hid: 'description', name: 'description', content: description },
+			{ hid: 'og:description', name: 'og:description', content: description },
+			{ hid: 'og:title', name: 'og:title', content: siteTitle},
+			{ hid: 'og:url', name: 'og:url', content: 'https://tessapainter.com' },
 			{ hid: 'og:image', name: 'og:image', content: '/logo.png' },
 			{ hid: 'twitter:site', name: 'og:site', content: '@FlorianEagox' },
 			{ hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
@@ -75,7 +80,7 @@ export default {
 		['@nuxtjs/robots', {
 			UserAgent: '*',
 			Allow: '/',
-			Sitemap: 'https://sethpainter.com/sitemap.xml'
+			Sitemap: 'https://tessapainter.com/sitemap.xml'
 		}
 		],
 		['nuxt-compress', {
@@ -115,7 +120,7 @@ export default {
 		'@nuxtjs/feed'
 	],
 	sitemap: {
-		hostname: 'https://sethpainter.com',
+		hostname: 'https://tessapainter.com',
 		gzip: true,
 		async routes() {
 			const { $content } = require('@nuxt/content')
@@ -124,7 +129,7 @@ export default {
 		}
 	},
 	server: {
-		host: 'sethpainter.com'
+		host: 'tessapainter.com'
 	},
 	generate: {
 		async routes() {
