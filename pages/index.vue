@@ -24,9 +24,9 @@
 
 <script>
 export default {
-	async asyncData({ $content }) {
-		return { featuredProjects: await $content('projects').where({ featured: true }).fetch() };
-	}
+		async asyncData({ $content }) {
+			return { featuredProjects: (await $content('projects').where({ featured: true }).fetch()).sort((a, b) => a.first ? -1 : 1) };
+		}
 };
 </script>
 

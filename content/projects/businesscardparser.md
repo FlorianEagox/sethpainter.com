@@ -4,7 +4,7 @@ description: Snap a photo of a business card, and the app will scrape it for con
 image: business-card.png
 access: https://sethpainter.com/businesscardparser
 source: https://github.com/TheFoxarmy/BusinessCardParser
-featured: true
+featured: false
 appendReadme: true
 technologies:
   - javascript

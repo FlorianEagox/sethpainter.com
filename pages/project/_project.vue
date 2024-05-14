@@ -16,7 +16,7 @@
 					</div>
 				</main>
 				<aside>
-					<img v-if="project.image" :src="image">
+					<img v-if="image" :src="image">
 					<a target="blank" v-if="project.access" class="link" id="access-link" :href="project.access">
 						{{ project.access_label || "Check it Out!" }}
 					</a>

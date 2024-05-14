@@ -71,12 +71,12 @@ export default {
 			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
 		]
 	},
-	plugins: ['~plugins/vue-scrollto.js'],
+	plugins: ['~plugins/vue-scrollto.js', '~plugins/fontawesome.js'],
 	loading: { color: '#fff' },
 
 	buildModules: [
 		// '@nuxtjs/eslint-module',
-		'@aceforth/nuxt-optimized-images',
+		// '@aceforth/nuxt-optimized-images',
 		['@nuxtjs/robots', {
 			UserAgent: '*',
 			Allow: '/',
@@ -94,30 +94,30 @@ export default {
 		],
 		'@nuxtjs/sitemap'
 	],
-	optimizedImages: {
-		optimizeImages: true
-	},
+	// optimizedImages: {
+	// 	optimizeImages: true
+	// },
 	modules: [
-		['nuxt-fontawesome', {
-			imports: [
-				{
-					set: '@fortawesome/free-solid-svg-icons',
-					icons: ['fas']
-				},
-				{
-					set: '@fortawesome/free-brands-svg-icons',
-					icons: ['fab']
-				},
-				{
-					set: '@fortawesome/free-regular-svg-icons',
-					icons: ['far']
-				}
-			]
-		}],
+		// ['nuxt-fontawesome', {
+		// 	imports: [
+		// 		{
+		// 			set: '@fortawesome/free-solid-svg-icons',
+		// 			icons: ['fas']
+		// 		},
+		// 		{
+		// 			set: '@fortawesome/free-brands-svg-icons',
+		// 			icons: ['fab']
+		// 		},
+		// 		{
+		// 			set: '@fortawesome/free-regular-svg-icons',
+		// 			icons: ['far']
+		// 		}
+		// 	]
+		// }],
 		['@nuxt/content', {
 			liveEdit: false
-		}],
-		'@nuxtjs/feed'
+		}]
+		// '@nuxtjs/feed'
 	],
 	sitemap: {
 		hostname: 'https://tessapainter.com',
@@ -154,4 +154,7 @@ export default {
 			}
 		}
 	},
+	css: [
+		'@fortawesome/fontawesome-svg-core/styles.css'
+	]
 }

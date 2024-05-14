@@ -36,13 +36,14 @@ export default {
 	p :first-child {
 		width: 30%;
 		float: right;
+		margin-left: 0.5em;
 	}
 	
-	p:not(:first-child) {
+	/* p:not(:first-child) {
 		float: left;
 		width: 70%;
 		background: red;
-	}
+	} */
 	#about_text {
 		float:right;
 	}
