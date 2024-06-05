@@ -30,6 +30,13 @@
 					<li v-if="article.devTo"><a href="" title="Read on Dev.to" class="tooltip"><font-awesome-icon :icon="['fab', 'dev']" size="lg"/></a></li>
 				</ul>
 			</section>
+			<secion id="player">
+				<h2>Listen to this article</h2>
+				<hr>
+				<audio controls>
+					<source :src="`/audio/blog/${article.slug}.mp3`" type="audio/mpeg">
+				</audio>
+			</secion>
 			<Collapsable id="contents" v-if="article.toc.length">
 				<h2 slot="before">On This Page</h2>
 				<ul id="contents">

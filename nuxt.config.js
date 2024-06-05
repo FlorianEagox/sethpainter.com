@@ -20,7 +20,7 @@ const constructFeedItem = async (article, dir, hostname) => {
 }
 const create = async (feed, args) => {
 	const [filePath, ext] = args;  
-	const hostname = 'https://sethpainter.com'
+	const hostname = 'https://tessapainter.com'
 	feed.options = {
 		title: "Tessa's Tales",
 		description: "Tech, Blindness, and everything Tessa",
@@ -115,9 +115,9 @@ export default {
 		// 	]
 		// }],
 		['@nuxt/content', {
-			liveEdit: false
-		}]
-		// '@nuxtjs/feed'
+			liveEdit: true
+		}],
+		'@nuxtjs/feed'
 	],
 	sitemap: {
 		hostname: 'https://tessapainter.com',

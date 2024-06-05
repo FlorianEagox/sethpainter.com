@@ -2,7 +2,7 @@
 title: Stratageies for improving your cable management
 ---
 
-Up until this point in my life, I've lived as the queen spider, bound in an ever-weaving web of cables. Wires spanning all around my desk and often all across my room. However, I recenetly recieved the most amazing Christmas gift. I got oa brand new motorized standing desk. While this is great for my health and posture for reasons discussed [here](/blog/blindthings), it also gave me the opportunity; to move away from the inbuilt wall setup I'd been using for years which provided hardly any flexibility or configurability.
+Up until this point in my life, I've lived as the queen spider, bound in an ever-weaving web of cables. Wires spanning all around my desk and often all across my room. However, I recenetly recieved the most amazing Christmas gift. I got oa brand new motorized standing desk. While this is great for my health and posture for reasons discussed [here](/blog/justVIthings), it also gave me the opportunity; to move away from the inbuilt wall setup I'd been using for years which provided hardly any flexibility or configurability.
 
 For years, I'd been watching YouTube videos detailing amazing PC builds and epic setups, and while I built a pretty nice small-formfactor PC a few years ago, I had yet to work on the whole setup. I've spent a few weeks watching different setup guides or reading different tips and tricks, and after applying much of the best advice to build my dream setup, I decided to write my own guide containing many  of the things I learned, links to the best products,  and effective statagies that could help you build out your setup from scratch or just impprove the one you've got.
 
