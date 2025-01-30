@@ -21,6 +21,9 @@
 					<li :class="{onPage: $route.path.toUpperCase().includes('/BLOG')}">
 						<nuxt-link to="/blog">Blog</nuxt-link>
 					</li>
+					<li :class="{onPage: $route.path.toUpperCase().includes('/HOBBIES')}">
+						<nuxt-link to="/hobbies">Hobbies</nuxt-link>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -121,6 +124,13 @@ li:hover {
 	}
 	ul {
 		margin-top: 0.5em;
+		display: flex;
+		flex: 0 1 auto;
+		max-width: 100vw;
+		flex-wrap: wrap;
+		justify-content: center;
+		/* overflow: scroll; */
+
 	}
 	li a {
 		padding: 0.7em;
