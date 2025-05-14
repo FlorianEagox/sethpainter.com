@@ -4,6 +4,7 @@
 		<nuxt />
 		<Footer />
 		<elevator-button />
+		<Sundial />
 		<ModalImage ref="modal" />
 	</div>
 </template>
@@ -26,21 +27,39 @@ export default {
 
 <style>
 :root {
-	--accent-color: green;
-	--main-bkg: white;
-	--white-txt: #eee;
-	--light-text: #666;
-	--body-bkg: #ddd;
-	color: black;
-	--dark-bkg: #444;
-	/* --main-bkg: #333; */
-	/* --body-bkg: black; */
-	/* color: white; */
-	--margin-buffer: 4em;
-	--main-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.19);
-	--accent-border: 0.5em solid var(--accent-color);
-	--secret-duration: 3s;
+  --accent-color: green;
+  --dark-link: DarkGoldenrod;
+
+  --main-bkg: white;
+  --white-txt: #eee;
+  --light-text: #bbb;
+  --body-bkg: #ddd;
+  --main-color: black;
+  --dark-bkg: #444;
+
+  color: var(--main-color);
+  --margin-buffer: 4em;
+  --main-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.19);
+  --accent-border: 0.5em solid var(--accent-color);
+  --secret-duration: 3s;
 }
+
+/* Manual or system-triggered dark mode */
+.dark {
+  --main-bkg: #333;
+  --white-txt: #eee;
+  --light-text: #999;
+  --body-bkg: #222;
+  --main-color: white;
+  --dark-bkg: #444;
+  color: var(--main-color);
+}
+
+/* Optional: dark-specific link styling */
+.dark a {
+  color: var(--dark-link);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -54,6 +73,8 @@ export default {
 	grid-template-rows: auto 1fr auto;
 	font-family: arial;
 	line-height: 1.6;
+	width:100%;
+	overflow: auto;
 }
 @font-face {
 	font-family: 'Zilla Slab';
@@ -66,6 +87,15 @@ export default {
 	font-family: 'Brush Script MT';
 	src: url("/fonts/Brush Script MT.ttf");
 }
+@font-face {
+	font-family: 'Cinzel Decorative';
+	src: url("/fonts/Cinzel Decorative.wolf2");
+	font-style: bold;
+	font-weight: 700;
+	font-display: swap;
+}
+
+
 /* Global styles */
 .container {
 	margin: auto;
@@ -187,6 +217,11 @@ export default {
 	text-shadow: 0 1px 0 #000;
 	white-space: nowrap;
 	z-index: 98;
+}
+
+.meta-list {
+	list-style-type: none;
+	padding: 1em 0.5em;
 }
 
 </style>

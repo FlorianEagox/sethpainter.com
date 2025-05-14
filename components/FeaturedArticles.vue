@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<section id="featured" v-if="featured">
 		<div class="seperator">
 			<h2 class="heading">Featured Articles</h2>

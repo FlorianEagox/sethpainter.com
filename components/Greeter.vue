@@ -58,13 +58,15 @@ export default {
 .btn-black {
 	margin-top: 2em;
 	padding: 0.75em;
-	border: 3px solid black;
+	border: 3px solid var(--main-color);
 	background: none;
+	color: var(--main-color);
 }
 .btn-black:hover {
 	transition: 0.1s;
 	background: black;
 	color: white;
+	border-color: black;
 }
 @media (max-width: 767px) {
 	#greeter {

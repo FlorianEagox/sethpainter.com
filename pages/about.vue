@@ -33,12 +33,12 @@ export default {
 		overflow: auto;
 	}
 
-	p :first-child {
+	#about >>> #literally_me {
 		width: 30%;
 		float: right;
 		margin-left: 0.5em;
 	}
-	
+
 	/* p:not(:first-child) {
 		float: left;
 		width: 70%;

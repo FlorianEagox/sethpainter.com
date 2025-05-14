@@ -2,7 +2,10 @@
 	<div class="container">
 		<PageHeader text="Resume" />
 		<p id="download">
-			<a href="/resume anonymized.pdf" class="accent">Download as PDF</a>
+			<a href="/resume anonymized.pdf" class="accent">
+				<font-awesome-icon :icon="['far', 'file-pdf']" size="lg" />
+				Download as PDF
+			</a>
 		</p>
 		<div ref="container" id="wrapper">
 			<Resume id="resume" class="drop-shadow" ref="resume" />
@@ -44,17 +47,20 @@ export default {
 	/* resize: both; */
 	margin: 1em;
 	overflow: auto;
+	padding: 1em;
 }
 #resume {
+	color: black;
 	--left-pad: 15px;
 	font-family: Arimo, Arial;
 	text-align: left;
 	line-height:initial;
 	min-width: 216mm;
+	margin: auto;
 	/* height: 279mm; */
 	/* transform: scale(0.5); */
 	max-width: 1200px;
-	margin: 1em auto;
+	/* margin: 1em auto; */
 }
 #download {
 	text-align: center;

@@ -42,7 +42,7 @@ export default {
 }
 .card-title {
 	text-decoration: none;
-	color: black;
+	color: inherit;
 }
 img {
 	max-height: 200px;

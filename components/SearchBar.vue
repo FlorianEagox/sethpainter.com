@@ -29,5 +29,7 @@ export default {
 		flex: 1;
 		outline: none;
 		font-weight: bold;
+		background: var(--main-bkg);
+		color: inherit;
 	}
 </style>

@@ -11,7 +11,7 @@ let boardStates = []
 
 export const conway = router.Router()
 
-function init_board(startingCells=80) {
+function init_board(startingCells=100) {
 	let blank = []
 	for(let i = 0; i < boardSize*boardSize; i++)
 		blank.push(0)

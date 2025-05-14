@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="content">
 				<p id="copy">
-					<strong> <font-awesome-icon :icon="['far', 'copyright']" flip="horizontal" /> Tessa Painter - 2022</strong>
+					<strong> <font-awesome-icon :icon="['far', 'copyright']" flip="horizontal" /> Tessa Painter - 2025</strong>
 				</p>
 				<ul id="other">
 					<li>

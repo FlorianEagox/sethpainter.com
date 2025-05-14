@@ -71,7 +71,7 @@ export default {
 			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
 		]
 	},
-	plugins: ['~plugins/vue-scrollto.js', '~plugins/fontawesome.js'],
+	plugins: ['~plugins/vue-scrollto.js', '~plugins/fontawesome.js', '~plugins/poemProcessor.js'],
 	loading: { color: '#fff' },
 
 	buildModules: [

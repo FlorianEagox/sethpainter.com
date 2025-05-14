@@ -22,7 +22,7 @@ export default {
 	props: ['email'],
 	methods: {
 		async addToMailingList() {
-			const reqAdd = await fetch(`https://api.sethpainter.com/mailinglist/add/${this.email}`)
+			const reqAdd = await fetch(`https://api.tessapainter.com/mailinglist/add/${this.email}`)
 			const toastClass = Vue.extend(Toast);
 			const mailStatusToast = new toastClass({ propsData: { 
 				text: await reqAdd.text(),
@@ -60,6 +60,8 @@ export default {
 		font-weight: bold;
 		margin-right: 0.5em;
 		font-size: 1em;
+		background: var(--main-bkg);
+		color:  inherit
 	}
 	button {
 		background: green;

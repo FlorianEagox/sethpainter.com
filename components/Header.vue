@@ -71,8 +71,9 @@ header {
 }
 header .container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
+	width: 100%
 }
 #title {
 	padding: 0.25em;
@@ -96,6 +97,9 @@ ul {
 }
 li {
 	display: inline-block;
+}
+li:nth-last-child(2) {
+	margin-right: 0.5em;
 }
 li a {
 	color: white;
